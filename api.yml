@@ -577,10 +577,117 @@ securityDefinitions:
     name: "api_key"
     in: "header"
 definitions:
+  Event:
+    type: "object"
+    properties:
+      researchNumber:
+        type: "string"
+        format: "sequential"
+      eventNumber:
+        type: "string"
+        format: "sequential"
+      eventUrl:
+        type: "string"
+        format: "URL"
+      eventCategory:
+        type: "string"
+        description: "Eventのカテゴリー"
+        enum:
+        - "amuse"
+      eventTitle:
+        type: "string"
+        description: "Eventの名前"
+      eventYear:
+        type: "string"
+        format: "yyyy"
+      eventStartDate:
+        type: "string"
+        format: "yyyyMMdd"
+      eventEndDate:
+        type: "string"
+        format: "yyyyMMdd"
+      district:
+        type: "string"
+        description: "Eventの開催場所"
+        enum:
+        - "Shinjuku"
+      longitude:
+        type: "integer"
+        format: "Double"
+        description: "Event開催場所の経度"
+      latitude:
+        type: "integer"
+        format: "Double"
+        description: "Event開催場所の緯度"
+      color:
+        type: "string"
+        description: "表示の色"
+        enum:
+        - "blue"
+        - "black"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      deleteFlg:
+        type: "integer"
+        format: "int32"
+      status:
+        type: "string"
+        description: "Order Status"
+        enum:
+        - "placed"
+        - "approved"
+        - "delivered"
+      complete:
+        type: "boolean"
+        default: false
+    xml:
+      name: "Order"
+  EventResearch:
+    type: "object"
+    properties:
+      researchNumber:
+        type: "string"
+        format: "sequential"
+      eventNumber:
+        type: "string"
+        format: "sequential"
+      research_domain:
+        type: "string"
+        format: "URL"
+      site_category:
+        type: "string"
+        description: "リサーチ用サイトのカテゴリ"
+        enum:
+        - "news site"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      deleteFlg:
+        type: "integer"
+        format: "int32"
+      status:
+        type: "string"
+        description: "Order Status"
+        enum:
+        - "placed"
+        - "approved"
+        - "delivered"
+      complete:
+        type: "boolean"
+        default: false
+    xml:
+      name: "Order"
   Order:
     type: "object"
     properties:
-      id:
+      researchNumber:
         type: "integer"
         format: "int64"
       petId:
