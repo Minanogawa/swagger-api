@@ -586,6 +586,9 @@ definitions:
       eventNumber:
         type: "string"
         format: "sequential"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
       eventUrl:
         type: "string"
         format: "URL"
@@ -655,6 +658,9 @@ definitions:
       eventNumber:
         type: "string"
         format: "sequential"
+      researchWord:
+        type: "string"
+        description: "Google検索文言"
       research_domain:
         type: "string"
         format: "URL"
@@ -663,6 +669,7 @@ definitions:
         description: "リサーチ用サイトのカテゴリ"
         enum:
         - "news site"
+        - "shop"
       addDate:
         type: "string"
         format: "yyyyMMdd"
