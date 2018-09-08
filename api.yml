@@ -668,8 +668,9 @@ definitions:
         type: "string"
         description: "リサーチ用サイトのカテゴリ"
         enum:
-        - "news site"
-        - "shop"
+        - "Publisher"
+        - "Retail"
+        - "Twitter"
       addDate:
         type: "string"
         format: "yyyyMMdd"
