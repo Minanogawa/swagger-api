@@ -9,8 +9,8 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "petstore.swagger.io"
-basePath: "/v2"
+host: "localhost:4200"
+basePath: "/"
 tags:
 - name: "eventResearch"
   description: "Eventを生成する為の情報、eventResearchからEvent情報を集めEventのStackを行う"
@@ -34,59 +34,51 @@ paths:
     post:
       tags:
       - "eventResearch"
-      summary: "Add a new pet to the store"
-      description: ""
+      summary: "Event Research情報の新規追加"
+      description: "Event Research情報はEventを生成する為の大本の情報で、その情報をdatatableから追加する"
       operationId: "addEventResearch"
       consumes:
       - "application/json"
-      - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
       - in: "body"
         name: "body"
-        description: "Pet object that needs to be added to the store"
+        description: "EventResearch object を新規追加する為に設定する"
         required: true
         schema:
-          $ref: "#/definitions/Pet"
+          $ref: "#/definitions/EventResearch"
       responses:
         405:
           description: "Invalid input"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
+  /eventResearch/{researchNumber}:
     put:
       tags:
-      - "event"
-      summary: "Update an existing pet"
-      description: ""
+      - "eventResearch"
+      summary: "Event Research情報の更新"
+      description: "researchNumberを指定して、該当する情報を更新する"
       operationId: "updateEventSearch"
       consumes:
       - "application/json"
-      - "application/xml"
       produces:
-      - "application/xml"
       - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Pet object that needs to be added to the store"
+      - name: "researchNumber"
+        in: "path"
+        description: "ID of pet that needs to be fetched"
         required: true
-        schema:
-          $ref: "#/definitions/Pet"
+        type: "integer"
+        format: "int64"
       responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/EventResearch"
         400:
-          description: "Invalid ID supplied"
-        404:
-          description: "Pet not found"
-        405:
-          description: "Validation exception"
-      security:
-      - petstore_auth:
-        - "write:pets"
-        - "read:pets"
+          description: "Invalid status value"
+
   /eventResearch/findByStatus:
     get:
       tags:
@@ -117,7 +109,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Pet"
+              $ref: "#/definitions/EventResearch"
         400:
           description: "Invalid status value"
       security:
