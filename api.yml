@@ -808,6 +808,9 @@ definitions:
       eventNumber:
         type: "string"
         format: "sequential"
+      domainIcon:
+        type: "string"
+        description: "ドメインのFabicon"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
@@ -886,6 +889,9 @@ definitions:
       research_domain:
         type: "string"
         format: "URL"
+      domainIcon:
+        type: "string"
+        description: "ドメインのFabicon"
       site_category:
         type: "string"
         description: "リサーチ用サイトのカテゴリ"
