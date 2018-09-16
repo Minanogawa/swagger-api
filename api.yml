@@ -176,7 +176,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/EventResearch"
+              $ref: "#/definitions/Event"
         400:
           description: "Invalid status value"
     get:
