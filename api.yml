@@ -14,6 +14,8 @@ basePath: "/"
 tags:
 - name: "eventResearch"
   description: "Eventを生成する為の情報、eventResearchからEvent情報を集めEventのStackを行う"
+- name: "eventCalendar"
+  description: "Calendarに出力するEvent情報を取得するAPI"
 - name: "event"
   description: "Event関係のまとめ"
   externalDocs:
@@ -32,6 +34,26 @@ schemes:
 - "https"
 - "http"
 paths:
+
+  /eventCalendar:
+    get:
+      tags:
+      - "eventCalendar"
+      summary: "Calendarに出力するEvent情報を取得する"
+      description: "Calendarに出力するEvent情報を取得する"
+      operationId: "getEventCalendar"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        400:
+          description: "Invalid status value"
+
   /eventResearch:
     post:
       tags:
@@ -127,6 +149,7 @@ paths:
               $ref: "#/definitions/EventResearch"
         400:
           description: "Invalid status value"
+
 
   /event:
     post:
