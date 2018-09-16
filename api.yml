@@ -132,8 +132,8 @@ paths:
     post:
       tags:
       - "event"
-      summary: "Event Research情報の新規追加"
-      description: "Event Research情報はEventを生成する為の大本の情報で、その情報をdatatableから追加する"
+      summary: "Event 情報の新規追加"
+      description: "Event 情報はEventを生成する為の大本の情報で、その情報をdatatableから追加する"
       operationId: "addEvent"
       consumes:
       - "application/json"
@@ -142,19 +142,19 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "EventResearch object を新規追加する為に設定する"
+        description: "Event object を新規追加する為に設定する"
         required: true
         schema:
           type: "array"
           items:
-            $ref: "#/definitions/EventResearch"
+            $ref: "#/definitions/Event"
       responses:
         405:
           description: "Invalid input"
     put:
       tags:
       - "event"
-      summary: "Event Research情報の更新"
+      summary: "Event 情報の更新"
       description: "researchNumberを指定して、該当する情報を更新する"
       operationId: "updateEvent"
       consumes:
@@ -169,7 +169,7 @@ paths:
         schema:
           type: "array"
           items:
-            $ref: "#/definitions/EventResearch"
+            $ref: "#/definitions/Event"
       responses:
         200:
           description: "successful operation"
@@ -182,8 +182,8 @@ paths:
     get:
       tags:
       - "event"
-      summary: "Event Research情報の取得"
-      description: "Event Research情報を全件取得する"
+      summary: "Event 情報の取得"
+      description: "Event 情報を全件取得する"
       operationId: "getEvent"
       produces:
       - "application/json"
@@ -193,14 +193,13 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/EventResearch"
+              $ref: "#/definitions/Event"
         400:
           description: "Invalid status value"
-  /event/{researchNumber}:
     delete:
       tags:
       - "event"
-      summary: "Event Research情報の削除"
+      summary: "Event 情報の削除"
       description: "researchNumberを指定して、該当する情報を削除する"
       operationId: "deleteEvent"
       consumes:
@@ -208,19 +207,21 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - in: "path"
-        name: "researchNumber"
+      - in: "body"
+        name: "body"
         description: "ID of pet that needs to be fetched"
         required: true
-        type: "integer"
-        format: "int64"
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/Event"
       responses:
         200:
           description: "successful operation"
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/EventResearch"
+              $ref: "#/definitions/Event"
         400:
           description: "Invalid status value"
 
