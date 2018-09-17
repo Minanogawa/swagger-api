@@ -821,7 +821,8 @@ definitions:
         type: "string"
         description: "Eventのカテゴリー"
         enum:
-        - "amuse"
+        - "Degital Art"
+        - "Ramen"
       eventTitle:
         type: "string"
         description: "Eventの名前"
@@ -892,13 +893,27 @@ definitions:
       domainIcon:
         type: "string"
         description: "ドメインのFabicon"
-      site_category:
+      siteCategory:
         type: "string"
         description: "リサーチ用サイトのカテゴリ"
         enum:
+        - "Amusement"
+        - "Culture"
+        - "Food"
+        - "Organization"
         - "Publisher"
         - "Retail"
         - "Twitter"
+      eventCategoris:
+        type: "object"
+        properties:
+          label:
+            type: "string"
+          value:
+            type: "string"
+          title:
+            type: "string"
+        description: "クライアント表示用フィールド、サーバーでは使わない 、埋め込むときに修正が必要"
       addDate:
         type: "string"
         format: "yyyyMMdd"
