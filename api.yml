@@ -12,6 +12,8 @@ info:
 host: "localhost:4200"
 basePath: "/"
 tags:
+- name: "auth"
+  description: "Oauth2により認証を行う"
 - name: "eventResearch"
   description: "Eventを生成する為の情報、eventResearchからEvent情報を集めEventのStackを行う"
 - name: "eventCalendar"
@@ -34,6 +36,44 @@ schemes:
 - "https"
 - "http"
 paths:
+
+  /auth/facebook:
+    get:
+      tags:
+      - "auth"
+      summary: "Facebook認証"
+      description: "Facebookにより認証情報を取得する"
+      operationId: "getUserProfileWithFacebook"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        400:
+          description: "Invalid status value"
+          
+  /auth/github:
+    get:
+      tags:
+      - "auth"
+      summary: "github認証"
+      description: "githubにより認証情報を取得する"
+      operationId: "getUserProfileWithGithub"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        400:
+          description: "Invalid status value"
 
   /eventCalendar:
     get:
