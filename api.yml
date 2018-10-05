@@ -49,10 +49,6 @@ paths:
       responses:
         200:
           description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Event"
         400:
           description: "Invalid status value"
           
@@ -68,10 +64,6 @@ paths:
       responses:
         200:
           description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Event"
         400:
           description: "Invalid status value"
 
