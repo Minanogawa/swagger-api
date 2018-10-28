@@ -68,7 +68,7 @@ paths:
         400:
           description: "Invalid status value"
 
-  /adTop/article:
+  /adTop/editor:
     get:
       tags:
       - "adTop"
@@ -99,7 +99,7 @@ paths:
         schema:
           type: "array"
           items:
-            $ref: "#/definitions/Article"
+            $ref: "#/definitions/Editor"
       responses:
         200:
           description: "¬Œ÷ƒŒƒXƒ|ƒ“ƒX"
@@ -875,7 +875,7 @@ securityDefinitions:
     name: "api_key"
     in: "header"
 definitions:
-  Article:
+  Editor:
     type: "object"
     properties:
       article:
