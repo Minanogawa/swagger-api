@@ -14,6 +14,8 @@ basePath: "/"
 tags:
 - name: "auth"
   description: "Oauth2により認証を行う"
+- name: "adTop"
+  description: "Administration Topページにおけるデータ通信定義"
 - name: "eventResearch"
   description: "Eventを生成する為の情報、eventResearchからEvent情報を集めEventのStackを行う"
 - name: "eventCalendar"
@@ -36,7 +38,6 @@ schemes:
 - "https"
 - "http"
 paths:
-
   /auth/facebook:
     get:
       tags:
@@ -66,6 +67,49 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
+
+  /adTop/article:
+    get:
+      tags:
+      - "adTop"
+      summary: "Administration Topページにおいて、最新のArticle情報を取得する"
+      operationId: "getArticleCount"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "成功時レスポンス"
+          schema:
+            type: "string"
+            description: "ファイルパス"
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adTop"
+      summary: "Administration Topページにおいて、記事を登録する"
+      operationId: "createNewArticle"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "EventResearch object を新規追加する為に設定する"
+        required: true
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/Article"
+      responses:
+        200:
+          description: "成功時レスポンス"
+          schema:
+            type: "string"
+            description: "ファイルの登録に成功しました(メッセージ返却)"
+        400:
+          description: "Invalid status value"
+
+
 
   /eventCalendar:
     get:
@@ -831,6 +875,17 @@ securityDefinitions:
     name: "api_key"
     in: "header"
 definitions:
+  Article:
+    type: "object"
+    properties:
+      article:
+        type: "string"
+      language:
+        type: "string"
+      title:
+        type: "string"
+      yearMonth:
+        type: "string"
   Event:
     type: "object"
     properties:
