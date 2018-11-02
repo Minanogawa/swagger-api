@@ -68,12 +68,12 @@ paths:
         400:
           description: "Invalid status value"
 
-  /adTop/editor:
+  /adTop/article:
     get:
       tags:
       - "adTop"
       summary: "Administration Topページにおいて、最新のArticle情報を取得する"
-      operationId: "getArticleCount"
+      operationId: "getLatestArticle"
       produces:
       - "application/json"
       responses:
@@ -94,12 +94,9 @@ paths:
       parameters:
       - in: "body"
         name: "body"
-        description: "EventResearch object を新規追加する為に設定する"
         required: true
         schema:
-          type: "array"
-          items:
-            $ref: "#/definitions/Editor"
+          $ref: "#/definitions/Article"
       responses:
         200:
           description: "成功時レスポンス"
@@ -108,9 +105,6 @@ paths:
             description: "ファイルの登録に成功しました(メッセージ返却)"
         400:
           description: "Invalid status value"
-
-
-
   /eventCalendar:
     get:
       tags:
@@ -875,7 +869,7 @@ securityDefinitions:
     name: "api_key"
     in: "header"
 definitions:
-  Editor:
+  Article:
     type: "object"
     properties:
       article:
