@@ -16,15 +16,17 @@ tags:
   description: "Oauth2により認証を行う"
 - name: "adTop"
   description: "Administration Topページにおけるデータ通信定義"
+- name: "cpCalendar"
+  description: "Content Calendarページにおけるデータ通信定義"
 - name: "eventResearch"
   description: "Eventを生成する為の情報、eventResearchからEvent情報を集めEventのStackを行う"
-- name: "eventCalendar"
-  description: "Calendarに出力するEvent情報を取得するAPI"
 - name: "event"
   description: "Event関係のまとめ"
   externalDocs:
     description: "Find out more"
     url: "http://swagger.io"
+- name: "global"
+  description: "Webサイトの特定のページに該当しない処理連携"
 - name: "pet"
   description: "Access to Petstore orders"
 - name: "store"
@@ -105,10 +107,12 @@ paths:
             description: "ファイルの登録に成功しました(メッセージ返却)"
         400:
           description: "Invalid status value"
-  /eventCalendar:
+          
+  
+  /cpCalendar/calendar:
     get:
       tags:
-      - "eventCalendar"
+      - "cpCalendar"
       summary: "Calendarに出力するEvent情報を取得する"
       description: "Calendarに出力するEvent情報を取得する"
       operationId: "getEventCalendar"
@@ -123,6 +127,7 @@ paths:
               $ref: "#/definitions/Event"
         400:
           description: "Invalid status value"
+
 
   /eventResearch:
     post:
@@ -192,6 +197,7 @@ paths:
               $ref: "#/definitions/EventResearch"
         400:
           description: "Invalid status value"
+          
   /eventResearch/{researchNumber}:
     delete:
       tags:
@@ -315,6 +321,42 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/Event"
+        400:
+          description: "Invalid status value"
+
+
+  /global/logging:
+    get:
+      tags:
+      - "global"
+      summary: "Administration Topページにおいて、最新のArticle情報を取得する"
+      operationId: "putChooseCategory"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "成功時レスポンス"
+          schema:
+            type: "string"
+            description: "ファイルパス"
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "global"
+      summary: "Session Storageにため込んでいる情報をELKに登録する"
+      operationId: "setLoggingDataToELK"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          $ref: "#/definitions/Article"
+      responses:
+        200:
+          description: "成功時レスポンス"
         400:
           description: "Invalid status value"
 
