@@ -325,7 +325,7 @@ paths:
           description: "Invalid status value"
 
 
-  /global/logging:
+  /global:
     get:
       tags:
       - "global"
@@ -353,7 +353,7 @@ paths:
         name: "body"
         required: true
         schema:
-          $ref: "#/definitions/Article"
+          $ref: "#/definitions/sessionStorage"
       responses:
         200:
           description: "¬Œ÷ƒŒƒXƒ|ƒ“ƒX"
@@ -1135,7 +1135,11 @@ definitions:
   sessionStorage:
     type: "object"
     properties:
+      id:
+        type: "string"
       tokenID:
+        type: "string"
+      dateTime:
         type: "string"
       couter:
         type: "array"
