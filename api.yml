@@ -1137,9 +1137,11 @@ definitions:
     properties:
       id:
         type: "string"
-      tokenID:
-        type: "string"
       dateTime:
+        type: "string"
+      temporary:
+        type: "boolean"
+      tokenID:
         type: "string"
       couter:
         type: "array"
