@@ -6,26 +6,20 @@
 
   Elastic Searchやるつもりだったが・・・・</br>
   ↓</br>
-  git pitch勉強した!!</br>
+  git pitch勉強した!!
+  </br>
+  </br>
   ふ━━( ´_ゝ`)━( ´_ゝ`)━( ´_ゝ`)━━ん
-
+  </br>
+  (無茶クチャ便利じゃないの・・・・)
 ---
 
 ## ~~サボりそうな~~<br>オーガナイザーたち
 
-[koki](https://twitter.com/kkoki_1023) | [ほし](https://twitter.com/cidermitaina) | [Yhiss](https://twitter.com/Yhiss) | [aretoky](https://github.com/aretoky) | [ttl](https://twitter.com/)
-:---: | :---: | :---: | :---: | :---:
-![](https://avatars1.githubusercontent.com/u/28473371?s=100&v=4) | ![](https://avatars1.githubusercontent.com/u/23610884?s=100&v=4)  | ![](https://avatars2.githubusercontent.com/u/39427270?s=100&v=4) | ![](https://avatars3.githubusercontent.com/u/4887965?s=100&v=4) | ![](https://avatars3.githubusercontent.com/u/1057490?s=100&v=4)
+
 
 ---
 
-## Check-In & Out
-
-差し込み業務を回避するには強い意志！
-
-check-inにてやることを宣言し、check-outにて成果を発表します 💪
-
----
 
 ## 成果発表
 
