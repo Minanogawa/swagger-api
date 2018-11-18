@@ -1131,7 +1131,6 @@ definitions:
     xml:
       name: "User"
       
-      
   sessionStorage:
     type: "object"
     properties:
@@ -1143,15 +1142,23 @@ definitions:
         type: "boolean"
       tokenID:
         type: "string"
-      couter:
-        type: "array"
-        items:
-          type: "object"
-          properties:
-            category:
-              type: "string"
-            count:
-              type: "number"
+      food:
+        type: "object"
+        properties:
+          ramen:
+            type: "string"
+          ramenCount:
+            type: "number"
+        
+#      couter:
+#        type: "array"
+#        items:
+#          type: "object"
+#          properties:
+#            category:
+#              type: "string"
+#            count:
+#              type: "number"
       
       
   Tag:
