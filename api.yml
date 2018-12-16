@@ -33,7 +33,6 @@ tags:
 schemes:
   - "https"
   - "http"
- 
 consumes:
   - "application/json"
 produces:
@@ -340,25 +339,23 @@ paths:
     get:
       tags:
       - "global"
-      summary: "Administration Topページにおいて、最新のArticle情報を取得する"
-      operationId: "putChooseCategory"
-      produces:
-      - "application/json"
+      summary: "Loading時にUser情報を取得する"
+      operationId: "loadUserInfo"
+      parameters:
+        - $ref: '#/parameters/bearerAuth'
       responses:
         200:
-          description: "成功時レスポンス"
+          description: "正常応答"
           schema:
             type: "string"
             description: "ファイルパス"
         400:
           description: "Invalid status value"
     post:
-      tags:
-      - "global"
+      tags: 
+        - "global"
       summary: "Session Storageにため込んでいる情報をELKに登録する"
-      operationId: "setLoggingDataToELK"
-      produces:
-      - "application/json"
+      operationId: "sStorageDataToServer"
       parameters:
       - in: "body"
         name: "body"
