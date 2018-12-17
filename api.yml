@@ -346,11 +346,25 @@ paths:
         200:
           description: "³í‰“š"
           schema:
-            $ref: '#/definitions/UserFavorite'
+            $ref: '#/definitions/timelineUser'
         400:
           description: "Invalid status value"
           
-  /global/user/favorite:
+  /global/user/timeline:
+    get:
+      tags:
+      - "global"
+      summary: "Loading‚ÉUserî•ñ‚ğæ“¾‚·‚é"
+      operationId: "geTimeLine"
+      parameters:
+        - $ref: '#/parameters/bearerAuth'
+      responses:
+        200:
+          description: "³í‰“š"
+          schema:
+            $ref: '#/definitions/timelineUser'
+        400:
+          description: "Invalid status value"
     put:
       tags:
       - "global"
@@ -358,6 +372,7 @@ paths:
       operationId: "putUserFavorite"
       parameters:
         - $ref: '#/parameters/bearerAuth'
+        - $ref: '#/parameters/timeLine'
       responses:
         200:
           description: "³í‰“š"
@@ -391,7 +406,15 @@ parameters:
     description: bearer <JWT token>
     in: header
     type: string
-    required: true    
+    required: true
+  timeLine:
+    name: timeLine
+    required: true
+    description: "aaa"
+    in: body
+    schema:
+      $ref: '#/definitions/timelineUser'
+
 
 definitions:
   Article:
@@ -572,7 +595,7 @@ definitions:
         properties:
           degitalArt:
             type: "number"
-  UserFavorite:
+  timelineUser:
     type: "object"
     properties:
       calendar:
