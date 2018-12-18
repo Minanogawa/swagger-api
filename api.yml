@@ -346,7 +346,7 @@ paths:
         200:
           description: "³í‰“š"
           schema:
-            $ref: '#/definitions/timelineUser'
+            $ref: '#/definitions/timeline'
         400:
           description: "Invalid status value"
           
@@ -362,7 +362,7 @@ paths:
         200:
           description: "³í‰“š"
           schema:
-            $ref: '#/definitions/timelineUser'
+            $ref: '#/definitions/timeline'
         400:
           description: "Invalid status value"
     put:
@@ -413,7 +413,7 @@ parameters:
     description: "aaa"
     in: body
     schema:
-      $ref: '#/definitions/timelineUser'
+      $ref: '#/definitions/timeline'
 
 
 definitions:
@@ -595,12 +595,18 @@ definitions:
         properties:
           degitalArt:
             type: "number"
-  timelineUser:
+  timeline:
     type: "object"
     properties:
-      calendar:
+      id:
         type: "string"
-      map:
+      start:
+        type: "string"
+      end:
+        type: "string"
+      name:
+        type: "string"
+      move:
         type: "string"
 
 
