@@ -338,7 +338,7 @@ paths:
     get:
       tags:
       - "global"
-      summary: "Loading時にUser情報を取得する"
+      summary: "User情報を取得する"
       operationId: "getUserInfo"
       parameters:
         - $ref: '#/parameters/bearerAuth'
@@ -354,7 +354,7 @@ paths:
     get:
       tags:
       - "global"
-      summary: "Loading時にUser情報を取得する"
+      summary: "UserのTimelineデータを取得する"
       operationId: "geTimeLine"
       parameters:
         - $ref: '#/parameters/bearerAuth'
@@ -362,14 +362,16 @@ paths:
         200:
           description: "正常応答"
           schema:
-            $ref: '#/definitions/timeline'
+            type: array
+            items:
+              $ref: '#/definitions/timeline'
         400:
           description: "Invalid status value"
     put:
       tags:
       - "global"
       summary: "Event情報のStarがON/OFFになった際に、その状態を保存する"
-      operationId: "putUserFavorite"
+      operationId: "putTimeline"
       parameters:
         - $ref: '#/parameters/bearerAuth'
         - $ref: '#/parameters/timeLine'
