@@ -22,10 +22,6 @@ tags:
     description: "Content Calendarページにおけるデータ通信定義"
   - name: "cpTop"
     description: "Content Topページにおけるデータ通信定義"
-  - name: "eventResearch"
-    description: "Eventを生成する為の情報、eventResearchからEvent情報を集めEventのStackを行う"
-  - name: "event"
-    description: "Event関係のまとめ"
     externalDocs:
       description: "Find out more"
       url: "http://swagger.io"
@@ -104,14 +100,44 @@ paths:
             description: "ファイルの登録に成功しました(メッセージ返却)"
         400:
           description: "Invalid status value"
-          
+
+  /adTop/chart/month:
+    get:
+      tags:
+      - "adTop"
+      summary: "Administration Topページにおいて、データテーブル表示用のチャートデータを取得"
+      operationId: "getAllChartMonthReference"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/chartMonth"
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adTop"
+      summary: "Administration Topページにおいて、記事を登録する"
+      operationId: "createChartMonthArticle"
+      parameters:
+        - $ref: '#/parameters/chartMonth'
+      responses:
+        200:
+          description: "成功時レスポンス"
+          schema:
+            type: "string"
+            description: "ファイルの登録に成功しました(メッセージ返却)"
+        400:
+          description: "Invalid status value"
+
   /adEvent/research:
     get:
       tags:
       - "adEvent"
       summary: "Event Research情報の取得"
-      description: "Event Research情報を全件取得する"
-      operationId: "getEventResearch"
+      operationId: "readEventResearch"
       responses:
         200:
           description: "successful operation"
@@ -119,107 +145,41 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/EventResearch"
+        400:
+          description: "Invalid status value"
+    put:
+      tags:
+      - "adEvent"
+      summary: "Event Research情報の更新を行う"
+      operationId: "updateEventResearch"
+      parameters:
+        - $ref: '#/parameters/eventResearch'
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "string"
         400:
           description: "Invalid status value"
     post:
       tags:
       - "adEvent"
       summary: "Event Research情報の新規追加"
-      description: "Research情報はEventを生成する為の大本の情報で、その情報をdatatableから追加する"
-      operationId: "addEventResearch"
+      operationId: "createEventResearch"
       parameters:
-        - $ref: '#/parameters/bearerAuth'
-      responses:
-        405:
-          description: "Invalid input"
-          
-  /eventResearch/{researchNumber}:
-    delete:
-      tags:
-      - "eventResearch"
-      summary: "Event Research情報の削除"
-      description: "researchNumberを指定して、該当する情報を削除する"
-      operationId: "deleteEventSearch"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "path"
-        name: "researchNumber"
-        description: "ID of pet that needs to be fetched"
-        required: true
-        type: "integer"
-        format: "int64"
+        - $ref: '#/parameters/eventResearch'
       responses:
         200:
           description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/EventResearch"
-        400:
-          description: "Invalid status value"
+        405:
+          description: "Invalid input"
 
-  /event:
-    post:
-      tags:
-      - "event"
-      summary: "Event 情報の新規追加"
-      description: "Event 情報はEventを生成する為の大本の情報で、その情報をdatatableから追加する"
-      operationId: "addEvent"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "Event object を新規追加する為に設定する"
-        required: true
-        schema:
-          type: "array"
-          items:
-            $ref: "#/definitions/Event"
-      responses:
-        405:
-          description: "Invalid input"
-    put:
-      tags:
-      - "event"
-      summary: "Event 情報の更新"
-      description: "researchNumberを指定して、該当する情報を更新する"
-      operationId: "updateEvent"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "ID of pet that needs to be fetched"
-        required: true
-        schema:
-          type: "array"
-          items:
-            $ref: "#/definitions/Event"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/Event"
-        400:
-          description: "Invalid status value"
+  /adEvent/event:
     get:
       tags:
-      - "event"
-      summary: "Event 情報の取得"
-      description: "Event 情報を全件取得する"
-      operationId: "getEvent"
-      produces:
-      - "application/json"
+      - "adEvent"
+      summary: "Event情報の取得"
+      operationId: "readEvent"
       responses:
         200:
           description: "successful operation"
@@ -229,25 +189,13 @@ paths:
               $ref: "#/definitions/Event"
         400:
           description: "Invalid status value"
-    delete:
+    put:
       tags:
-      - "event"
-      summary: "Event 情報の削除"
-      description: "researchNumberを指定して、該当する情報を削除する"
-      operationId: "deleteEvent"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
+      - "adEvent"
+      summary: "Event 情報の更新"
+      operationId: "updateEvent"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "ID of pet that needs to be fetched"
-        required: true
-        schema:
-          type: "array"
-          items:
-            $ref: "#/definitions/Event"
+        - $ref: '#/parameters/event'
       responses:
         200:
           description: "successful operation"
@@ -257,7 +205,19 @@ paths:
               $ref: "#/definitions/Event"
         400:
           description: "Invalid status value"
-
+    post:
+      tags:
+      - "adEvent"
+      summary: "Event 情報の新規追加"
+      operationId: "createEvent"
+      parameters:
+        - $ref: '#/parameters/event'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+  
   /cpCalendar/calendar:
     get:
       tags:
@@ -370,9 +330,34 @@ parameters:
     required: true
     in: header
     type: string
+  chartMonth:
+    name: chartMonth
+    description: "月単位のchart情報"
+    required: true
+    in: body
+    schema:
+      $ref: '#/definitions/chartMonth'
+  chartMonthArray:
+    name: chartMonthArray
+    description: "配列単位の月単位のchart情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/chartMonth"
+  event:
+    name: event
+    description: "Eventデータ"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/Event"
   eventResearch:
     name: eventResearch
-    description: "Userテーブルに格納されているtimelineのJsonの型"
+    description: "Event Researchデータ"
     required: true
     in: body
     schema:
@@ -410,15 +395,46 @@ definitions:
         type: "array"
         items:
           type: "integer"
+  chartMonth:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        description: "画面に表示するHigh Chartjsのチャートタイプを選択する"
+      yearMonth:
+        type: "string"
+        description: "対象年月を設定"
+      title:
+        type: "string"
+        description: "Chart記事のタイトル"
+      description:
+        type: "string"
+        description: "Chart記事"
+      chart_value:
+        type: "string"
+        description: "Chartデータ"
+      display_flg:
+        type: "integer"
+        format: "int32"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
   Event:
     type: "object"
     properties:
       researchNumber:
         type: "string"
-        format: "sequential"
+        format: "ID , sequential"
       eventNumber:
         type: "string"
-        format: "sequential"
+        format: "ID , sequential"
       domainIcon:
         type: "string"
         description: "ドメインのFabicon"
@@ -428,6 +444,9 @@ definitions:
       eventUrl:
         type: "string"
         format: "URL"
+      eventPdf:
+        type: "string"
+        description: "Eventの詳細を記載したPDF"
       eventCategory:
         type: "string"
         description: "Eventのカテゴリー"
@@ -456,7 +475,7 @@ definitions:
         x-enumNames:
           - OneDay
           - Period
-          - Rainy 
+          - AllTime 
       district:
         type: "string"
         description: "Eventの開催場所"
@@ -485,18 +504,6 @@ definitions:
       deleteFlg:
         type: "integer"
         format: "int32"
-      status:
-        type: "string"
-        description: "Order Status"
-        enum:
-        - "placed"
-        - "approved"
-        - "delivered"
-      complete:
-        type: "boolean"
-        default: false
-    xml:
-      name: "Order"
   EventResearch:
     type: "object"
     properties:
@@ -515,6 +522,12 @@ definitions:
       domainIcon:
         type: "string"
         description: "ドメインのFabicon"
+      rTarget:
+        type: "boolean"
+        description: "Researchデータ追加・修正フラグ、クライアントのみで使用しサーバー側では使用しない"
+      eTarget:
+        type: "boolean"
+        description: "Eventデータ追加フラグ、クライアントのみで使用しサーバー側では使用しない"
       siteCategory:
         type: "string"
         description: "リサーチ用サイトのカテゴリ"
@@ -526,16 +539,13 @@ definitions:
         - "Publisher"
         - "Retail"
         - "Twitter"
-      eventCategoris:
-        type: "object"
-        properties:
-          label:
-            type: "string"
-          value:
-            type: "string"
-          title:
-            type: "string"
-        description: "クライアント表示用フィールド、サーバーでは使わない 、埋め込むときに修正が必要"
+      eventUrl:
+        type: "string"
+        description: "Research画面からEventデータを生成する際に使用する"        
+        format: "URL"
+      eventCategory:
+        type: "string"
+        description: "Research画面からEventデータを生成する際に使用する 、埋め込むときに修正が必要"        
       addDate:
         type: "string"
         format: "yyyyMMdd"
@@ -545,18 +555,6 @@ definitions:
       deleteFlg:
         type: "integer"
         format: "int32"
-      status:
-        type: "string"
-        description: "Order Status"
-        enum:
-        - "placed"
-        - "approved"
-        - "delivered"
-      complete:
-        type: "boolean"
-        default: false
-    xml:
-      name: "Order"
   sessionStorage:
     type: "object"
     properties:
@@ -591,7 +589,6 @@ definitions:
         type: "string"
       move:
         type: "string"
-
 
 externalDocs:
   description: "Find out more about Swagger"
