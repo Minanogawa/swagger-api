@@ -16,6 +16,8 @@ tags:
     description: "Oauth2により認証を行う"
   - name: "adTop"
     description: "Administration Topページにおけるデータ通信定義"
+  - name: "adChart"
+    description: "Administration Chartページにおけるデータ通信定義"
   - name: "adEvent"
     description: "Administration Eventページにおけるデータ通信定義"
   - name: "cpCalendar"
@@ -73,7 +75,7 @@ paths:
       - "application/json"
       responses:
         200:
-          description: "成功時レスポンス"
+          description: "successful operation"
           schema:
             type: "string"
             description: "ファイルパス"
@@ -94,7 +96,7 @@ paths:
           $ref: "#/definitions/Article"
       responses:
         200:
-          description: "成功時レスポンス"
+          description: "successful operation"
           schema:
             type: "string"
             description: "ファイルの登録に成功しました(メッセージ返却)"
@@ -132,6 +134,30 @@ paths:
         400:
           description: "Invalid status value"
 
+  /adChart/template:
+    get:
+      tags:
+      - "adChart"
+      summary: "Chartのテンプレート情報を取得"
+      operationId: "readChartTemplate"
+      responses:
+        200:
+          $ref: '#/responses/chartTemplate'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adChart"
+      summary: "chartのテンプレート情報を新規追加"
+      operationId: "createChartTemplate"
+      parameters:
+        - $ref: '#/parameters/chartTemplate'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+
   /adEvent/research:
     get:
       tags:
@@ -157,8 +183,6 @@ paths:
       responses:
         200:
           description: "successful operation"
-          schema:
-            type: "string"
         400:
           description: "Invalid status value"
     post:
@@ -254,7 +278,6 @@ paths:
         400:
           description: "Invalid status value"
 
-
   /global/user:
     get:
       tags: 
@@ -323,6 +346,17 @@ paths:
         400:
           description: "Invalid status value"
 
+
+
+responses:
+  chartTemplate:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/chartTemplate"
+
+
 parameters:
   bearerAuth:
     name: Authorization
@@ -330,22 +364,15 @@ parameters:
     required: true
     in: header
     type: string
-  publish:
-    name: chartMonth
-    description: "月単位のchart情報"
-    required: true
-    in: body
-    schema:
-      $ref: '#/definitions/publish'
-  publishArray:
-    name: chartMonthArray
-    description: "配列単位の月単位のchart情報"
+  chartTemplate:
+    name: chartTemplate
+    description: "chartのtemplateデータ"
     required: true
     in: body
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/publish"
+        $ref: "#/definitions/chartTemplate"
   event:
     name: event
     description: "Eventデータ"
@@ -364,6 +391,22 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/EventResearch"
+  publish:
+    name: chartMonth
+    description: "月単位のchart情報"
+    required: true
+    in: body
+    schema:
+      $ref: '#/definitions/publish'
+  publishArray:
+    name: chartMonthArray
+    description: "配列単位の月単位のchart情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/publish"
   timeLine:
     name: timeLine
     description: "Userテーブルに格納されているtimelineのJsonの型"
@@ -371,6 +414,8 @@ parameters:
     in: body
     schema:
       $ref: '#/definitions/timeline'
+
+
 
 
 definitions:
@@ -395,27 +440,18 @@ definitions:
         type: "array"
         items:
           type: "integer"
-  publish:
+  chartTemplate:
     type: "object"
     properties:
-      type:
+      chart_name:
         type: "string"
-        description: "画面に表示するHigh Chartjsのチャートタイプを選択する"
-      yearMonth:
+        description: "チャートの名称"
+      chart_lib:
         type: "string"
-        description: "対象年月を設定"
-      title:
+        description: "使用するチャートのライブラリー"
+      chart_temp:
         type: "string"
-        description: "Chart記事のタイトル"
-      description:
-        type: "string"
-        description: "Chart記事"
-      chart_value:
-        type: "string"
-        description: "Chartデータ"
-      display_flg:
-        type: "integer"
-        format: "int32"
+        description: "チャートのデータテンプレート"
       addDate:
         type: "string"
         format: "yyyyMMdd"
@@ -425,7 +461,6 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-
   Event:
     type: "object"
     properties:
@@ -553,6 +588,36 @@ definitions:
         type: "string"
         format: "yyyyMMdd"
       deleteFlg:
+        type: "integer"
+        format: "int32"
+  publish:
+    type: "object"
+    properties:
+      publish_type:
+        type: "string"
+        description: "ユーザーに伝達する情報の種類を定義"
+      publish_date:
+        type: "string"
+        description: "伝達する情報の発行日付"
+      publish_title:
+        type: "string"
+        description: "伝達する情報のタイトル"
+      publish_text:
+        type: "string"
+        description: "伝達する情報の中身"
+      chart_type:
+        type: "string"
+        description: "伝達する情報がチャート情報である場合、チャートの種類を定義"
+      chart_value:
+        type: "string"
+        description: "伝達する情報がチャート情報である場合、チャートデータを定義"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
         type: "integer"
         format: "int32"
   sessionStorage:
