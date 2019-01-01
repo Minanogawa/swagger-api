@@ -210,7 +210,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Event"
+              $ref: "#/definitions/event"
         400:
           description: "Invalid status value"
     put:
@@ -226,7 +226,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Event"
+              $ref: "#/definitions/event"
         400:
           description: "Invalid status value"
     post:
@@ -256,7 +256,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Event"
+              $ref: "#/definitions/event"
         400:
           description: "Invalid status value"
 
@@ -381,7 +381,7 @@ parameters:
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/Event"
+        $ref: "#/definitions/event"
   eventResearch:
     name: eventResearch
     description: "Event Researchデータ"
@@ -416,8 +416,6 @@ parameters:
       $ref: '#/definitions/timeline'
 
 
-
-
 definitions:
   Article:
     type: "object"
@@ -449,6 +447,9 @@ definitions:
       chart_lib:
         type: "string"
         description: "使用するチャートのライブラリー"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
       chart_temp:
         type: "string"
         description: "チャートのデータテンプレート"
@@ -461,7 +462,7 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-  Event:
+  event:
     type: "object"
     properties:
       researchNumber:
