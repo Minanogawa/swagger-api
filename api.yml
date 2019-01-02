@@ -65,76 +65,31 @@ paths:
         400:
           description: "Invalid status value"
 
-  /adTop/article:
+  /adTop/publish:
     get:
       tags:
       - "adTop"
-      summary: "Administration Topページにおいて、最新のArticle情報を取得する"
-      operationId: "getLatestArticle"
-      produces:
-      - "application/json"
+      summary: "Administration TopページにおいてPublish情報を取得する"
+      operationId: "readPublishInfo"
       responses:
         200:
-          description: "successful operation"
-          schema:
-            type: "string"
-            description: "ファイルパス"
+          $ref: '#/responses/publishArray'
         400:
           description: "Invalid status value"
     post:
       tags:
       - "adTop"
       summary: "Administration Topページにおいて、記事を登録する"
-      operationId: "createNewArticle"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        required: true
-        schema:
-          $ref: "#/definitions/Article"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "string"
-            description: "ファイルの登録に成功しました(メッセージ返却)"
-        400:
-          description: "Invalid status value"
-
-  /adTop/chart/month:
-    get:
-      tags:
-      - "adTop"
-      summary: "Administration Topページにおいて、データテーブル表示用のチャートデータを取得"
-      operationId: "getAllChartMonthReference"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/publish"
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adTop"
-      summary: "Administration Topページにおいて、記事を登録する"
-      operationId: "createChartMonthArticle"
+      operationId: "createPublishInfo"
       parameters:
         - $ref: '#/parameters/publish'
       responses:
         200:
-          description: "成功時レスポンス"
-          schema:
-            type: "string"
-            description: "ファイルの登録に成功しました(メッセージ返却)"
+          description: "successful operation"
         400:
           description: "Invalid status value"
 
-  /adChart/template:
+  /adChart:
     get:
       tags:
       - "adChart"
@@ -142,7 +97,7 @@ paths:
       operationId: "readChartTemplate"
       responses:
         200:
-          $ref: '#/responses/chartTemplate'
+          $ref: '#/responses/chart'
         400:
           description: "Invalid status value"
     post:
@@ -151,11 +106,11 @@ paths:
       summary: "chartのテンプレート情報を新規追加"
       operationId: "createChartTemplate"
       parameters:
-        - $ref: '#/parameters/chartTemplate'
+        - $ref: '#/parameters/chart'
       responses:
         200:
           description: "successful operation"
-        405:
+        400:
           description: "Invalid input"
 
   /adEvent/research:
@@ -260,21 +215,19 @@ paths:
         400:
           description: "Invalid status value"
 
-  /cpCalendar/basicLine:
+  /cpTop/chart:
     get:
       tags:
       - "cpTop"
       summary: "Topページに出力するBasic Lineチャート用のデータを取得する"
-      operationId: "getBasicLineData"
-      produces:
-      - "application/json"
+      operationId: "readMonthlyChart"
       responses:
         200:
           description: "successful operation"
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/BasicLine"
+              $ref: "#/definitions/basicLine"
         400:
           description: "Invalid status value"
 
@@ -347,14 +300,19 @@ paths:
           description: "Invalid status value"
 
 
-
 responses:
-  chartTemplate:
+  chart:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/chartTemplate"
+        $ref: "#/definitions/chart"
+  publishArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/publish"
 
 
 parameters:
@@ -364,15 +322,21 @@ parameters:
     required: true
     in: header
     type: string
-  chartTemplate:
-    name: chartTemplate
+  chart:
+    name: chart
     description: "chartのtemplateデータ"
     required: true
     in: body
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/chartTemplate"
+        $ref: "#/definitions/chart"
+  chartDate:
+    name: chartDate
+    description: "chart出力対象の日付"
+    required: true
+    in: path
+    type: "string"
   event:
     name: event
     description: "Eventデータ"
@@ -392,14 +356,14 @@ parameters:
       items:
         $ref: "#/definitions/EventResearch"
   publish:
-    name: chartMonth
+    name: publish
     description: "月単位のchart情報"
     required: true
     in: body
     schema:
       $ref: '#/definitions/publish'
   publishArray:
-    name: chartMonthArray
+    name: publishArray
     description: "配列単位の月単位のchart情報"
     required: true
     in: body
@@ -417,18 +381,7 @@ parameters:
 
 
 definitions:
-  Article:
-    type: "object"
-    properties:
-      article:
-        type: "string"
-      language:
-        type: "string"
-      title:
-        type: "string"
-      yearMonth:
-        type: "string"
-  BasicLine:
+  basicLine:
     type: "object"
     properties:
       name:
@@ -438,7 +391,7 @@ definitions:
         type: "array"
         items:
           type: "integer"
-  chartTemplate:
+  chart:
     type: "object"
     properties:
       chart_name:
@@ -450,9 +403,12 @@ definitions:
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
-      chart_temp:
+      chart_date:
         type: "string"
-        description: "チャートのデータテンプレート"
+        description: "チャートの出力対象日付"
+      chart_value:
+        type: "string"
+        description: "チャート出力用データ"
       addDate:
         type: "string"
         format: "yyyyMMdd"
