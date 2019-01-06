@@ -2,7 +2,7 @@ swagger: "2.0"
 info:
   description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
   version: "1.0.0"
-  title: "Swagger Petstore"
+  title: "Swagger TokyoTravel"
   termsOfService: "http://swagger.io/terms/"
   contact:
     email: "apiteam@swagger.io"
@@ -65,6 +65,18 @@ paths:
         400:
           description: "Invalid status value"
 
+  /adTop/treeMenu:
+    get:
+      tags:
+      - "adTop"
+      - "cpTop"
+      summary: "Administration Topページ、もしくはTopページにおいてTreeMenuを取得する"
+      operationId: "readTreeMenu"
+      responses:
+        200:
+           description: "successful operation"
+        400:
+          description: "Invalid status value"
   /adTop/publish:
     get:
       tags:
@@ -215,19 +227,30 @@ paths:
         400:
           description: "Invalid status value"
 
-  /cpTop/chart:
+  /cpTop/chart/{chartDate}:
     get:
       tags:
       - "cpTop"
       summary: "Topページに出力するBasic Lineチャート用のデータを取得する"
       operationId: "readMonthlyChart"
+      parameters:
+        - $ref: '#/parameters/chartDate'
       responses:
         200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/basicLine"
+          $ref: "#/responses/chartDate"
+        400:
+          description: "Invalid status value"
+  /cpTop/publish/latest:
+    get:
+      tags:
+      - "cpTop"
+      summary: "Topページに出力する最新記事を取得する"
+      operationId: "readPublishLatest"
+      parameters:
+        - $ref: '#/parameters/chartDate'
+      responses:
+        200:
+          $ref: "#/responses/chartDate"
         400:
           description: "Invalid status value"
 
@@ -307,6 +330,10 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/chart"
+  chartDate:
+    description: "chart出力対象のJsonデータ"
+    schema:
+      type: "string"
   publishArray:
     description: "successful operation"
     schema:
@@ -379,18 +406,7 @@ parameters:
     schema:
       $ref: '#/definitions/timeline'
 
-
 definitions:
-  basicLine:
-    type: "object"
-    properties:
-      name:
-        type: "integer"
-        format: "int32"
-      type:
-        type: "array"
-        items:
-          type: "integer"
   chart:
     type: "object"
     properties:
@@ -550,24 +566,21 @@ definitions:
   publish:
     type: "object"
     properties:
-      publish_type:
+      publishType:
         type: "string"
         description: "ユーザーに伝達する情報の種類を定義"
-      publish_date:
+      publishName:
+        type: "string"
+        description: "ユーザーに伝達する際の情報名"
+      publishDate:
         type: "string"
         description: "伝達する情報の発行日付"
-      publish_title:
+      publishTitle:
         type: "string"
         description: "伝達する情報のタイトル"
-      publish_text:
+      publishText:
         type: "string"
         description: "伝達する情報の中身"
-      chart_type:
-        type: "string"
-        description: "伝達する情報がチャート情報である場合、チャートの種類を定義"
-      chart_value:
-        type: "string"
-        description: "伝達する情報がチャート情報である場合、チャートデータを定義"
       addDate:
         type: "string"
         format: "yyyyMMdd"
