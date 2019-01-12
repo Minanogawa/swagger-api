@@ -237,7 +237,7 @@ paths:
         - $ref: '#/parameters/chartDate'
       responses:
         200:
-          $ref: "#/responses/chartDate"
+          description: "Chartデータ用のJSON文字列を返却"
         400:
           description: "Invalid status value"
   /cpTop/publish/latest:
@@ -246,11 +246,22 @@ paths:
       - "cpTop"
       summary: "Topページに出力する最新記事を取得する"
       operationId: "readPublishLatest"
-      parameters:
-        - $ref: '#/parameters/chartDate'
       responses:
         200:
-          $ref: "#/responses/chartDate"
+          $ref: "#/responses/publish"
+        400:
+          description: "Invalid status value"
+  /cpTop/publish/{publishDate}:
+    get:
+      tags:
+      - "cpTop"
+      summary: "Topページに出力する最新記事を取得する"
+      operationId: "readPublishByDate"
+      parameters:
+        - $ref: '#/parameters/publishDate'
+      responses:
+        200:
+          $ref: "#/responses/publish"
         400:
           description: "Invalid status value"
 
@@ -334,6 +345,10 @@ responses:
     description: "chart出力対象のJsonデータ"
     schema:
       type: "string"
+  publish:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/publish"
   publishArray:
     description: "successful operation"
     schema:
@@ -398,6 +413,18 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/publish"
+  publishDate:
+    name: publishDate
+    description: "記事を作成した時刻"
+    required: true
+    in: path
+    type: "number"
+  publishDateUpOrDown:
+    name: publishDateToLatest
+    description: "参照する記事時刻が新しい発行日付の方に遡るか判定するフラグ"
+    required: true
+    in: path
+    type: boolean
   timeLine:
     name: timeLine
     description: "Userテーブルに格納されているtimelineのJsonの型"
@@ -573,7 +600,7 @@ definitions:
         type: "string"
         description: "ユーザーに伝達する際の情報名"
       publishDate:
-        type: "string"
+        type: "number"
         description: "伝達する情報の発行日付"
       publishTitle:
         type: "string"
@@ -587,6 +614,12 @@ definitions:
       modDate:
         type: "string"
         format: "yyyyMMdd"
+      latest_flg:
+        type: "integer"
+        format: "int32"
+      last_flg:
+        type: "integer"
+        format: "int32"
       delete_flg:
         type: "integer"
         format: "int32"
