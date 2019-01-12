@@ -251,14 +251,14 @@ paths:
           $ref: "#/responses/publish"
         400:
           description: "Invalid status value"
-  /cpTop/publish/{publishDate}:
+  /cpTop/publish:
     get:
       tags:
       - "cpTop"
       summary: "Topページに出力する最新記事を取得する"
-      operationId: "readPublishByDate"
+      operationId: "readPublish"
       parameters:
-        - $ref: '#/parameters/publishDate'
+        - $ref: '#/parameters/publish'
       responses:
         200:
           $ref: "#/responses/publish"
@@ -419,12 +419,6 @@ parameters:
     required: true
     in: path
     type: "number"
-  publishDateUpOrDown:
-    name: publishDateToLatest
-    description: "参照する記事時刻が新しい発行日付の方に遡るか判定するフラグ"
-    required: true
-    in: path
-    type: boolean
   timeLine:
     name: timeLine
     description: "Userテーブルに格納されているtimelineのJsonの型"
@@ -608,6 +602,9 @@ definitions:
       publishText:
         type: "string"
         description: "伝達する情報の中身"
+      isLatestToward:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
       addDate:
         type: "string"
         format: "yyyyMMdd"
