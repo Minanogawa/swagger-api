@@ -74,9 +74,10 @@ paths:
       operationId: "readTreeMenu"
       responses:
         200:
-           description: "successful operation"
+           description: "successful operation return json menu data"
         400:
           description: "Invalid status value"
+          
   /adTop/publish:
     get:
       tags:
@@ -93,6 +94,18 @@ paths:
       - "adTop"
       summary: "Administration Topページにおいて、記事を登録する"
       operationId: "createPublishInfo"
+      parameters:
+        - $ref: '#/parameters/publish'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+    put:
+      tags:
+      - "adTop"
+      summary: "Administration Topページにおいて、TRN_PUBLISHテーブルのデータを修正する"
+      operationId: "modifyPublish"
       parameters:
         - $ref: '#/parameters/publish'
       responses:
@@ -240,25 +253,25 @@ paths:
           description: "Chartデータ用のJSON文字列を返却"
         400:
           description: "Invalid status value"
+  /cpTop/publish:
+    get:
+      tags:
+      - "cpTop"
+      summary: "Topページに出力する記事情報を画面のパラメーターから取得する"
+      operationId: "readPublish"
+      parameters:
+        - $ref: '#/parameters/publish'
+      responses:
+        200:
+          $ref: "#/responses/publish"
+        400:
+          description: "Invalid status value"
   /cpTop/publish/latest:
     get:
       tags:
       - "cpTop"
       summary: "Topページに出力する最新記事を取得する"
       operationId: "readPublishLatest"
-      responses:
-        200:
-          $ref: "#/responses/publish"
-        400:
-          description: "Invalid status value"
-  /cpTop/publish:
-    get:
-      tags:
-      - "cpTop"
-      summary: "Topページに出力する最新記事を取得する"
-      operationId: "readPublish"
-      parameters:
-        - $ref: '#/parameters/publish'
       responses:
         200:
           $ref: "#/responses/publish"
@@ -602,6 +615,9 @@ definitions:
       publishText:
         type: "string"
         description: "伝達する情報の中身"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
       isLatestToward:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
