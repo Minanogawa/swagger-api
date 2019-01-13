@@ -20,6 +20,8 @@ tags:
     description: "Administration Chartページにおけるデータ通信定義"
   - name: "adEvent"
     description: "Administration Eventページにおけるデータ通信定義"
+  - name: "adSpot"
+    description: "Administration Spotページにおけるデータ通信定義"
   - name: "cpCalendar"
     description: "Content Calendarページにおけるデータ通信定義"
   - name: "cpTop"
@@ -107,7 +109,7 @@ paths:
       summary: "Administration Topページにおいて、TRN_PUBLISHテーブルのデータを修正する"
       operationId: "modifyPublish"
       parameters:
-        - $ref: '#/parameters/publish'
+        - $ref: '#/parameters/publishArray'
       responses:
         200:
           description: "successful operation"
@@ -221,6 +223,18 @@ paths:
           description: "successful operation"
         405:
           description: "Invalid input"
+  /adSpot:
+    get:
+      tags:
+      - "adSpot"
+      summary: "Chartのテンプレート情報を取得"
+      operationId: "readSpot"
+      responses:
+        200:
+          $ref: '#/responses/spotArray'
+        400:
+          description: "Invalid status value"
+
   
   /cpCalendar/calendar:
     get:
@@ -368,6 +382,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/publish"
+  spotArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/spot"
 
 
 parameters:
@@ -657,6 +677,61 @@ definitions:
         properties:
           degitalArt:
             type: "number"
+  spot:
+    type: "object"
+    properties:
+      spot_name:
+        type: "string"
+        description: "観光目的を持つ場所の名前"
+      spot_address:
+        type: "string"
+        description: "観光目的を持つ場所の住所"
+      spot_category:
+        type: "number"
+        description: "観光目的を持つ場所の種別"
+      spot_title:
+        type: "string"
+        description: "カード情報に出力する為のタイトル"
+      spot_sub_title:
+        type: "string"
+        description: "カード情報に出力する為のサブタイトル"
+      spot_picture_header:
+        type: "string"
+        description: "カード情報に出力する為のヘッダーの写真"
+      spot_picture_main:
+        type: "number"
+        description: "カード情報に出力する為のメインの写真"
+      spot_description:
+        type: "string"
+        description: "カード情報に出力する為のメイン情報"
+      spot_pdf:
+        type: "string"
+        description: "カード情報から詳細を情報を出力するPDFのパス"
+      spot_ward:
+        type: "string"
+        description: "観光目的を持つ場所の所在地区"
+      spot_latitude:
+        type: "string"
+        description: "観光目的を持つ場所の経度"
+      spot_longitude:
+        type: "string"
+        description: "観光目的を持つ場所の緯度"
+      zoom:
+        type: "number"
+        description: "Google Mapのzoom度"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+            
   timeline:
     type: "object"
     properties:
