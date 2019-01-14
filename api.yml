@@ -234,6 +234,18 @@ paths:
           $ref: '#/responses/spotArray'
         400:
           description: "Invalid status value"
+    post:
+      tags:
+      - "adEvent"
+      summary: "Event 情報の新規追加"
+      operationId: "createSpot"
+      parameters:
+        - $ref: '#/parameters/event'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
 
   
   /cpCalendar/calendar:
@@ -432,26 +444,36 @@ parameters:
         $ref: "#/definitions/EventResearch"
   publish:
     name: publish
-    description: "月単位のchart情報"
+    description: "記事情報"
     required: true
     in: body
     schema:
       $ref: '#/definitions/publish'
   publishArray:
     name: publishArray
-    description: "配列単位の月単位のchart情報"
+    description: "配列単位の記事情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
         $ref: "#/definitions/publish"
-  publishDate:
-    name: publishDate
-    description: "記事を作成した時刻"
+  spot:
+    name: spot
+    description: "記事情報"
     required: true
-    in: path
-    type: "number"
+    in: body
+    schema:
+      $ref: '#/definitions/spot'
+  spotArray:
+    name: spotArray
+    description: "配列単位の記事情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/spot"
   timeLine:
     name: timeLine
     description: "Userテーブルに格納されているtimelineのJsonの型"
