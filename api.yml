@@ -227,27 +227,38 @@ paths:
     get:
       tags:
       - "adSpot"
-      summary: "Chartのテンプレート情報を取得"
+      summary: "Spot情報を取得"
       operationId: "readSpot"
       responses:
         200:
           $ref: '#/responses/spotArray'
         400:
           description: "Invalid status value"
+    put:
+      tags:
+      - "adSpot"
+      summary: "Spot情報の更新を行う"
+      operationId: "updateSpot"
+      parameters:
+        - $ref: '#/parameters/spotArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
     post:
       tags:
-      - "adEvent"
-      summary: "Event 情報の新規追加"
+      - "adSpot"
+      summary: "Spot 情報の新規追加"
       operationId: "createSpot"
       parameters:
-        - $ref: '#/parameters/event'
+        - $ref: '#/parameters/spotArray'
       responses:
         200:
           description: "successful operation"
         405:
           description: "Invalid input"
 
-  
   /cpCalendar/calendar:
     get:
       tags:
