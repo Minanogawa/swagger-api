@@ -94,7 +94,7 @@ paths:
     post:
       tags:
       - "adTop"
-      summary: "Administration Topページにおいて、記事を登録する"
+      summary: "Administration Topページにおいて、記事を登録・更新をする"
       operationId: "createPublishInfo"
       parameters:
         - $ref: '#/parameters/publish'
@@ -659,9 +659,9 @@ definitions:
       publishName:
         type: "string"
         description: "ユーザーに伝達する際の情報名"
-      publishDate:
-        type: "number"
-        description: "伝達する情報の発行日付"
+      publishCategory:
+        type: "string"
+        description: "publishTypeの更なる内訳"
       publishTitle:
         type: "string"
         description: "伝達する情報のタイトル"
