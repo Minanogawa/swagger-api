@@ -719,15 +719,20 @@ definitions:
       spot_address:
         type: "string"
         description: "観光目的を持つ場所の住所"
-      spot_category:
-        type: "number"
-        description: "観光目的を持つ場所の種別"
       spot_title:
         type: "string"
         description: "カード情報に出力する為のタイトル"
-      spot_sub_title:
+      spot_category:
         type: "string"
-        description: "カード情報に出力する為のサブタイトル"
+        description: "観光目的を持つ場所の種別"
+        enum:
+        - "Amusement"
+        - "Coffee Shop"
+        - "Food"
+        - "Organization"
+        - "Publisher"
+        - "Retail"
+        - "Twitter"
       spot_picture_header:
         type: "string"
         description: "カード情報に出力する為のヘッダーの写真"
