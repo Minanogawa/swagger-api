@@ -653,18 +653,12 @@ definitions:
   publish:
     type: "object"
     properties:
-      publishType:
-        type: "string"
-        description: "ユーザーに伝達する情報の種類を定義"
-      publishName:
-        type: "string"
-        description: "ユーザーに伝達する際の情報名"
-      publishCategory:
-        type: "string"
-        description: "publishTypeの更なる内訳"
       publishTitle:
         type: "string"
         description: "伝達する情報のタイトル"
+      publishCategory:
+        type: "string"
+        description: "伝達する情報の種別"
       publishText:
         type: "string"
         description: "伝達する情報の中身"
