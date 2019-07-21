@@ -726,12 +726,13 @@ definitions:
         - "Organization"
         - "Publisher"
         - "Retail"
+        - "Spot"
         - "Twitter"
       spot_picture_header:
         type: "string"
         description: "カード情報に出力する為のヘッダーの写真"
       spot_picture_main:
-        type: "number"
+        type: "string"
         description: "カード情報に出力する為のメインの写真"
       spot_description:
         type: "string"
