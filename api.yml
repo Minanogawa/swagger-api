@@ -659,6 +659,12 @@ definitions:
       publishCategory:
         type: "string"
         description: "伝達する情報の種別"
+      publishIconUrl:
+        type: "string"
+        description: "伝達記事情報のアイコン"
+      publishSummary:
+        type: "string"
+        description: "伝達記事情報の要約"
       publishText:
         type: "string"
         description: "伝達する情報の中身"
@@ -678,6 +684,9 @@ definitions:
         type: "integer"
         format: "int32"
       last_flg:
+        type: "integer"
+        format: "int32"
+      release_flg:
         type: "integer"
         format: "int32"
       delete_flg:
