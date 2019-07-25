@@ -80,6 +80,19 @@ paths:
         400:
           description: "Invalid status value"
           
+  /adTop/latestMenu:
+    get:
+      tags:
+      - "adTop"
+      - "cpTop"
+      summary: "Administration Topページ、もしくはTopページにおいて最新記事情報を取得する"
+      operationId: "readLatest"
+      responses:
+        200:
+           description: "successful operation return json menu data"
+        400:
+          description: "Invalid status value"
+
   /adTop/publish:
     get:
       tags:
