@@ -315,11 +315,22 @@ paths:
           $ref: "#/responses/publish"
         400:
           description: "Invalid status value"
+  /cpTop/publish/category:
+    get:
+      tags:
+      - "cpTop"
+      summary: "Topページに出力するカテゴリー分類メニューを取得する"
+      operationId: "readPublishCategory"
+      responses:
+        200:
+          $ref: "#/responses/categoryMenuArray"
+        400:
+          description: "Invalid status value"
   /cpTop/publish/latest:
     get:
       tags:
       - "cpTop"
-      summary: "Topページに出力する最新記事を取得する"
+      summary: "Topページに出力する最新記事メニューを取得する"
       operationId: "readPublishLatest"
       responses:
         200:
@@ -397,6 +408,12 @@ paths:
 
 
 responses:
+  categoryMenuArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/categoryMenu"
   chart:
     description: "successful operation"
     schema:
@@ -506,6 +523,24 @@ parameters:
       $ref: '#/definitions/timeline'
 
 definitions:
+  categoryMenu:
+    type: "object"
+    properties:
+      category_name:
+        type: "string"
+        description: "カテゴリーの名称"
+      category_sum:
+        type: "string"
+        description: "任意のカテゴリーに属する記事数"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
   chart:
     type: "object"
     properties:
