@@ -314,22 +314,22 @@ paths:
           $ref: "#/responses/publish"
         400:
           description: "Invalid status value"
-  /cpTop/publish/category:
+  /cpTop/publish/categoryMenu:
     get:
       tags:
       - "cpTop"
-      summary: "Topページに出力するカテゴリー分類メニューを取得する"
+      summary: "Topページの右側に出力するカテゴリー分類メニューを取得する"
       operationId: "readPublishCategory"
       responses:
         200:
           $ref: "#/responses/categoryMenuArray"
         400:
           description: "Invalid status value"
-  /cpTop/publish/latest:
+  /cpTop/publish/latestMenu:
     get:
       tags:
       - "cpTop"
-      summary: "Topページに出力する最新記事メニューを取得する"
+      summary: "Topページの右側に出力する最新記事メニューを5件取得する"
       operationId: "readPublishLatest"
       responses:
         200:
