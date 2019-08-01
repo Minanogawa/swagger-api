@@ -83,7 +83,6 @@ paths:
     get:
       tags:
       - "adTop"
-      - "cpTop"
       summary: "Administration Topページ、もしくはTopページにおいて最新記事情報を取得する"
       operationId: "readLatest"
       responses:
