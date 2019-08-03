@@ -108,7 +108,7 @@ paths:
       summary: "Administration Topページにおいて、記事を登録・更新をする"
       operationId: "createPublishInfo"
       parameters:
-        - $ref: '#/parameters/publish'
+        - $ref: '#/parameters/publishArray'
       responses:
         200:
           description: "successful operation"
@@ -117,8 +117,8 @@ paths:
     put:
       tags:
       - "adTop"
-      summary: "Administration Topページにおいて、TRN_PUBLISHテーブルのデータを修正する"
-      operationId: "modifyPublish"
+      summary: "Administration Topページにおいて、記事情報の修正を行う"
+      operationId: "updatePublish"
       parameters:
         - $ref: '#/parameters/publishArray'
       responses:
