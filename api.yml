@@ -699,6 +699,9 @@ definitions:
   publish:
     type: "object"
     properties:
+      publishUuid:
+        type: "string"
+        description: "PublishのUUID"
       publishTitle:
         type: "string"
         description: "伝達する情報のタイトル"
