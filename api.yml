@@ -22,8 +22,8 @@ tags:
     description: "Administration Eventページにおけるデータ通信定義"
   - name: "adSpot"
     description: "Administration Spotページにおけるデータ通信定義"
-  - name: "cpCalendar"
-    description: "Content Calendarページにおけるデータ通信定義"
+  - name: "cpEvent"
+    description: "Content Eventページにおけるデータ通信定義"
   - name: "cpTop"
     description: "Content Topページにおけるデータ通信定義"
     externalDocs:
@@ -270,10 +270,10 @@ paths:
         405:
           description: "Invalid input"
 
-  /cpCalendar/calendar:
+  /cpEvent/calendar:
     get:
       tags:
-      - "cpCalendar"
+      - "cpEvent"
       summary: "Calendarに出力するEvent情報を取得する"
       operationId: "getEventCalendar"
       produces:
