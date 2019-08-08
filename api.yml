@@ -14,12 +14,12 @@ basePath: "/"
 tags:
   - name: "auth"
     description: "Oauth2により認証を行う"
-  - name: "adTop"
-    description: "Administration Topページにおけるデータ通信定義"
   - name: "adChart"
     description: "Administration Chartページにおけるデータ通信定義"
   - name: "adEvent"
     description: "Administration Eventページにおけるデータ通信定義"
+  - name: "adTop"
+    description: "Administration Topページにおけるデータ通信定義"
   - name: "adSpot"
     description: "Administration Spotページにおけるデータ通信定義"
   - name: "cpEvent"
@@ -53,7 +53,6 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-          
   /auth/github:
     get:
       tags:
@@ -61,66 +60,6 @@ paths:
       summary: "github認証"
       description: "githubにより認証情報を取得する"
       operationId: "getUserProfileWithGithub"
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-
-  /adTop/treeMenu:
-    get:
-      tags:
-      - "adTop"
-      summary: "Administration Topページ、もしくはTopページにおいてTreeMenuを取得する"
-      operationId: "readTreeMenu"
-      responses:
-        200:
-           description: "successful operation return json menu data"
-        400:
-          description: "Invalid status value"
-          
-  /adTop/latestMenu:
-    get:
-      tags:
-      - "adTop"
-      summary: "Administration Topページ、もしくはTopページにおいて最新記事情報を取得する"
-      operationId: "readLatest"
-      responses:
-        200:
-           $ref: '#/responses/publishArray'
-        400:
-          description: "Invalid status value"
-
-  /adTop/publish:
-    get:
-      tags:
-      - "adTop"
-      summary: "Administration TopページにおいてPublish情報を取得する"
-      operationId: "readPublishInfo"
-      responses:
-        200:
-          $ref: '#/responses/publishArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adTop"
-      summary: "Administration Topページにおいて、記事を登録・更新をする"
-      operationId: "createPublishInfo"
-      parameters:
-        - $ref: '#/parameters/publishArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-    put:
-      tags:
-      - "adTop"
-      summary: "Administration Topページにおいて、記事情報の修正を行う"
-      operationId: "updatePublish"
-      parameters:
-        - $ref: '#/parameters/publishArray'
       responses:
         200:
           description: "successful operation"
@@ -270,7 +209,69 @@ paths:
         405:
           description: "Invalid input"
 
-  /cpEvent/calendar:
+
+  /adTop/treeMenu:
+    get:
+      tags:
+      - "adTop"
+      summary: "Administration Topページ、もしくはTopページにおいてTreeMenuを取得する"
+      operationId: "readTreeMenu"
+      responses:
+        200:
+           description: "successful operation return json menu data"
+        400:
+          description: "Invalid status value"
+          
+  /adTop/latestMenu:
+    get:
+      tags:
+      - "adTop"
+      summary: "Administration Topページ、もしくはTopページにおいて最新記事情報を取得する"
+      operationId: "readLatest"
+      responses:
+        200:
+           $ref: '#/responses/publishArray'
+        400:
+          description: "Invalid status value"
+
+  /adTop/publish:
+    get:
+      tags:
+      - "adTop"
+      summary: "Administration TopページにおいてPublish情報を取得する"
+      operationId: "readPublishInfo"
+      responses:
+        200:
+          $ref: '#/responses/publishArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adTop"
+      summary: "Administration Topページにおいて、記事を登録・更新をする"
+      operationId: "createPublishInfo"
+      parameters:
+        - $ref: '#/parameters/publishArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+    put:
+      tags:
+      - "adTop"
+      summary: "Administration Topページにおいて、記事情報の修正を行う"
+      operationId: "updatePublish"
+      parameters:
+        - $ref: '#/parameters/publishArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+
+
+  /cpEvent/event:
     get:
       tags:
       - "cpEvent"
