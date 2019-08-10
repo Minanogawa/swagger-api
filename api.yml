@@ -18,10 +18,12 @@ tags:
     description: "Administration Chartページにおけるデータ通信定義"
   - name: "adEvent"
     description: "Administration Eventページにおけるデータ通信定義"
-  - name: "adTop"
-    description: "Administration Topページにおけるデータ通信定義"
+  - name: "adMaster"
+    description: "Administration Masterページにおけるデータ通信定義"
   - name: "adSpot"
     description: "Administration Spotページにおけるデータ通信定義"
+  - name: "adTop"
+    description: "Administration Topページにおけるデータ通信定義"
   - name: "cpEvent"
     description: "Content Eventページにおけるデータ通信定義"
   - name: "cpTop"
@@ -173,6 +175,44 @@ paths:
           description: "successful operation"
         405:
           description: "Invalid input"
+          
+
+  /adMaster/mstConfigJson:
+    get:
+      tags:
+      - "adMaster"
+      summary: "Administration TopページにおいてPublish情報を取得する"
+      operationId: "readMstConfigJson"
+      responses:
+        200:
+          $ref: '#/responses/mstConfigJsonArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMaster"
+      summary: "Administration Topページにおいて、記事を登録・更新をする"
+      operationId: "createMstConfigJson"
+      parameters:
+        - $ref: '#/parameters/mstConfigJsonArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+    put:
+      tags:
+      - "adMaster"
+      summary: "Administration Topページにおいて、記事情報の修正を行う"
+      operationId: "updateMstConfigJson"
+      parameters:
+        - $ref: '#/parameters/mstConfigJson'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+
   /adSpot:
     get:
       tags:
@@ -424,6 +464,16 @@ responses:
     description: "chart出力対象のJsonデータ"
     schema:
       type: "string"
+  mstConfigJson:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/mstConfigJson"
+  mstConfigJsonArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/mstConfigJson"
   publish:
     description: "successful operation"
     schema:
@@ -482,6 +532,22 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/EventResearch"
+  mstConfigJson:
+    name: mstConfigJson
+    description: "JsonのConfig情報"
+    required: true
+    in: body
+    schema:
+      $ref: '#/definitions/mstConfigJson'
+  mstConfigJsonArray:
+    name: mstConfigJsonArray
+    description: "配列単位のJsonのConfig情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/mstConfigJson"
   publish:
     name: publish
     description: "記事情報"
@@ -695,6 +761,27 @@ definitions:
         type: "string"
         format: "yyyyMMdd"
       deleteFlg:
+        type: "integer"
+        format: "int32"
+  mstConfigJson:
+    type: "object"
+    properties:
+      config_name:
+        type: "string"
+        description: "設定名"
+      json:
+        type: "string"
+        description: "設定値"
+      remarks:
+        type: "string"
+        description: "備考"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
         type: "integer"
         format: "int32"
   publish:
