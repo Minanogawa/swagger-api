@@ -775,6 +775,9 @@ definitions:
       remarks:
         type: "string"
         description: "備考"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
       addDate:
         type: "string"
         format: "yyyyMMdd"
