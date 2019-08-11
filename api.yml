@@ -181,7 +181,7 @@ paths:
     get:
       tags:
       - "adMaster"
-      summary: "Administration TopページにおいてPublish情報を取得する"
+      summary: "Administration Masterページにおいて、MstConfigJsonデータの取得を行う"
       operationId: "readMstConfigJson"
       responses:
         200:
@@ -191,7 +191,7 @@ paths:
     post:
       tags:
       - "adMaster"
-      summary: "Administration Topページにおいて、記事を登録・更新をする"
+      summary: "Administration Masterページにおいて、MstConfigJsonデータを登録する"
       operationId: "createMstConfigJson"
       parameters:
         - $ref: '#/parameters/mstConfigJsonArray'
@@ -203,7 +203,7 @@ paths:
     put:
       tags:
       - "adMaster"
-      summary: "Administration Topページにおいて、記事情報の修正を行う"
+      summary: "Administration Masterページにおいて、MstConfigJsonデータの修正を行う"
       operationId: "updateMstConfigJson"
       parameters:
         - $ref: '#/parameters/mstConfigJson'
