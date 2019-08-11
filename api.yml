@@ -768,7 +768,15 @@ definitions:
     properties:
       config_name:
         type: "string"
-        description: "設定名"
+        description: "コンフィグ設定名"
+        enum:
+        - "Event Tree"
+        - "Spot Tree"
+        - "Food"
+        - "Organization"
+        - "Publisher"
+        - "Retail"
+        - "Twitter"
       json:
         type: "string"
         description: "設定値"
