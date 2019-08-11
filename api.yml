@@ -206,7 +206,7 @@ paths:
       summary: "Administration Masterページにおいて、MstConfigJsonデータの修正を行う"
       operationId: "updateMstConfigJson"
       parameters:
-        - $ref: '#/parameters/mstConfigJson'
+        - $ref: '#/parameters/mstConfigJsonArray'
       responses:
         200:
           description: "successful operation"
