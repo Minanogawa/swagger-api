@@ -221,19 +221,7 @@ paths:
       operationId: "readSpot"
       responses:
         200:
-          $ref: '#/responses/spotArray'
-        400:
-          description: "Invalid status value"
-    put:
-      tags:
-      - "adSpot"
-      summary: "Spot情報の更新を行う"
-      operationId: "updateSpot"
-      parameters:
-        - $ref: '#/parameters/spotArray'
-      responses:
-        200:
-          description: "successful operation"
+          $ref: '#/responses/trnSpotArray'
         400:
           description: "Invalid status value"
     post:
@@ -242,12 +230,24 @@ paths:
       summary: "Spot 情報の新規追加"
       operationId: "createSpot"
       parameters:
-        - $ref: '#/parameters/spotArray'
+        - $ref: '#/parameters/trnSpotArray'
       responses:
         200:
           description: "successful operation"
         405:
           description: "Invalid input"
+    put:
+      tags:
+      - "adSpot"
+      summary: "Spot情報の更新を行う"
+      operationId: "updateSpot"
+      parameters:
+        - $ref: '#/parameters/trnSpotArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
 
 
   /adTop/treeMenu:
@@ -484,12 +484,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/publish"
-  spotArray:
+  trnSpotArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/spot"
+        $ref: "#/definitions/trnSpot"
 
 
 parameters:
@@ -564,22 +564,22 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/publish"
-  spot:
-    name: spot
+  trnSpot:
+    name: trnSpot
     description: "記事情報"
     required: true
     in: body
     schema:
-      $ref: '#/definitions/spot'
-  spotArray:
-    name: spotArray
+      $ref: '#/definitions/trnSpot'
+  trnSpotArray:
+    name: trnSpotArray
     description: "配列単位の記事情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/spot"
+        $ref: "#/definitions/trnSpot"
   timeLine:
     name: timeLine
     description: "Userテーブルに格納されているtimelineのJsonの型"
@@ -861,7 +861,7 @@ definitions:
         properties:
           degitalArt:
             type: "number"
-  spot:
+  trnSpot:
     type: "object"
     properties:
       spot_name:
