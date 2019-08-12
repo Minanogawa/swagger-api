@@ -248,12 +248,14 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /adSpot/mstConfigJson:
+  /adSpot/mstConfigJson/{configName}:
     get:
       tags:
       - "adSpot"
       summary: "Spot情報をフィルタリンgぬする為のTreeメニューを作成する為、MstConfigJsonを取得する"
-      operationId: "readMstConfigJsonInSpot"
+      operationId: "readMstConfigJsonByConfigName"
+      parameters:
+        - $ref: '#/parameters/mstConfigJsonForGetByConfigName'
       responses:
         200:
           $ref: '#/responses/mstConfigJsonArray'
@@ -497,7 +499,7 @@ parameters:
       items:
         $ref: "#/definitions/EventResearch"
   mstConfigJsonForGetByConfigName:
-    name: mstConfigJsonForGetByConfigName
+    name: configName
     description: "MST_CONFIG_JSONをconfig_nameで検索条件をかける際に使用する"
     required: true
     in: path
