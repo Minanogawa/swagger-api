@@ -256,7 +256,7 @@ paths:
       operationId: "readMstConfigJsonInSpot"
       responses:
         200:
-           description: "successful operation return json menu data"
+          $ref: '#/responses/mstConfigJsonArray'
         400:
           description: "Invalid status value"
 
