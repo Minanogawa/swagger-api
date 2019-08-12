@@ -496,16 +496,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/EventResearch"
-  mstConfigJson:
-    name: mstConfigJson
-    description: "JsonのConfig情報"
+  mstConfigJsonForGetByConfigName:
+    name: mstConfigJsonForGetByConfigName
+    description: "MST_CONFIG_JSONをconfig_nameで検索条件をかける際に使用する"
     required: true
-    in: body
-    schema:
-      $ref: '#/definitions/mstConfigJson'
+    in: path
+    type: "string"
   mstConfigJsonForPostPut:
-    name: mstConfigJsonArray
-    description: "配列単位のJsonのConfig情報"
+    name: mstConfigJsonForPostPut
+    description: "MST_CONFIG_JSONの新規登録・更新する際のパラメータ情報"
     required: true
     in: body
     schema:
