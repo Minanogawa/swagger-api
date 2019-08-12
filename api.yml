@@ -194,7 +194,7 @@ paths:
       summary: "Administration Masterページにおいて、MstConfigJsonデータを登録する"
       operationId: "createMstConfigJson"
       parameters:
-        - $ref: '#/parameters/mstConfigJsonArray'
+        - $ref: '#/parameters/mstConfigJsonForPostPut'
       responses:
         200:
           description: "successful operation"
@@ -206,7 +206,7 @@ paths:
       summary: "Administration Masterページにおいて、MstConfigJsonデータの修正を行う"
       operationId: "updateMstConfigJson"
       parameters:
-        - $ref: '#/parameters/mstConfigJsonArray'
+        - $ref: '#/parameters/mstConfigJsonForPostPut'
       responses:
         200:
           description: "successful operation"
@@ -503,7 +503,7 @@ parameters:
     in: body
     schema:
       $ref: '#/definitions/mstConfigJson'
-  mstConfigJsonArray:
+  mstConfigJsonForPostPut:
     name: mstConfigJsonArray
     description: "配列単位のJsonのConfig情報"
     required: true
