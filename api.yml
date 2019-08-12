@@ -218,7 +218,7 @@ paths:
       tags:
       - "adSpot"
       summary: "Spot情報を取得"
-      operationId: "readSpot"
+      operationId: "readTrnSpot"
       responses:
         200:
           $ref: '#/responses/trnSpotArray'
@@ -228,7 +228,7 @@ paths:
       tags:
       - "adSpot"
       summary: "Spot 情報の新規追加"
-      operationId: "createSpot"
+      operationId: "createTrnSpot"
       parameters:
         - $ref: '#/parameters/trnSpotArray'
       responses:
@@ -240,7 +240,7 @@ paths:
       tags:
       - "adSpot"
       summary: "Spot情報の更新を行う"
-      operationId: "updateSpot"
+      operationId: "updateTrnSpot"
       parameters:
         - $ref: '#/parameters/trnSpotArray'
       responses:
