@@ -217,7 +217,7 @@ paths:
     get:
       tags:
       - "adSpot"
-      summary: "Spot情報を取得"
+      summary: "TrnSpot情報を取得"
       operationId: "readTrnSpot"
       responses:
         200:
@@ -227,7 +227,7 @@ paths:
     post:
       tags:
       - "adSpot"
-      summary: "Spot 情報の新規追加"
+      summary: "TrnSpot情報の新規追加"
       operationId: "createTrnSpot"
       parameters:
         - $ref: '#/parameters/trnSpotArray'
@@ -239,7 +239,7 @@ paths:
     put:
       tags:
       - "adSpot"
-      summary: "Spot情報の更新を行う"
+      summary: "STrnSpot情報の更新を行う"
       operationId: "updateTrnSpot"
       parameters:
         - $ref: '#/parameters/trnSpotArray'
@@ -248,7 +248,17 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-
+  /adSpot/mstConfigJson:
+    get:
+      tags:
+      - "adSpot"
+      summary: "Spot情報をフィルタリンgぬする為のTreeメニューを作成する為、MstConfigJsonを取得する"
+      operationId: "readMstConfigJsonInSpot"
+      responses:
+        200:
+           description: "successful operation return json menu data"
+        400:
+          description: "Invalid status value"
 
   /adTop/treeMenu:
     get:
