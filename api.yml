@@ -456,52 +456,6 @@ paths:
         400:
           description: "Invalid status value"
 
-
-responses:
-  categoryMenuArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/categoryMenu"
-  chart:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/chart"
-  chartDate:
-    description: "chart出力対象のJsonデータ"
-    schema:
-      type: "string"
-  mstConfigJson:
-    description: "successful operation"
-    schema:
-      $ref: "#/definitions/mstConfigJson"
-  mstConfigJsonArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/mstConfigJson"
-  publish:
-    description: "successful operation"
-    schema:
-      $ref: "#/definitions/publish"
-  publishArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/publish"
-  trnSpotArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnSpot"
-
-
 parameters:
   bearerAuth:
     name: Authorization
@@ -597,6 +551,54 @@ parameters:
     in: body
     schema:
       $ref: '#/definitions/timeline'
+
+
+
+responses:
+  categoryMenuArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/categoryMenu"
+  chart:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/chart"
+  chartDate:
+    description: "chart出力対象のJsonデータ"
+    schema:
+      type: "string"
+  mstConfigJson:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/mstConfigJson"
+  mstConfigJsonArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/mstConfigJson"
+  publish:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/publish"
+  publishArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/publish"
+  trnSpotArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnSpot"
+
+
 
 definitions:
   categoryMenu:
