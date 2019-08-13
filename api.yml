@@ -903,6 +903,15 @@ definitions:
       spot_ward:
         type: "string"
         description: "ŠÏŒõ–Ú“I‚ğ‚ÂêŠ‚ÌŠİ’n‹æ"
+        enum:
+        - "Shinjuku"
+        - "Coffee Shop"
+        - "Food"
+        - "Organization"
+        - "Publisher"
+        - "Retail"
+        - "Spot"
+        - "Twitter"
       spot_category:
         type: "string"
         description: "ŠÏŒõ–Ú“I‚ğ‚ÂêŠ‚Ìí•Ê"
