@@ -900,9 +900,9 @@ definitions:
       spot_address:
         type: "string"
         description: "観光目的を持つ場所の住所"
-      spot_title:
+      spot_ward:
         type: "string"
-        description: "カード情報に出力する為のタイトル"
+        description: "観光目的を持つ場所の所在地区"
       spot_category:
         type: "string"
         description: "観光目的を持つ場所の種別"
@@ -927,9 +927,6 @@ definitions:
       spot_pdf:
         type: "string"
         description: "カード情報から詳細を情報を出力するPDFのパス"
-      spot_ward:
-        type: "string"
-        description: "観光目的を持つ場所の所在地区"
       spot_latitude:
         type: "string"
         description: "観光目的を持つ場所の経度"
