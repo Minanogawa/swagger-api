@@ -21,7 +21,7 @@ tags:
   - name: "adMaster"
     description: "Administration Masterページにおけるデータ通信定義"
   - name: "adSpot"
-    description: "Administration Spotページにおけるデータ通信定義"
+    description: "Administration Spotページ、主にSPOT情報の情報を管理する画面"
   - name: "adTop"
     description: "Administration Topページにおけるデータ通信定義"
   - name: "cpEvent"
@@ -177,55 +177,6 @@ paths:
           description: "Invalid input"
           
 
-  /adMaster/mstConfigJson:
-    get:
-      tags:
-      - "adMaster"
-      summary: "Administration Masterページにおいて、MstConfigJsonデータの取得を行う"
-      operationId: "readMstConfigJson"
-      responses:
-        200:
-          $ref: '#/responses/mstConfigJsonArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adMaster"
-      summary: "Administration Masterページにおいて、MstConfigJsonデータを登録する"
-      operationId: "createMstConfigJson"
-      parameters:
-        - $ref: '#/parameters/mstConfigJsonForPostPut'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-    put:
-      tags:
-      - "adMaster"
-      summary: "Administration Masterページにおいて、MstConfigJsonデータの修正を行う"
-      operationId: "updateMstConfigJson"
-      parameters:
-        - $ref: '#/parameters/mstConfigJsonForPostPut'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-
-  /adSpot/mstConfigJson/{configName}:
-    get:
-      tags:
-      - "adSpot"
-      summary: "Spot情報をフィルタリングする為のTreeメニューを作成する為、MstConfigJsonを取得する"
-      operationId: "readMstConfigJsonByConfigName"
-      parameters:
-        - $ref: '#/parameters/mstConfigJsonForGetByConfigName'
-      responses:
-        200:
-          $ref: '#/responses/mstConfigJson'
-        400:
-          description: "Invalid status value"
 
   /adTop/treeMenu:
     get:
@@ -424,11 +375,61 @@ paths:
           description: "Invalid status value"
 
 
+
+  /mstConfigJson:
+    get:
+      tags:
+      - "adMaster"
+      summary: "MST_CONFIG_JSONテーブルからデータを全件取得する"
+      operationId: "readMstConfigJson"
+      responses:
+        200:
+          $ref: '#/responses/mstConfigJsonArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMaster"
+      summary: "MST_CONFIG_JSONテーブルに新規データを登録する"
+      operationId: "createMstConfigJson"
+      parameters:
+        - $ref: '#/parameters/mstConfigJsonForPostPut'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+    put:
+      tags:
+      - "adMaster"
+      summary: "MST_CONFIG_JSONテーブルの更新を行う"
+      operationId: "updateMstConfigJson"
+      parameters:
+        - $ref: '#/parameters/mstConfigJsonForPostPut'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /mstConfigJson/{configName}:
+    get:
+      tags:
+      - "adSpot"
+      summary: "MST_CONFIG_JSONからconfig_name(PK)を指定してデータを取得する"
+      operationId: "readMstConfigJsonByConfigName"
+      parameters:
+        - $ref: '#/parameters/mstConfigJsonForGetByConfigName'
+      responses:
+        200:
+          $ref: '#/responses/mstConfigJson'
+        400:
+          description: "Invalid status value"
+
   /trnSpot:
     get:
       tags:
       - "adSpot"
-      summary: "TrnSpot情報を取得"
+      summary: "TRN_SPOTからデータを全件取得する"
       operationId: "readTrnSpot"
       responses:
         200:
@@ -438,7 +439,7 @@ paths:
     post:
       tags:
       - "adSpot"
-      summary: "TrnSpot情報の新規追加"
+      summary: "TRN_SPOTに新規データを登録する"
       operationId: "createTrnSpot"
       parameters:
         - $ref: '#/parameters/trnSpotArray'
@@ -450,7 +451,7 @@ paths:
     put:
       tags:
       - "adSpot"
-      summary: "TrnSpot情報の更新を行う"
+      summary: "TRN_SPOT情報の更新を行う"
       operationId: "updateTrnSpot"
       parameters:
         - $ref: '#/parameters/trnSpotArray'
@@ -459,8 +460,17 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-
-
+  /trnSpot/findTop10ByOrderByModDate:
+    get:
+      tags:
+      - "adSpot"
+      summary: "TRN_SPOTから修正日で順序付けを行い昇順で10件取得する"
+      operationId: "findTop10ByOrderByModDate"
+      responses:
+        200:
+          $ref: '#/responses/trnSpotArray'
+        400:
+          description: "Invalid status value"
 
 
 parameters:
