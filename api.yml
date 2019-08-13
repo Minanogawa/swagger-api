@@ -239,7 +239,7 @@ paths:
     put:
       tags:
       - "adSpot"
-      summary: "STrnSpot情報の更新を行う"
+      summary: "TrnSpot情報の更新を行う"
       operationId: "updateTrnSpot"
       parameters:
         - $ref: '#/parameters/trnSpotArray'
@@ -258,7 +258,7 @@ paths:
         - $ref: '#/parameters/mstConfigJsonForGetByConfigName'
       responses:
         200:
-          $ref: '#/responses/mstConfigJsonArray'
+          $ref: '#/responses/mstConfigJson'
         400:
           description: "Invalid status value"
 
