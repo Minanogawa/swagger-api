@@ -213,46 +213,11 @@ paths:
         400:
           description: "Invalid status value"
 
-  /adSpot:
-    get:
-      tags:
-      - "adSpot"
-      summary: "TrnSpot情報を取得"
-      operationId: "readTrnSpot"
-      responses:
-        200:
-          $ref: '#/responses/trnSpotArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adSpot"
-      summary: "TrnSpot情報の新規追加"
-      operationId: "createTrnSpot"
-      parameters:
-        - $ref: '#/parameters/trnSpotArray'
-      responses:
-        200:
-          description: "successful operation"
-        405:
-          description: "Invalid input"
-    put:
-      tags:
-      - "adSpot"
-      summary: "TrnSpot情報の更新を行う"
-      operationId: "updateTrnSpot"
-      parameters:
-        - $ref: '#/parameters/trnSpotArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
   /adSpot/mstConfigJson/{configName}:
     get:
       tags:
       - "adSpot"
-      summary: "Spot情報をフィルタリンgぬする為のTreeメニューを作成する為、MstConfigJsonを取得する"
+      summary: "Spot情報をフィルタリングする為のTreeメニューを作成する為、MstConfigJsonを取得する"
       operationId: "readMstConfigJsonByConfigName"
       parameters:
         - $ref: '#/parameters/mstConfigJsonForGetByConfigName'
@@ -457,6 +422,46 @@ paths:
           description: "成功時レスポンス"
         400:
           description: "Invalid status value"
+
+
+  /trnSpot:
+    get:
+      tags:
+      - "adSpot"
+      summary: "TrnSpot情報を取得"
+      operationId: "readTrnSpot"
+      responses:
+        200:
+          $ref: '#/responses/trnSpotArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adSpot"
+      summary: "TrnSpot情報の新規追加"
+      operationId: "createTrnSpot"
+      parameters:
+        - $ref: '#/parameters/trnSpotArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adSpot"
+      summary: "TrnSpot情報の更新を行う"
+      operationId: "updateTrnSpot"
+      parameters:
+        - $ref: '#/parameters/trnSpotArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+
+
+
 
 parameters:
   bearerAuth:
