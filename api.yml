@@ -26,6 +26,8 @@ tags:
     description: "Administration Topページにおけるデータ通信定義"
   - name: "cpEvent"
     description: "Content Eventページにおけるデータ通信定義"
+  - name: "cpSpot"
+    description: "Content Spotページ、Spot情報をユーザーに表示される"
   - name: "cpTop"
     description: "Content Topページにおけるデータ通信定義"
     externalDocs:
@@ -238,7 +240,6 @@ paths:
         400:
           description: "Invalid status value"
 
-
   /cpEvent/event:
     get:
       tags:
@@ -424,7 +425,7 @@ paths:
           $ref: '#/responses/mstConfigJson'
         400:
           description: "Invalid status value"
-
+          
   /trnSpot:
     get:
       tags:
@@ -464,8 +465,9 @@ paths:
     get:
       tags:
       - "adSpot"
+      - "cpSpot"
       summary: "TRN_SPOTから修正日で順序付けを行い昇順で10件取得する"
-      operationId: "findTop10ByOrderByModDate"
+      operationId: "trnSpotFindTop10ByOrderByModDate"
       responses:
         200:
           $ref: '#/responses/trnSpotArray'
