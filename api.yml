@@ -134,49 +134,6 @@ paths:
         405:
           description: "Invalid input"
 
-  /adEvent/event:
-    get:
-      tags:
-      - "adEvent"
-      summary: "Event情報の取得"
-      operationId: "readEvent"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/event"
-        400:
-          description: "Invalid status value"
-    put:
-      tags:
-      - "adEvent"
-      summary: "Event 情報の更新"
-      operationId: "updateEvent"
-      parameters:
-        - $ref: '#/parameters/event'
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/event"
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adEvent"
-      summary: "Event 情報の新規追加"
-      operationId: "createEvent"
-      parameters:
-        - $ref: '#/parameters/event'
-      responses:
-        200:
-          description: "successful operation"
-        405:
-          description: "Invalid input"
           
 
 
@@ -254,7 +211,7 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/event"
+              $ref: "#/definitions/trnEvent"
         400:
           description: "Invalid status value"
 
@@ -375,7 +332,7 @@ paths:
         400:
           description: "Invalid status value"
 
-  /mstConfigJson:
+  /mstClientJson:
     get:
       tags:
       - "adMaster"
@@ -410,7 +367,7 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /mstConfigJson/{configName}:
+  /mstClientJson/{configName}:
     get:
       tags:
       - "adSpot"
@@ -423,7 +380,43 @@ paths:
           $ref: '#/responses/mstConfigJson'
         400:
           description: "Invalid status value"
-          
+
+  /trnEvent:
+    get:
+      tags:
+      - "adEvent"
+      summary: "TRN_EVENTテーブルから全件のデータを取得する"
+      operationId: "readEvent"
+      responses:
+        200:
+          $ref: '#/responses/trnSpotArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adEvent"
+      summary: "TRN_EVENTテーブルにデータを新規登録する"
+      operationId: "createEvent"
+      parameters:
+        - $ref: '#/parameters/trnEventArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adEvent"
+      summary: "TRN_EVENTテーブル情報の更新を行う"
+      operationId: "updateEvent"
+      parameters:
+        - $ref: '#/parameters/trnEventArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+
   /trnSpot:
     get:
       tags:
@@ -495,15 +488,6 @@ parameters:
     required: true
     in: path
     type: "string"
-  event:
-    name: event
-    description: "Eventデータ"
-    required: true
-    in: body
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/event"
   eventResearch:
     name: eventResearch
     description: "Event Researchデータ"
@@ -544,6 +528,16 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/publish"
+        
+  trnEventArray:
+    name: trnEventArray
+    description: "配列単位のTRN_EVENTデータ"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnEvent"
   trnSpot:
     name: trnSpot
     description: "記事情報"
@@ -607,6 +601,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/publish"
+  trnEventArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnEvent"
   trnSpotArray:
     description: "successful operation"
     schema:
@@ -658,84 +658,6 @@ definitions:
         type: "string"
         format: "yyyyMMdd"
       delete_flg:
-        type: "integer"
-        format: "int32"
-  event:
-    type: "object"
-    properties:
-      researchNumber:
-        type: "string"
-        format: "ID , sequential"
-      eventNumber:
-        type: "string"
-        format: "ID , sequential"
-      domainIcon:
-        type: "string"
-        description: "ドメインのFabicon"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      eventUrl:
-        type: "string"
-        format: "URL"
-      eventPdf:
-        type: "string"
-        description: "Eventの詳細を記載したPDF"
-      eventCategory:
-        type: "string"
-        description: "Eventのカテゴリー"
-        enum:
-        - "Digital Art"
-        - "Ramen"
-      eventTitle:
-        type: "string"
-        description: "Eventの名前"
-      eventYear:
-        type: "string"
-        format: "yyyy"
-      eventStartDate:
-        type: "string"
-        format: "yyyyMMdd"
-      eventEndDate:
-        type: "string"
-        format: "yyyyMMdd"
-      eventSpanType:
-        type: integer
-        format: int32
-        enum:
-          - 1
-          - 2
-          - 3
-        x-enumNames:
-          - OneDay
-          - Period
-          - AllTime 
-      district:
-        type: "string"
-        description: "Eventの開催場所"
-        enum:
-        - "Shinjuku"
-      longitude:
-        type: "integer"
-        format: "Double"
-        description: "Event開催場所の経度"
-      latitude:
-        type: "integer"
-        format: "Double"
-        description: "Event開催場所の緯度"
-      color:
-        type: "string"
-        description: "表示の色"
-        enum:
-        - "blue"
-        - "black"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      deleteFlg:
         type: "integer"
         format: "int32"
   EventResearch:
@@ -887,6 +809,84 @@ definitions:
         properties:
           degitalArt:
             type: "number"
+  trnEvent:
+    type: "object"
+    properties:
+      researchNumber:
+        type: "string"
+        format: "ID , sequential"
+      eventNumber:
+        type: "string"
+        format: "ID , sequential"
+      domainIcon:
+        type: "string"
+        description: "ドメインのFabicon"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      eventUrl:
+        type: "string"
+        format: "URL"
+      eventPdf:
+        type: "string"
+        description: "Eventの詳細を記載したPDF"
+      eventCategory:
+        type: "string"
+        description: "Eventのカテゴリー"
+        enum:
+        - "Digital Art"
+        - "Ramen"
+      eventTitle:
+        type: "string"
+        description: "Eventの名前"
+      eventYear:
+        type: "string"
+        format: "yyyy"
+      eventStartDate:
+        type: "string"
+        format: "yyyyMMdd"
+      eventEndDate:
+        type: "string"
+        format: "yyyyMMdd"
+      eventSpanType:
+        type: integer
+        format: int32
+        enum:
+          - 1
+          - 2
+          - 3
+        x-enumNames:
+          - OneDay
+          - Period
+          - AllTime 
+      district:
+        type: "string"
+        description: "Eventの開催場所"
+        enum:
+        - "Shinjuku"
+      longitude:
+        type: "integer"
+        format: "Double"
+        description: "Event開催場所の経度"
+      latitude:
+        type: "integer"
+        format: "Double"
+        description: "Event開催場所の緯度"
+      color:
+        type: "string"
+        description: "表示の色"
+        enum:
+        - "blue"
+        - "black"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      deleteFlg:
+        type: "integer"
+        format: "int32"
   trnSpot:
     type: "object"
     properties:
