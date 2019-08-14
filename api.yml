@@ -375,8 +375,6 @@ paths:
         400:
           description: "Invalid status value"
 
-
-
   /mstConfigJson:
     get:
       tags:
@@ -529,7 +527,7 @@ parameters:
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/mstConfigJson"
+        $ref: "#/definitions/mstClientJson"
   publish:
     name: publish
     description: "記事情報"
@@ -592,13 +590,13 @@ responses:
   mstConfigJson:
     description: "successful operation"
     schema:
-      $ref: "#/definitions/mstConfigJson"
+      $ref: "#/definitions/mstClientJson"
   mstConfigJsonArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/mstConfigJson"
+        $ref: "#/definitions/mstClientJson"
   publish:
     description: "successful operation"
     schema:
@@ -615,8 +613,6 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnSpot"
-
-
 
 definitions:
   categoryMenu:
@@ -793,10 +789,10 @@ definitions:
       deleteFlg:
         type: "integer"
         format: "int32"
-  mstConfigJson:
+  mstClientJson:
     type: "object"
     properties:
-      config_name:
+      json_name:
         type: "string"
         description: "コンフィグ設定名"
         enum:
