@@ -389,7 +389,7 @@ paths:
       operationId: "readEvent"
       responses:
         200:
-          $ref: '#/responses/trnSpotArray'
+          $ref: '#/responses/trnEventArray'
         400:
           description: "Invalid status value"
     post:
