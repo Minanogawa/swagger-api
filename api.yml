@@ -94,48 +94,6 @@ paths:
         400:
           description: "Invalid input"
 
-  /adEvent/research:
-    get:
-      tags:
-      - "adEvent"
-      summary: "Event Research情報の取得"
-      operationId: "readEventResearch"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/EventResearch"
-        400:
-          description: "Invalid status value"
-    put:
-      tags:
-      - "adEvent"
-      summary: "Event Research情報の更新を行う"
-      operationId: "updateEventResearch"
-      parameters:
-        - $ref: '#/parameters/eventResearch'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adEvent"
-      summary: "Event Research情報の新規追加"
-      operationId: "createEventResearch"
-      parameters:
-        - $ref: '#/parameters/eventResearch'
-      responses:
-        200:
-          description: "successful operation"
-        405:
-          description: "Invalid input"
-
-          
-
 
   /adTop/treeMenu:
     get:
@@ -381,6 +339,43 @@ paths:
         400:
           description: "Invalid status value"
 
+
+  /trnEventResearch:
+    get:
+      tags:
+      - "adEvent"
+      summary: "TRN_EVENT_RESEARCHから全件のデータを取得する"
+      operationId: "readEventResearch"
+      responses:
+        200:
+          $ref: '#/responses/trnEventResearchArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adEvent"
+      summary: "TRN_EVENT_RESEARCH情報のデータを新規追加"
+      operationId: "createEventResearch"
+      parameters:
+        - $ref: '#/parameters/trnEventResearch'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adEvent"
+      summary: "TRN_EVENT_RESEARCH情報の更新を行う"
+      operationId: "updateEventResearch"
+      parameters:
+        - $ref: '#/parameters/trnEventResearch'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+
   /trnEvent:
     get:
       tags:
@@ -488,15 +483,6 @@ parameters:
     required: true
     in: path
     type: "string"
-  eventResearch:
-    name: eventResearch
-    description: "Event Researchデータ"
-    required: true
-    in: body
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/EventResearch"
   mstConfigJsonForGetByConfigName:
     name: configName
     description: "MST_CONFIG_JSONをconfig_nameで検索条件をかける際に使用する"
@@ -528,7 +514,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/publish"
-        
+  trnEventResearch:
+    name: eventResearch
+    description: "Event Researchデータ"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnEventResearch"
   trnEventArray:
     name: trnEventArray
     description: "配列単位のTRN_EVENTデータ"
@@ -601,6 +595,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/publish"
+  trnEventResearchArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnEventResearch"
   trnEventArray:
     description: "successful operation"
     schema:
@@ -658,57 +658,6 @@ definitions:
         type: "string"
         format: "yyyyMMdd"
       delete_flg:
-        type: "integer"
-        format: "int32"
-  EventResearch:
-    type: "object"
-    properties:
-      researchNumber:
-        type: "string"
-        format: "sequential"
-      eventNumber:
-        type: "string"
-        format: "sequential"
-      researchWord:
-        type: "string"
-        description: "Google検索文言"
-      research_domain:
-        type: "string"
-        format: "URL"
-      domainIcon:
-        type: "string"
-        description: "ドメインのFabicon"
-      rTarget:
-        type: "boolean"
-        description: "Researchデータ追加・修正フラグ、クライアントのみで使用しサーバー側では使用しない"
-      eTarget:
-        type: "boolean"
-        description: "Eventデータ追加フラグ、クライアントのみで使用しサーバー側では使用しない"
-      siteCategory:
-        type: "string"
-        description: "リサーチ用サイトのカテゴリ"
-        enum:
-        - "Amusement"
-        - "Culture"
-        - "Food"
-        - "Organization"
-        - "Publisher"
-        - "Retail"
-        - "Twitter"
-      eventUrl:
-        type: "string"
-        description: "Research画面からEventデータを生成する際に使用する"        
-        format: "URL"
-      eventCategory:
-        type: "string"
-        description: "Research画面からEventデータを生成する際に使用する 、埋め込むときに修正が必要"        
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      deleteFlg:
         type: "integer"
         format: "int32"
   mstClientJson:
@@ -809,6 +758,54 @@ definitions:
         properties:
           degitalArt:
             type: "number"
+  trnEventResearch:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_EVENT_RESEARCHのUUID"
+      researchWord:
+        type: "string"
+        description: "Google検索文言"
+      researchDomain:
+        type: "string"
+        format: "URL"
+      domainIcon:
+        type: "string"
+        description: "ドメインのFabicon"
+      siteAdminType:
+        type: "string"
+        description: "サイトの運営者種別"
+        enum:
+        - "Organization"
+        - "Person"
+        - "Twitter(Org)"
+        - "Twitter(Person)"
+      siteName:
+        type: "string"
+        description: "サイト(ドメイン)の名称"
+      siteCategory:
+        type: "string"
+        description: "リサーチ用サイトのカテゴリ"
+        enum:
+        - "Amusement"
+        - "Culture"
+        - "Food"
+        - "Publisher"
+        - "Retail"
+        - "Video & Movie"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      deleteFlg:
+        type: "integer"
+        format: "int32"
   trnEvent:
     type: "object"
     properties:
