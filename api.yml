@@ -339,7 +339,6 @@ paths:
         400:
           description: "Invalid status value"
 
-
   /trnEventResearch:
     get:
       tags:
@@ -375,6 +374,21 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
+  /trnEventResearch/{uuid}:
+    get:
+      tags:
+      - "adEvent"
+      summary: "UUIDで指定したTRN_EVENT_RESEARCH"
+      operationId: "readTrnEventFindByUuid"
+      parameters:
+        - $ref: '#/parameters/uuid'
+      responses:
+        200:
+          $ref: '#/responses/trnEventResearchArray'
+        400:
+          description: "Invalid status value"
+          
+          
 
   /trnEvent:
     get:
@@ -555,6 +569,12 @@ parameters:
     in: body
     schema:
       $ref: '#/definitions/timeline'
+  uuid:
+    name: uuid
+    description: "UUID検索用パラメーター"
+    required: true
+    in: path
+    type: "string"
 
 
 
