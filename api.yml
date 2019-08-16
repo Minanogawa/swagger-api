@@ -809,12 +809,12 @@ definitions:
   trnEvent:
     type: "object"
     properties:
-      researchNumber:
+      uuid:
         type: "string"
-        format: "ID , sequential"
-      eventNumber:
+        description: "TRN_EVENT_RESEARCHÇÃUUID"
+      research_uuid:
         type: "string"
-        format: "ID , sequential"
+        description: "TRN_EVENTÇÃUUID"
       domainIcon:
         type: "string"
         description: "ÉhÉÅÉCÉìÇÃFabicon"
@@ -842,9 +842,15 @@ definitions:
       eventStartDate:
         type: "string"
         format: "yyyyMMdd"
+      startDate:
+        type: "string"
+        format: date-time
       eventEndDate:
         type: "string"
         format: "yyyyMMdd"
+      endDate:
+        type: "string"
+        format: date-time
       eventSpanType:
         type: integer
         format: int32
