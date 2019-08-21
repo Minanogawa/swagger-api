@@ -328,6 +328,7 @@ paths:
   /mstClientJson/{configName}:
     get:
       tags:
+      - "adEvent"
       - "adSpot"
       summary: "MST_CONFIG_JSONからconfig_name(PK)を指定してデータを取得する"
       operationId: "readMstConfigJsonByConfigName"
