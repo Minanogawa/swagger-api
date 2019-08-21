@@ -155,24 +155,6 @@ paths:
         400:
           description: "Invalid status value"
 
-  /cpEvent/event:
-    get:
-      tags:
-      - "cpEvent"
-      summary: "Calendarに出力するEvent情報を取得する"
-      operationId: "getEventCalendar"
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            type: "array"
-            items:
-              $ref: "#/definitions/trnEvent"
-        400:
-          description: "Invalid status value"
-
   /cpTop/chart/{chartDate}:
     get:
       tags:
@@ -330,6 +312,8 @@ paths:
       tags:
       - "adEvent"
       - "adSpot"
+      - "cpEvent"
+      - "cpSpot"
       summary: "MST_CONFIG_JSONからconfig_name(PK)を指定してデータを取得する"
       operationId: "readMstConfigJsonByConfigName"
       parameters:
