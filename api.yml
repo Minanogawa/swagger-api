@@ -324,6 +324,43 @@ paths:
         400:
           description: "Invalid status value"
 
+
+  /trnEvent:
+    get:
+      tags:
+      - "adEvent"
+      summary: "TRN_EVENTテーブルから全件のデータを取得する"
+      operationId: "readEvent"
+      responses:
+        200:
+          $ref: '#/responses/trnEventArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adEvent"
+      summary: "TRN_EVENTテーブルにデータを新規登録する"
+      operationId: "createEvent"
+      parameters:
+        - $ref: '#/parameters/trnEventArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adEvent"
+      summary: "TRN_EVENTテーブル情報の更新を行う"
+      operationId: "updateEvent"
+      parameters:
+        - $ref: '#/parameters/trnEventArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+
   /trnEventResearch:
     get:
       tags:
@@ -370,44 +407,6 @@ paths:
       responses:
         200:
           $ref: '#/responses/trnEventResearchArray'
-        400:
-          description: "Invalid status value"
-          
-          
-
-  /trnEvent:
-    get:
-      tags:
-      - "adEvent"
-      summary: "TRN_EVENTテーブルから全件のデータを取得する"
-      operationId: "readEvent"
-      responses:
-        200:
-          $ref: '#/responses/trnEventArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adEvent"
-      summary: "TRN_EVENTテーブルにデータを新規登録する"
-      operationId: "createEvent"
-      parameters:
-        - $ref: '#/parameters/trnEventArray'
-      responses:
-        200:
-          description: "successful operation"
-        405:
-          description: "Invalid input"
-    put:
-      tags:
-      - "adEvent"
-      summary: "TRN_EVENTテーブル情報の更新を行う"
-      operationId: "updateEvent"
-      parameters:
-        - $ref: '#/parameters/trnEventArray'
-      responses:
-        200:
-          description: "successful operation"
         400:
           description: "Invalid status value"
 
@@ -458,6 +457,56 @@ paths:
           $ref: '#/responses/trnSpotArray'
         400:
           description: "Invalid status value"
+
+  /trnSpotResearch:
+    get:
+      tags:
+      - "adSpot"
+      summary: "TRN_SPOT_RESEARCHから全件のデータを取得する"
+      operationId: "readTrnSpotResearch"
+      responses:
+        200:
+          $ref: '#/responses/trnEventResearchArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adSpot"
+      summary: "TRN_SPOT_RESEARCH情報のデータを新規追加"
+      operationId: "createTrnSpotResearch"
+      parameters:
+        - $ref: '#/parameters/trnEventResearch'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adSpot"
+      summary: "TRN_SPOT_RESEARCH情報の更新を行う"
+      operationId: "updateTrnSpotResearch"
+      parameters:
+        - $ref: '#/parameters/trnEventResearch'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnSpotResearch/{uuid}:
+    get:
+      tags:
+      - "adSpot"
+      summary: "UUIDで指定したTRN_SPOT_RESEARCH"
+      operationId: "readTrnSpotResearchFindByUuid"
+      parameters:
+        - $ref: '#/parameters/uuid'
+      responses:
+        200:
+          $ref: '#/responses/trnEventResearchArray'
+        400:
+          description: "Invalid status value"
+
 
 
 parameters:
@@ -547,6 +596,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnSpot"
+  trnSpotResearchArray:
+    name: trnSpotResearchArray
+    description: "配列単位の記事情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnSpotResearch"
   timeLine:
     name: timeLine
     description: "Userテーブルに格納されているtimelineのJsonの型"
@@ -599,30 +657,30 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/publish"
-  trnEventResearchArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnEventResearch"
   trnEventArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
         $ref: "#/definitions/trnEvent"
-  trnSpotResearchArray:
+  trnEventResearchArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnSpotResearch"
+        $ref: "#/definitions/trnEventResearch"
   trnSpotArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
         $ref: "#/definitions/trnSpot"
+  trnSpotResearchArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnSpotResearch"
 
 definitions:
   categoryMenu:
