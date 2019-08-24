@@ -562,7 +562,6 @@ parameters:
     type: "string"
 
 
-
 responses:
   categoryMenuArray:
     description: "successful operation"
@@ -612,6 +611,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnEvent"
+  trnSpotResearchArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnSpotResearch"
   trnSpotArray:
     description: "successful operation"
     schema:
@@ -901,9 +906,43 @@ definitions:
       deleteFlg:
         type: "integer"
         format: "int32"
+        
+  trnSpotResearch:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_SPOT_RESEARCHのUUID"
+      spot_uuid:
+        type: "string"
+        description: "TRN_SPOTのUUID"
+      domainIcon:
+        type: "string"
+        description: "ドメインのFabicon"
+      site_name:
+        type: "string"
+        description: "観光目的情報を作成する際の参考サイト名"
+      site_url:
+        type: "string"
+        description: "観光目的情報を作成する際の参考サイトURL"
+      remarks:
+        type: "string"
+        description: "参考サイト名に関する備考"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
   trnSpot:
     type: "object"
     properties:
+      uuid:
+        type: "string"
+        description: "TRN_SPOTのUUID"
       spot_name:
         type: "string"
         description: "観光目的を持つ場所の名前"
@@ -934,18 +973,15 @@ definitions:
         - "Retail"
         - "Spot"
         - "Twitter"
-      spot_picture_header:
+      spot_picture_url:
         type: "string"
-        description: "カード情報に出力する為のヘッダーの写真"
-      spot_picture_main:
-        type: "string"
-        description: "カード情報に出力する為のメインの写真"
+        description: "観光目的を持つ場所の写真情報"
       spot_description:
         type: "string"
-        description: "カード情報に出力する為のメイン情報"
+        description: "観光目的を持つ場所の概要情報"
       spot_pdf:
         type: "string"
-        description: "カード情報から詳細を情報を出力するPDFのパス"
+        description: "観光目的を持つ場所のPDFのパス"
       spot_latitude:
         type: "string"
         description: "観光目的を持つ場所の経度"
