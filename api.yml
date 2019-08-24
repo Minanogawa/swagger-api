@@ -768,54 +768,6 @@ definitions:
         properties:
           degitalArt:
             type: "number"
-  trnEventResearch:
-    type: "object"
-    properties:
-      uuid:
-        type: "string"
-        description: "TRN_EVENT_RESEARCHのUUID"
-      researchWord:
-        type: "string"
-        description: "Google検索文言"
-      researchDomain:
-        type: "string"
-        format: "URL"
-      domainIcon:
-        type: "string"
-        description: "ドメインのFabicon"
-      siteAdminType:
-        type: "string"
-        description: "サイトの運営者種別"
-        enum:
-        - "Organization"
-        - "Person"
-        - "Twitter(Org)"
-        - "Twitter(Person)"
-      siteName:
-        type: "string"
-        description: "サイト(ドメイン)の名称"
-      siteCategory:
-        type: "string"
-        description: "リサーチ用サイトのカテゴリ"
-        enum:
-        - "Amusement"
-        - "Culture"
-        - "Food"
-        - "Publisher"
-        - "Retail"
-        - "Video & Movie"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      deleteFlg:
-        type: "integer"
-        format: "int32"
   trnEvent:
     type: "object"
     properties:
@@ -907,36 +859,55 @@ definitions:
         type: "integer"
         format: "int32"
         
-  trnSpotResearch:
+  trnEventResearch:
     type: "object"
     properties:
       uuid:
         type: "string"
-        description: "TRN_SPOT_RESEARCHのUUID"
-      spot_uuid:
+        description: "TRN_EVENT_RESEARCHのUUID"
+      researchWord:
         type: "string"
-        description: "TRN_SPOTのUUID"
+        description: "Google検索文言"
+      researchDomain:
+        type: "string"
+        format: "URL"
       domainIcon:
         type: "string"
         description: "ドメインのFabicon"
-      site_name:
+      siteAdminType:
         type: "string"
-        description: "観光目的情報を作成する際の参考サイト名"
-      site_url:
+        description: "サイトの運営者種別"
+        enum:
+        - "Organization"
+        - "Person"
+        - "Twitter(Org)"
+        - "Twitter(Person)"
+      siteName:
         type: "string"
-        description: "観光目的情報を作成する際の参考サイトURL"
-      remarks:
+        description: "サイト(ドメイン)の名称"
+      siteCategory:
         type: "string"
-        description: "参考サイト名に関する備考"
+        description: "リサーチ用サイトのカテゴリ"
+        enum:
+        - "Amusement"
+        - "Culture"
+        - "Food"
+        - "Publisher"
+        - "Retail"
+        - "Video & Movie"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
       addDate:
         type: "string"
         format: "yyyyMMdd"
       modDate:
         type: "string"
         format: "yyyyMMdd"
-      delete_flg:
+      deleteFlg:
         type: "integer"
         format: "int32"
+        
   trnSpot:
     type: "object"
     properties:
@@ -1004,6 +975,37 @@ definitions:
         type: "integer"
         format: "int32"
             
+  trnSpotResearch:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_SPOT_RESEARCHのUUID"
+      spot_uuid:
+        type: "string"
+        description: "TRN_SPOTのUUID"
+      domainIcon:
+        type: "string"
+        description: "ドメインのFabicon"
+      site_name:
+        type: "string"
+        description: "観光目的情報を作成する際の参考サイト名"
+      site_url:
+        type: "string"
+        description: "観光目的情報を作成する際の参考サイトURL"
+      remarks:
+        type: "string"
+        description: "参考サイト名に関する備考"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+        
   timeline:
     type: "object"
     properties:
