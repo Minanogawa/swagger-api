@@ -580,6 +580,24 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnEvent"
+  trnMovieArray:
+    name: trnSpotArray
+    description: "配列単位の映画情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovie"
+  trnMovieRatingArray:
+    name: trnSpotArray
+    description: "配列単位の映画評価情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovieRating"
   trnSpot:
     name: trnSpot
     description: "記事情報"
@@ -669,6 +687,18 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnEventResearch"
+  trnMovieArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovie"
+  trnMovieRatingArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovieRating"
   trnSpotArray:
     description: "successful operation"
     schema:
@@ -966,6 +996,110 @@ definitions:
         type: "integer"
         format: "int32"
         
+  trnMovie:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MOVIEのUUID"
+      author:
+        type: "string"
+        description: "映画の著者"
+      director:
+        type: "string"
+        description: "映画の監督"
+      title:
+        type: "string"
+        description: "映画のタイトル"
+      category:
+        type: "string"
+        description: "映画の種別"
+        enum:
+        - "Amusement"
+        - "Coffee Shop"
+        - "Food"
+        - "Organization"
+        - "Publisher"
+        - "Retail"
+        - "Spot"
+        - "Twitter"
+      mainActor:
+        type: "string"
+        description: "映画のメイン俳優"
+      mainActress:
+        type: "string"
+        description: "映画のメイン女優"
+      otherCast:
+        type: "string"
+        description: "映画のキャスト"
+      releaseDate:
+        type: "string"
+        description: "映画の上映日"
+      year:
+        type: "string"
+        description: "映画の上映年"
+      bookUrl:
+        type: "string"
+        description: "映画の原作脚本URL"
+      chinaName:
+        type: "string"
+        description: "中国語での映画名"
+      pinyinName:
+        type: "string"
+        description: "中国語でのピンイン"
+      officialUrl:
+        type: "string"
+        description: "映画の公式サイト"
+      twitter:
+        type: "string"
+        description: "映画の公式twitter"
+      summaryExcel:
+        type: "string"
+        description: "映画を要約したExcelのURL"
+      summaryPdf:
+        type: "string"
+        description: "映画を要約したPDFのURL"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+        
+  trnMovieRating:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MOVIE_RATINGのUUID"
+      movieUuid:
+        type: "string"
+        description: "TRN_MOVIE_RATINGのUUID"
+      ratingSiteName:
+        type: "string"
+        description: "映画の監督"
+      ratingSiteUrl:
+        type: "string"
+        description: "映画のタイトル"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
   trnSpot:
     type: "object"
     properties:
