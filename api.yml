@@ -466,7 +466,7 @@ paths:
       operationId: "readTrnSpotResearch"
       responses:
         200:
-          $ref: '#/responses/trnEventResearchArray'
+          $ref: '#/responses/trnSpotResearchArray'
         400:
           description: "Invalid status value"
     post:
@@ -475,7 +475,7 @@ paths:
       summary: "TRN_SPOT_RESEARCH情報のデータを新規追加"
       operationId: "createTrnSpotResearch"
       parameters:
-        - $ref: '#/parameters/trnEventResearch'
+        - $ref: '#/parameters/trnSpotResearchArray'
       responses:
         200:
           description: "successful operation"
@@ -487,7 +487,7 @@ paths:
       summary: "TRN_SPOT_RESEARCH情報の更新を行う"
       operationId: "updateTrnSpotResearch"
       parameters:
-        - $ref: '#/parameters/trnEventResearch'
+        - $ref: '#/parameters/trnSpotResearchArray'
       responses:
         200:
           description: "successful operation"
@@ -503,7 +503,7 @@ paths:
         - $ref: '#/parameters/uuid'
       responses:
         200:
-          $ref: '#/responses/trnEventResearchArray'
+          $ref: '#/responses/trnSpotResearchArray'
         400:
           description: "Invalid status value"
 
