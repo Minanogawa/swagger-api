@@ -20,6 +20,8 @@ tags:
     description: "Administration Eventページにおけるデータ通信定義"
   - name: "adMaster"
     description: "Administration Masterページにおけるデータ通信定義"
+  - name: "adMovie"
+    description: "Administration Movieページにおけるデータ通信定義"
   - name: "adSpot"
     description: "Administration Spotページ、主にSPOT情報の情報を管理する画面"
   - name: "adTop"
@@ -407,6 +409,78 @@ paths:
       responses:
         200:
           $ref: '#/responses/trnEventResearchArray'
+        400:
+          description: "Invalid status value"
+
+  /trnMovie:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIEからデータを全件取得する"
+      operationId: "readTrnMovie"
+      responses:
+        200:
+          $ref: '#/responses/trnMovieArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIEに新規データを登録する"
+      operationId: "createTrnMovie"
+      parameters:
+        - $ref: '#/parameters/trnMovieArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE情報の更新を行う"
+      operationId: "updateTrnMovie"
+      parameters:
+        - $ref: '#/parameters/trnMovieArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+
+  /trnMovieRating:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_RATINGからデータを全件取得する"
+      operationId: "readTrnMovieRating"
+      responses:
+        200:
+          $ref: '#/responses/trnMovieRatingArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_RATINGに新規データを登録する"
+      operationId: "createTrnMovieRating"
+      parameters:
+        - $ref: '#/parameters/trnMovieRatingArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_RATING情報の更新を行う"
+      operationId: "updateTrnMovieRating"
+      parameters:
+        - $ref: '#/parameters/trnMovieRatingArray'
+      responses:
+        200:
+          description: "successful operation"
         400:
           description: "Invalid status value"
 
