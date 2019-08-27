@@ -447,7 +447,6 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-
   /trnMovieRating:
     get:
       tags:
@@ -478,6 +477,41 @@ paths:
       operationId: "updateTrnMovieRating"
       parameters:
         - $ref: '#/parameters/trnMovieRatingArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnMovieResearch:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_RESEARCHからデータを全件取得する"
+      operationId: "readTrnMovieResearch"
+      responses:
+        200:
+          $ref: '#/responses/trnMovieResearchArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_RESEARCHに新規データを登録する"
+      operationId: "createTrnMovieResearch"
+      parameters:
+        - $ref: '#/parameters/trnMovieResearchArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_RESEARCH情報の更新を行う"
+      operationId: "updateTrnMovieResearch"
+      parameters:
+        - $ref: '#/parameters/trnMovieResearchArray'
       responses:
         200:
           description: "successful operation"
@@ -655,7 +689,7 @@ parameters:
       items:
         $ref: "#/definitions/trnEvent"
   trnMovieArray:
-    name: trnSpotArray
+    name: trnMovieArray
     description: "配列単位の映画情報"
     required: true
     in: body
@@ -664,7 +698,7 @@ parameters:
       items:
         $ref: "#/definitions/trnMovie"
   trnMovieRatingArray:
-    name: trnSpotArray
+    name: trnMovieRatingArray
     description: "配列単位の映画評価情報"
     required: true
     in: body
@@ -672,6 +706,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieRating"
+  trnMovieResearchArray:
+    name: ttrnMovieResearchArray
+    description: "配列単位の映画調査情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovieResearch"
   trnSpot:
     name: trnSpot
     description: "記事情報"
@@ -710,7 +753,6 @@ parameters:
     required: true
     in: path
     type: "string"
-
 
 responses:
   categoryMenuArray:
@@ -773,6 +815,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieRating"
+  trnMovieResearchArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovieResearch"
   trnSpotArray:
     description: "successful operation"
     schema:
@@ -1157,10 +1205,10 @@ definitions:
         description: "TRN_MOVIE_RATINGのUUID"
       ratingSiteName:
         type: "string"
-        description: "映画の監督"
+        description: "評価サイトの名称"
       ratingSiteUrl:
         type: "string"
-        description: "映画のタイトル"
+        description: "評価サイトのURL"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
@@ -1174,6 +1222,34 @@ definitions:
         type: "integer"
         format: "int32"
 
+  trnMovieResearch:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MOVIE_RATINGのUUID"
+      movieUuid:
+        type: "string"
+        description: "TRN_MOVIE_RATINGのUUID"
+      site_name:
+        type: "string"
+        description: "調査サイトの名称"
+      site_url:
+        type: "string"
+        description: "調査サイトのURL"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+        
   trnSpot:
     type: "object"
     properties:
