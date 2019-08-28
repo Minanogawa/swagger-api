@@ -1203,10 +1203,13 @@ definitions:
       movieUuid:
         type: "string"
         description: "TRN_MOVIE_RATINGのUUID"
-      ratingSiteName:
+      researchWord:
         type: "string"
-        description: "評価サイトの名称"
-      ratingSiteUrl:
+        description: "評価サイト検索時のGoogle検索文字列"
+      siteDomain:
+        type: "string"
+        description: "評価サイトのドメイン"
+      siteUrl:
         type: "string"
         description: "評価サイトのURL"
       target:
@@ -1231,10 +1234,13 @@ definitions:
       movieUuid:
         type: "string"
         description: "TRN_MOVIE_RATINGのUUID"
-      site_name:
+      researchWord:
         type: "string"
-        description: "調査サイトの名称"
-      site_url:
+        description: "評価サイト検索時のGoogle検索文字列"
+      siteDomain:
+        type: "string"
+        description: "調査サイトのドメイン"
+      siteUrl:
         type: "string"
         description: "調査サイトのURL"
       target:
@@ -1256,13 +1262,13 @@ definitions:
       uuid:
         type: "string"
         description: "TRN_SPOTのUUID"
-      spot_name:
+      spotName:
         type: "string"
         description: "観光目的を持つ場所の名前"
-      spot_address:
+      spotAddress:
         type: "string"
         description: "観光目的を持つ場所の住所"
-      spot_ward:
+      spotWard:
         type: "string"
         description: "観光目的を持つ場所の所在地区"
         enum:
@@ -1274,7 +1280,7 @@ definitions:
         - "Shibuya"
         - "Shinjuku"
         - "Toshima"
-      spot_category:
+      spotCategory:
         type: "string"
         description: "観光目的を持つ場所の種別"
         enum:
@@ -1286,19 +1292,19 @@ definitions:
         - "Retail"
         - "Spot"
         - "Twitter"
-      spot_picture_url:
+      spotPictureUrl:
         type: "string"
         description: "観光目的を持つ場所の写真情報"
-      spot_description:
+      spotDescription:
         type: "string"
         description: "観光目的を持つ場所の概要情報"
-      spot_pdf:
+      spotPdf:
         type: "string"
         description: "観光目的を持つ場所のPDFのパス"
-      spot_latitude:
+      spotLatitude:
         type: "string"
         description: "観光目的を持つ場所の経度"
-      spot_longitude:
+      spotLongitude:
         type: "string"
         description: "観光目的を持つ場所の緯度"
       zoom:
