@@ -1209,6 +1209,9 @@ definitions:
       siteDomain:
         type: "string"
         description: "評価サイトのドメイン"
+      siteName:
+        type: "string"
+        description: "評価サイトの名称"
       siteUrl:
         type: "string"
         description: "評価サイトのURL"
@@ -1240,6 +1243,9 @@ definitions:
       siteDomain:
         type: "string"
         description: "調査サイトのドメイン"
+      siteName:
+        type: "string"
+        description: "調査サイトの名称"
       siteUrl:
         type: "string"
         description: "調査サイトのURL"
