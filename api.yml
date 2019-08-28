@@ -1124,12 +1124,6 @@ definitions:
       uuid:
         type: "string"
         description: "TRN_MOVIE‚ÌUUID"
-      author:
-        type: "string"
-        description: "‰f‰æ‚Ì’˜Ò"
-      director:
-        type: "string"
-        description: "‰f‰æ‚ÌŠÄ“Â"
       title:
         type: "string"
         description: "‰f‰æ‚Ìƒ^ƒCƒgƒ‹"
@@ -1145,6 +1139,18 @@ definitions:
         - "Retail"
         - "Spot"
         - "Twitter"
+      year:
+        type: "string"
+        description: "‰f‰æ‚Ìã‰f”N"
+      releaseDate:
+        type: "string"
+        description: "‰f‰æ‚Ìã‰f“ú"
+      author:
+        type: "string"
+        description: "‰f‰æ‚Ì’˜Ò"
+      director:
+        type: "string"
+        description: "‰f‰æ‚ÌŠÄ“Â"
       mainActor:
         type: "string"
         description: "‰f‰æ‚ÌƒƒCƒ“”o—D"
@@ -1154,12 +1160,6 @@ definitions:
       otherCast:
         type: "string"
         description: "‰f‰æ‚ÌƒLƒƒƒXƒg"
-      releaseDate:
-        type: "string"
-        description: "‰f‰æ‚Ìã‰f“ú"
-      year:
-        type: "string"
-        description: "‰f‰æ‚Ìã‰f”N"
       bookUrl:
         type: "string"
         description: "‰f‰æ‚ÌŒ´ì‹r–{URL"
