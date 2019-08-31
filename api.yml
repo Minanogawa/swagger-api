@@ -447,6 +447,21 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
+  /trnMovie/{uuid}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "UUID‚ÅŽw’è‚µ‚½TRN_EVENT_RESEARCH"
+      operationId: "readTrnMovieFindByUuid"
+      parameters:
+        - $ref: '#/parameters/uuid'
+      responses:
+        200:
+          $ref: '#/responses/trnMovieArray'
+        400:
+          description: "Invalid status value"
+          
+          
   /trnMovieRating:
     get:
       tags:
