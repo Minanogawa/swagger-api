@@ -532,6 +532,41 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
+  /trnMovieUrl:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_RESEARCHからデータを全件取得する"
+      operationId: "readTrnMovieUrl"
+      responses:
+        200:
+          $ref: '#/responses/trnMovieUrlArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_RESEARCHに新規データを登録する"
+      operationId: "createTrnMovieUrl"
+      parameters:
+        - $ref: '#/parameters/trnMovieUrlArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_RESEARCH情報の更新を行う"
+      operationId: "updateTrnMovieUrl"
+      parameters:
+        - $ref: '#/parameters/trnMovieUrlArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
 
   /trnSpot:
     get:
@@ -722,7 +757,7 @@ parameters:
       items:
         $ref: "#/definitions/trnMovieRating"
   trnMovieResearchArray:
-    name: ttrnMovieResearchArray
+    name: trnMovieResearchArray
     description: "配列単位の映画調査情報"
     required: true
     in: body
@@ -730,6 +765,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieResearch"
+  trnMovieUrlArray:
+    name: trnMovieUrlArray
+    description: "配列単位の映画掲載情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovieUrl"
   trnSpot:
     name: trnSpot
     description: "記事情報"
@@ -836,6 +880,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieResearch"
+  trnMovieUrlArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovieUrl"
   trnSpotArray:
     description: "successful operation"
     schema:
@@ -1217,7 +1267,7 @@ definitions:
         description: "TRN_MOVIE_RATINGのUUID"
       movieUuid:
         type: "string"
-        description: "TRN_MOVIE_RATINGのUUID"
+        description: "TRN_MOVIEのUUID"
       researchWord:
         type: "string"
         description: "評価サイト検索時のGoogle検索文字列"
@@ -1248,13 +1298,13 @@ definitions:
     properties:
       uuid:
         type: "string"
-        description: "TRN_MOVIE_RATINGのUUID"
+        description: "TRN_MOVIERESEARCHのUUID"
       movieUuid:
         type: "string"
-        description: "TRN_MOVIE_RATINGのUUID"
+        description: "TRN_MOVIのUUID"
       researchWord:
         type: "string"
-        description: "評価サイト検索時のGoogle検索文字列"
+        description: "調査サイト検索時のGoogle検索文字列"
       siteDomain:
         type: "string"
         description: "調査サイトのドメイン"
@@ -1264,6 +1314,40 @@ definitions:
       siteUrl:
         type: "string"
         description: "調査サイトのURL"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+        
+  trnMovieUrl:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MOVIE_URLのUUID"
+      movieUuid:
+        type: "string"
+        description: "TRN_MOVIEのUUID"
+      researchWord:
+        type: "string"
+        description: "掲載サイト検索時のGoogle検索文字列"
+      siteDomain:
+        type: "string"
+        description: "掲載サイトのドメイン"
+      siteName:
+        type: "string"
+        description: "掲載サイトの名称"
+      siteUrl:
+        type: "string"
+        description: "掲載サイトのURL"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
