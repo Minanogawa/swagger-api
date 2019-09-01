@@ -451,7 +451,7 @@ paths:
     get:
       tags:
       - "adMovie"
-      summary: "UUID‚ÅŽw’è‚µ‚½TRN_EVENT_RESEARCH"
+      summary: "UUID‚ÅŽw’è‚µ‚½TRN_MOVIE"
       operationId: "readTrnMovieFindByUuid"
       parameters:
         - $ref: '#/parameters/uuid'
