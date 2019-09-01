@@ -812,7 +812,13 @@ parameters:
     required: true
     in: path
     type: "string"
-
+  uuidMovie:
+    name: uuidMovie
+    description: "TRN_MOVIEのUUID検索用パラメーター"
+    required: true
+    in: path
+    type: "string"
+      
 responses:
   categoryMenuArray:
     description: "successful operation"
@@ -1265,7 +1271,7 @@ definitions:
       uuid:
         type: "string"
         description: "TRN_MOVIE_RATINGのUUID"
-      movieUuid:
+      uuidMovie:
         type: "string"
         description: "TRN_MOVIEのUUID"
       researchWord:
@@ -1299,7 +1305,7 @@ definitions:
       uuid:
         type: "string"
         description: "TRN_MOVIERESEARCHのUUID"
-      movieUuid:
+      uuidMovie:
         type: "string"
         description: "TRN_MOVIのUUID"
       researchWord:
@@ -1333,7 +1339,7 @@ definitions:
       uuid:
         type: "string"
         description: "TRN_MOVIE_URLのUUID"
-      movieUuid:
+      uuidMovie:
         type: "string"
         description: "TRN_MOVIEのUUID"
       researchWord:
