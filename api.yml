@@ -536,7 +536,7 @@ paths:
     get:
       tags:
       - "adMovie"
-      summary: "TRN_MOVIE_RESEARCHからデータを全件取得する"
+      summary: "TRN_MOVIE_URLからデータを全件取得する"
       operationId: "readTrnMovieUrl"
       responses:
         200:
@@ -546,7 +546,7 @@ paths:
     post:
       tags:
       - "adMovie"
-      summary: "TRN_MOVIE_RESEARCHに新規データを登録する"
+      summary: "TRN_MOVIE_URLに新規データを登録する"
       operationId: "createTrnMovieUrl"
       parameters:
         - $ref: '#/parameters/trnMovieUrlArray'
@@ -558,7 +558,7 @@ paths:
     put:
       tags:
       - "adMovie"
-      summary: "TRN_MOVIE_RESEARCH情報の更新を行う"
+      summary: "TRN_MOVIE_URL情報の更新を行う"
       operationId: "updateTrnMovieUrl"
       parameters:
         - $ref: '#/parameters/trnMovieUrlArray'
