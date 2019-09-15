@@ -824,16 +824,25 @@ parameters:
       $ref: '#/definitions/trnSpot'
   trnSpotArray:
     name: trnSpotArray
-    description: "配列単位の記事情報"
+    description: "配列単位の観光場所情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
         $ref: "#/definitions/trnSpot"
+  trnSpotPrArray:
+    name: trnSpotPrArray
+    description: "配列単位の観光場所PR情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnSpotPr"
   trnSpotResearchArray:
     name: trnSpotResearchArray
-    description: "配列単位の記事情報"
+    description: "配列単位の観光場所調査情報"
     required: true
     in: body
     schema:
@@ -939,6 +948,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnSpot"
+  trnSpotPrArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnSpotPr"
   trnSpotResearchArray:
     description: "successful operation"
     schema:
@@ -1474,7 +1489,45 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-            
+
+  trnSpotPr:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_SPOT_PRのUUID"
+      spot_uuid:
+        type: "string"
+        description: "TRN_SPOTのUUID"
+      spot_pr_name:
+        type: "string"
+        description: "観光場所をPRしている名称"
+      spot_pr_url:
+        type: "string"
+        format: "URL"
+        description: "観光場所をPRしているURL"
+      spot_pr_category:
+        type: "string"
+        description: "観光場所のPR区分"
+        enum:
+        - "twitter"
+        - "facebook"
+      remarks:
+        type: "string"
+        description: "参考サイト名に関する備考"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
   trnSpotResearch:
     type: "object"
     properties:
