@@ -1484,15 +1484,24 @@ definitions:
       spot_uuid:
         type: "string"
         description: "TRN_SPOTのUUID"
+      researchWord:
+        type: "string"
+        description: "Google検索文言"
+      researchDomain:
+        type: "string"
+        format: "URL"
       domainIcon:
         type: "string"
         description: "ドメインのFabicon"
-      site_name:
+      siteAdminType:
+        type: "string"
+        description: "サイトの運営者種別"
+        enum:
+        - "Organization"
+        - "Person"
+      siteName:
         type: "string"
         description: "観光目的情報を作成する際の参考サイト名"
-      site_url:
-        type: "string"
-        description: "観光目的情報を作成する際の参考サイトURL"
       remarks:
         type: "string"
         description: "参考サイト名に関する備考"
