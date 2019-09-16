@@ -1604,6 +1604,9 @@ definitions:
       siteName:
         type: "string"
         description: "観光目的情報を作成する際の参考サイト名"
+      siteUrl:
+        type: "string"
+        description: "観光目的情報を作成する際の参考サイトURL"
       remarks:
         type: "string"
         description: "参考サイト名に関する備考"
