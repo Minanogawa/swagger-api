@@ -706,6 +706,55 @@ paths:
         400:
           description: "Invalid status value"
 
+  /trnSpotPr:
+    get:
+      tags:
+      - "adSpot"
+      summary: "TRN_SPOT_PRから全件のデータを取得する"
+      operationId: "readTrnSpotPr"
+      responses:
+        200:
+          $ref: '#/responses/trnSpotPrArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adSpot"
+      summary: "TRN_SPOT_PR情報のデータを新規追加"
+      operationId: "createTrnSpotPr"
+      parameters:
+        - $ref: '#/parameters/trnSpotPrArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adSpot"
+      summary: "TRN_SPOT_PR情報の更新を行う"
+      operationId: "updateTrnSpotPr"
+      parameters:
+        - $ref: '#/parameters/trnSpotPrArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnSpotPr/{uuid}:
+    get:
+      tags:
+      - "adSpot"
+      summary: "UUIDで指定したTRN_SPOT_RESEARCH"
+      operationId: "readTrnSpotPrFindByUuid"
+      parameters:
+        - $ref: '#/parameters/uuid'
+      responses:
+        200:
+          $ref: '#/responses/trnSpotPrArray'
+        400:
+          description: "Invalid status value"
+
 
 
 parameters:
