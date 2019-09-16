@@ -745,7 +745,7 @@ paths:
     get:
       tags:
       - "adSpot"
-      summary: "UUID‚ÅŽw’è‚µ‚½TRN_SPOT_RESEARCH"
+      summary: "UUID‚ÅŽw’è‚µ‚½TRN_SPOT_PR"
       operationId: "readTrnSpotPrFindByUuid"
       parameters:
         - $ref: '#/parameters/uuid'
