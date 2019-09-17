@@ -1548,6 +1548,12 @@ definitions:
       spot_uuid:
         type: "string"
         description: "TRN_SPOTのUUID"
+      spot_pr_snstype:
+        type: "string"
+        description: "観光場所のPRしているSNS区分"
+        enum:
+        - "twitter"
+        - "facebook"
       spot_pr_name:
         type: "string"
         description: "観光場所をPRしている名称"
@@ -1555,12 +1561,6 @@ definitions:
         type: "string"
         format: "URL"
         description: "観光場所をPRしているURL"
-      spot_pr_category:
-        type: "string"
-        description: "観光場所のPR区分"
-        enum:
-        - "twitter"
-        - "facebook"
       remarks:
         type: "string"
         description: "参考サイト名に関する備考"
