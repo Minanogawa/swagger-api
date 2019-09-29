@@ -1215,6 +1215,73 @@ definitions:
         type: "integer"
         format: "int32"
             
+  trnBookRating:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_BOOK_RATINGのUUID"
+      uuidMovie:
+        type: "string"
+        description: "TRN_BOOKのUUID"
+      researchWord:
+        type: "string"
+        description: "評価サイト検索時のGoogle検索文字列"
+      siteDomain:
+        type: "string"
+        description: "評価サイトのドメイン"
+      siteName:
+        type: "string"
+        description: "評価サイトの名称"
+      siteUrl:
+        type: "string"
+        description: "評価サイトのURL"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
+  trnBookResearch:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_BOOK_RESEARCHのUUID"
+      uuidMovie:
+        type: "string"
+        description: "TRN_BOOKのUUID"
+      researchWord:
+        type: "string"
+        description: "調査サイト検索時のGoogle検索文字列"
+      siteDomain:
+        type: "string"
+        description: "調査サイトのドメイン"
+      siteName:
+        type: "string"
+        description: "調査サイトの名称"
+      siteUrl:
+        type: "string"
+        description: "調査サイトのURL"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
             
             
   trnEvent:
@@ -1472,10 +1539,10 @@ definitions:
     properties:
       uuid:
         type: "string"
-        description: "TRN_MOVIERESEARCHのUUID"
+        description: "TRN_MOVIE_RESEARCHのUUID"
       uuidMovie:
         type: "string"
-        description: "TRN_MOVIのUUID"
+        description: "TRN_MOVIEのUUID"
       researchWord:
         type: "string"
         description: "調査サイト検索時のGoogle検索文字列"
