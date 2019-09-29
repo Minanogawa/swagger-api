@@ -364,7 +364,6 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-
   /trnEventResearch:
     get:
       tags:
@@ -413,6 +412,7 @@ paths:
           $ref: '#/responses/trnEventResearchArray'
         400:
           description: "Invalid status value"
+          
 
   /trnMovie:
     get:
@@ -462,7 +462,6 @@ paths:
           $ref: '#/responses/trnMovieArray'
         400:
           description: "Invalid status value"
-          
   /trnMovieRating:
     get:
       tags:
@@ -511,8 +510,6 @@ paths:
           $ref: '#/responses/trnMovieArray'
         400:
           description: "Invalid status value"
-          
-          
   /trnMovieResearch:
     get:
       tags:
@@ -561,7 +558,6 @@ paths:
           $ref: '#/responses/trnMovieArray'
         400:
           description: "Invalid status value"
-          
   /trnMovieUrl:
     get:
       tags:
@@ -812,15 +808,33 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/publish"
-  trnEventResearch:
-    name: eventResearch
-    description: "Event Researchデータ"
+  trnBookArray:
+    name: trnBookArray
+    description: "配列単位の本情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnEventResearch"
+        $ref: "#/definitions/trnBook"
+  trnBookRatingArray:
+    name: trnBookRatingArray
+    description: "配列単位の本評価情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnBookRating"
+  trnBookResearchArray:
+    name: trnMovieResearchArray
+    description: "配列単位の本調査情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnBookResearch"
   trnEventArray:
     name: trnEventArray
     description: "配列単位のTRN_EVENTデータ"
@@ -830,6 +844,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnEvent"
+  trnEventResearch:
+    name: eventResearch
+    description: "Event Researchデータ"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnEventResearch"
   trnMovieArray:
     name: trnMovieArray
     description: "配列単位の映画情報"
@@ -957,6 +980,24 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/publish"
+  trnBookArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnBook"
+  trnBookRatingArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnBookRating"
+  trBookResearchArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnBookResearch"
   trnEventArray:
     description: "successful operation"
     schema:
