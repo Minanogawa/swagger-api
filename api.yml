@@ -329,6 +329,151 @@ paths:
           description: "Invalid status value"
 
 
+  /trnBook:
+    get:
+      tags:
+      - "adBook"
+      summary: "TRN_BOOKからデータを全件取得する"
+      operationId: "readTrnBook"
+      responses:
+        200:
+          $ref: '#/responses/trnBookArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adBook"
+      summary: "TRN_BOOKに新規データを登録する"
+      operationId: "createTrnBook"
+      parameters:
+        - $ref: '#/parameters/trnBookArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adBook"
+      summary: "TRN_BOOK情報の更新を行う"
+      operationId: "updateTrnBook"
+      parameters:
+        - $ref: '#/parameters/trnBookArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnBook/{uuid}:
+    get:
+      tags:
+      - "adBook"
+      summary: "UUIDで指定したTRN_BOOK"
+      operationId: "readTrnBookFindByUuid"
+      parameters:
+        - $ref: '#/parameters/uuid'
+      responses:
+        200:
+          $ref: '#/responses/trnBookArray'
+        400:
+          description: "Invalid status value"
+  /trnBookRating:
+    get:
+      tags:
+      - "adBook"
+      summary: "TRN_BOOK_RATINGからデータを全件取得する"
+      operationId: "readTrnBookRating"
+      responses:
+        200:
+          $ref: '#/responses/trnBookRatingArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adBook"
+      summary: "TRN_BOOK_RATINGに新規データを登録する"
+      operationId: "createTrnBookRating"
+      parameters:
+        - $ref: '#/parameters/trnBookRatingArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adBook"
+      summary: "TRN_BOOK_RATING情報の更新を行う"
+      operationId: "updateTrnBookRating"
+      parameters:
+        - $ref: '#/parameters/trnBookRatingArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnBookRating/{uuidBook}:
+    get:
+      tags:
+      - "adBook"
+      summary: "UUID BOOKでTRN_BOOK_RATINGの検索を行う"
+      operationId: "readTrnBookRatingFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/uuidBook'
+      responses:
+        200:
+          $ref: '#/responses/trnBookArray'
+        400:
+          description: "Invalid status value"
+  /trnBookResearch:
+    get:
+      tags:
+      - "adBook"
+      summary: "TRN_BOOK_RESEARCHからデータを全件取得する"
+      operationId: "readTrnBookResearch"
+      responses:
+        200:
+          $ref: '#/responses/trnBookResearchArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adBook"
+      summary: "TRN_BOOK_RESEARCHに新規データを登録する"
+      operationId: "createTrnBookResearch"
+      parameters:
+        - $ref: '#/parameters/trnBookResearchArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adBook"
+      summary: "TRN_BOOK_RESEARCH情報の更新を行う"
+      operationId: "updateTrnBookResearch"
+      parameters:
+        - $ref: '#/parameters/trnBookResearchArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnBookResearch/{uuidBook}:
+    get:
+      tags:
+      - "adBook"
+      summary: "UUID BOOKでTRN_BOOK_RESEARCHの検索を行う"
+      operationId: "readTrnBookResearchFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/uuidBook'
+      responses:
+        200:
+          $ref: '#/responses/trnBookArray'
+        400:
+          description: "Invalid status value"
+
   /trnEvent:
     get:
       tags:
@@ -936,6 +1081,12 @@ parameters:
     required: true
     in: path
     type: "string"
+  uuidBook:
+    name: uuidBook
+    description: "TRN_BOOKのUUID検索用パラメーター"
+    required: true
+    in: path
+    type: "string"
   uuidMovie:
     name: uuidMovie
     description: "TRN_MOVIEのUUID検索用パラメーター"
@@ -992,7 +1143,7 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnBookRating"
-  trBookResearchArray:
+  trnBookResearchArray:
     description: "successful operation"
     schema:
       type: "array"
