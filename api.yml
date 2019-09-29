@@ -14,6 +14,8 @@ basePath: "/"
 tags:
   - name: "auth"
     description: "Oauth2により認証を行う"
+  - name: "adBook"
+    description: "Administration Bookページにおけるデータ通信定義"
   - name: "adChart"
     description: "Administration Chartページにおけるデータ通信定義"
   - name: "adEvent"
@@ -1154,6 +1156,67 @@ definitions:
         properties:
           degitalArt:
             type: "number"
+            
+  trnBook:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_BOOKのUUID"
+      author:
+        type: "string"
+        description: "本の執筆者"
+      book_title:
+        type: "string"
+        description: "本のタイトル"
+      book_category:
+        type: "string"
+        description: "本の種別"
+        enum:
+        - "Amusement"
+        - "Coffee Shop"
+        - "Food"
+        - "Organization"
+        - "Publisher"
+        - "Retail"
+        - "Spot"
+        - "Twitter"
+      year:
+        type: "string"
+        description: "映画の上映年"
+      publish_date:
+        type: "string"
+        description: "本の発行日"
+      book_to_movie:
+        type: "string"
+        description: "TRN_MOVIEのUUID"
+      url:
+        type: "string"
+        description: "本のPR用URL"
+      twitter:
+        type: "string"
+        description: "本の公式twitter"
+      summaryExcel:
+        type: "string"
+        description: "本を要約したExcelのURL"
+      summaryPdf:
+        type: "string"
+        description: "本を要約したPDFのURL"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+            
+            
+            
   trnEvent:
     type: "object"
     properties:
