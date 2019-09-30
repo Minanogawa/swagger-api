@@ -24,6 +24,8 @@ tags:
     description: "Administration Masterページにおけるデータ通信定義"
   - name: "adMovie"
     description: "Administration Movieページにおけるデータ通信定義"
+  - name: "adPerson"
+    description: "Administration Personページにおけるデータ通信定義"
   - name: "adSpot"
     description: "Administration Spotページ、主にSPOT情報の情報を管理する画面"
   - name: "adTop"
