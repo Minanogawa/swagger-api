@@ -754,6 +754,157 @@ paths:
         400:
           description: "Invalid status value"
 
+
+
+
+  /trnPerson:
+    get:
+      tags:
+      - "adPerson"
+      summary: "TRN_BOOKからデータを全件取得する"
+      operationId: "readTrnPerson"
+      responses:
+        200:
+          $ref: '#/responses/trnPersonArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adPerson"
+      summary: "TRN_BOOKに新規データを登録する"
+      operationId: "createTrnPerson"
+      parameters:
+        - $ref: '#/parameters/trnPersonArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adPerson"
+      summary: "TRN_BOOK情報の更新を行う"
+      operationId: "updateTrnPerson"
+      parameters:
+        - $ref: '#/parameters/trnPersonArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnPerson/{uuid}:
+    get:
+      tags:
+      - "adPerson"
+      summary: "UUIDで指定したTRN_BOOK"
+      operationId: "readTrnPersonFindByUuid"
+      parameters:
+        - $ref: '#/parameters/uuid'
+      responses:
+        200:
+          $ref: '#/responses/trnPersonArray'
+        400:
+          description: "Invalid status value"
+  /trnPersonProduct:
+    get:
+      tags:
+      - "adPerson"
+      summary: "TRN_BOOK_RATINGからデータを全件取得する"
+      operationId: "readTrnPersonProduct"
+      responses:
+        200:
+          $ref: '#/responses/trnPersonProductArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adPerson"
+      summary: "TRN_BOOK_RATINGに新規データを登録する"
+      operationId: "createTrnPersonProduct"
+      parameters:
+        - $ref: '#/parameters/trnPersonProductArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adBook"
+      summary: "TRN_BOOK_RATING情報の更新を行う"
+      operationId: "updateTrnPersonProduct"
+      parameters:
+        - $ref: '#/parameters/trnPersonProductArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnPersonProduct/{uuidBook}:
+    get:
+      tags:
+      - "adPerson"
+      summary: "UUID BOOKでTRN_BOOK_RATINGの検索を行う"
+      operationId: "readTrnPersonProductFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/uuidBook'
+      responses:
+        200:
+          $ref: '#/responses/trnPersonProductArray'
+        400:
+          description: "Invalid status value"
+  /trnPersonTalk:
+    get:
+      tags:
+      - "adPerson"
+      summary: "TRN_BOOK_RESEARCHからデータを全件取得する"
+      operationId: "readTrnPersonTalk"
+      responses:
+        200:
+          $ref: '#/responses/trnPersonTalkArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adPerson"
+      summary: "TRN_BOOK_RESEARCHに新規データを登録する"
+      operationId: "createTrnPersonTalk"
+      parameters:
+        - $ref: '#/parameters/trnPersonTalkArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adPerson"
+      summary: "TRN_BOOK_RESEARCH情報の更新を行う"
+      operationId: "updateTrnPersonTalk"
+      parameters:
+        - $ref: '#/parameters/trnPersonTalkArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnPersonTalk/{uuidBook}:
+    get:
+      tags:
+      - "adPerson"
+      summary: "UUID BOOKでTRN_BOOK_RESEARCHの検索を行う"
+      operationId: "readTrnPersonTalkFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/uuidBook'
+      responses:
+        200:
+          $ref: '#/responses/trnPersonTalkArray'
+        400:
+          description: "Invalid status value"
+
+
+
+
   /trnSpot:
     get:
       tags:
@@ -1036,9 +1187,36 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieUrl"
+  trnPersonArray:
+    name: trnPersonArray
+    description: "配列単位の人物情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnPerson"
+  trnPersonProductArray:
+    name: trnMovieRatingArray
+    description: "配列単位の人の作品情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnPersonProduct"
+  trnPersonTalkArray:
+    name: trnMovieResearchArray
+    description: "配列単位の会話情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnPersonTalk"
   trnSpot:
     name: trnSpot
-    description: "記事情報"
+    description: "観光場所情報"
     required: true
     in: body
     schema:
@@ -1092,6 +1270,12 @@ parameters:
   uuidMovie:
     name: uuidMovie
     description: "TRN_MOVIEのUUID検索用パラメーター"
+    required: true
+    in: path
+    type: "string"
+  uuidPerson:
+    name: uuidPerson
+    description: "TRN_PERSONのUUID検索用パラメーター"
     required: true
     in: path
     type: "string"
@@ -1187,6 +1371,24 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieUrl"
+  trnPersonArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnPerson"
+  trnPersonProductArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnPersonProduct"
+  trnPersonTalkArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnPersonTalk"
   trnSpotArray:
     description: "successful operation"
     schema:
