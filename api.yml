@@ -828,7 +828,7 @@ paths:
           description: "Invalid input"
     put:
       tags:
-      - "adBook"
+      - "adPerson"
       summary: "TRN_PERSON_PRODUCTî•ñ‚ÌXV‚ğs‚¤"
       operationId: "updateTrnPersonProduct"
       parameters:
