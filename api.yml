@@ -900,8 +900,6 @@ paths:
         400:
           description: "Invalid status value"
 
-
-
   /trnSpot:
     get:
       tags:
