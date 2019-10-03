@@ -755,13 +755,11 @@ paths:
           description: "Invalid status value"
 
 
-
-
   /trnPerson:
     get:
       tags:
       - "adPerson"
-      summary: "TRN_BOOKからデータを全件取得する"
+      summary: "TRN_PERSONからデータを全件取得する"
       operationId: "readTrnPerson"
       responses:
         200:
@@ -771,7 +769,7 @@ paths:
     post:
       tags:
       - "adPerson"
-      summary: "TRN_BOOKに新規データを登録する"
+      summary: "TRN_PERSONに新規データを登録する"
       operationId: "createTrnPerson"
       parameters:
         - $ref: '#/parameters/trnPersonArray'
@@ -783,7 +781,7 @@ paths:
     put:
       tags:
       - "adPerson"
-      summary: "TRN_BOOK情報の更新を行う"
+      summary: "TRN_PERSON情報の更新を行う"
       operationId: "updateTrnPerson"
       parameters:
         - $ref: '#/parameters/trnPersonArray'
@@ -796,7 +794,7 @@ paths:
     get:
       tags:
       - "adPerson"
-      summary: "UUIDで指定したTRN_BOOK"
+      summary: "UUIDで指定したTRN_PERSON"
       operationId: "readTrnPersonFindByUuid"
       parameters:
         - $ref: '#/parameters/uuid'
@@ -809,7 +807,7 @@ paths:
     get:
       tags:
       - "adPerson"
-      summary: "TRN_BOOK_RATINGからデータを全件取得する"
+      summary: "TRN_PERSON_PRODUCTからデータを全件取得する"
       operationId: "readTrnPersonProduct"
       responses:
         200:
@@ -819,7 +817,7 @@ paths:
     post:
       tags:
       - "adPerson"
-      summary: "TRN_BOOK_RATINGに新規データを登録する"
+      summary: "TRN_PERSON_PRODUCTに新規データを登録する"
       operationId: "createTrnPersonProduct"
       parameters:
         - $ref: '#/parameters/trnPersonProductArray'
@@ -831,7 +829,7 @@ paths:
     put:
       tags:
       - "adBook"
-      summary: "TRN_BOOK_RATING情報の更新を行う"
+      summary: "TRN_PERSON_PRODUCT情報の更新を行う"
       operationId: "updateTrnPersonProduct"
       parameters:
         - $ref: '#/parameters/trnPersonProductArray'
@@ -844,7 +842,7 @@ paths:
     get:
       tags:
       - "adPerson"
-      summary: "UUID BOOKでTRN_BOOK_RATINGの検索を行う"
+      summary: "UUID BOOKでTRN_PERSON_PRODUCTの検索を行う"
       operationId: "readTrnPersonProductFindByUuidMovie"
       parameters:
         - $ref: '#/parameters/uuidBook'
@@ -857,7 +855,7 @@ paths:
     get:
       tags:
       - "adPerson"
-      summary: "TRN_BOOK_RESEARCHからデータを全件取得する"
+      summary: "TRN_PERSON_TALKからデータを全件取得する"
       operationId: "readTrnPersonTalk"
       responses:
         200:
@@ -867,7 +865,7 @@ paths:
     post:
       tags:
       - "adPerson"
-      summary: "TRN_BOOK_RESEARCHに新規データを登録する"
+      summary: "TRN_PERSON_TALKに新規データを登録する"
       operationId: "createTrnPersonTalk"
       parameters:
         - $ref: '#/parameters/trnPersonTalkArray'
@@ -879,7 +877,7 @@ paths:
     put:
       tags:
       - "adPerson"
-      summary: "TRN_BOOK_RESEARCH情報の更新を行う"
+      summary: "TRN_PERSON_TALK情報の更新を行う"
       operationId: "updateTrnPersonTalk"
       parameters:
         - $ref: '#/parameters/trnPersonTalkArray'
@@ -892,7 +890,7 @@ paths:
     get:
       tags:
       - "adPerson"
-      summary: "UUID BOOKでTRN_BOOK_RESEARCHの検索を行う"
+      summary: "UUID BOOKでTRN_PERSON_TALKの検索を行う"
       operationId: "readTrnPersonTalkFindByUuidMovie"
       parameters:
         - $ref: '#/parameters/uuidBook'
@@ -901,7 +899,6 @@ paths:
           $ref: '#/responses/trnPersonTalkArray'
         400:
           description: "Invalid status value"
-
 
 
 
