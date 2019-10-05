@@ -1554,9 +1554,12 @@ definitions:
       uuid:
         type: "string"
         description: "TRN_BOOKのUUID"
-      author:
+      uuid_person:
         type: "string"
-        description: "本の執筆者"
+        description: "TRN_PERSONのUUID,本の執筆者"
+      uuid_movie:
+        type: "string"
+        description: "TRN_MOVIEのUUID,本が映画化された際の情報"
       book_title:
         type: "string"
         description: "本のタイトル"
@@ -1578,9 +1581,6 @@ definitions:
       publish_date:
         type: "string"
         description: "本の発行日"
-      book_to_movie:
-        type: "string"
-        description: "TRN_MOVIEのUUID"
       url:
         type: "string"
         description: "本のPR用URL"
