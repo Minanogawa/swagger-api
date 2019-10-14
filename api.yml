@@ -1568,7 +1568,7 @@ definitions:
         description: "–{‚ÌŽí•Ê"
         enum:
         - "Amusement"
-        - "Coffee Shop"
+        - "Information design"
         - "Food"
         - "Organization"
         - "Publisher"
