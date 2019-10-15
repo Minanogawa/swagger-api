@@ -1484,22 +1484,22 @@ definitions:
   publish:
     type: "object"
     properties:
-      publishUuid:
+      uuid:
         type: "string"
         description: "PublishのUUID"
-      publishTitle:
+      title:
         type: "string"
         description: "伝達する情報のタイトル"
-      publishCategory:
+      category:
         type: "string"
         description: "伝達する情報の種別"
-      publishIconUrl:
+      icon:
         type: "string"
         description: "伝達記事情報のアイコン"
-      publishSummary:
+      summary_in_header:
         type: "string"
         description: "伝達記事情報の要約"
-      publishText:
+      text:
         type: "string"
         description: "伝達する情報の中身"
       target:
