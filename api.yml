@@ -125,42 +125,6 @@ paths:
         400:
           description: "Invalid status value"
 
-  /adTop/publish:
-    get:
-      tags:
-      - "adTop"
-      summary: "Administration TopページにおいてPublish情報を取得する"
-      operationId: "readPublishInfo"
-      responses:
-        200:
-          $ref: '#/responses/publishArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adTop"
-      summary: "Administration Topページにおいて、記事を登録・更新をする"
-      operationId: "createPublishInfo"
-      parameters:
-        - $ref: '#/parameters/publishArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-    put:
-      tags:
-      - "adTop"
-      summary: "Administration Topページにおいて、記事情報の修正を行う"
-      operationId: "updatePublish"
-      parameters:
-        - $ref: '#/parameters/publishArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-
   /cpTop/chart/{chartDate}:
     get:
       tags:
@@ -329,7 +293,6 @@ paths:
           $ref: '#/responses/mstConfigJson'
         400:
           description: "Invalid status value"
-
 
   /trnBook:
     get:
@@ -560,7 +523,6 @@ paths:
         400:
           description: "Invalid status value"
           
-
   /trnMovie:
     get:
       tags:
@@ -754,7 +716,6 @@ paths:
         400:
           description: "Invalid status value"
 
-
   /trnPerson:
     get:
       tags:
@@ -899,6 +860,44 @@ paths:
           $ref: '#/responses/trnPersonTalkArray'
         400:
           description: "Invalid status value"
+
+
+  /trnPublish:
+    get:
+      tags:
+      - "adTop"
+      summary: "TRN_PUBLISHからデータを全件取得する"
+      operationId: "readTrnPublish"
+      responses:
+        200:
+          $ref: '#/responses/publishArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adTop"
+      summary: "TRN_PUBLISHに新規データを登録する"
+      operationId: "createTrnPublish"
+      parameters:
+        - $ref: '#/parameters/publishArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+    put:
+      tags:
+      - "adTop"
+      summary: "TRN_PUBLISH情報の更新を行う"
+      operationId: "updateTrnPublish"
+      parameters:
+        - $ref: '#/parameters/publishArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+
 
   /trnSpot:
     get:
@@ -1091,7 +1090,7 @@ parameters:
     required: true
     in: body
     schema:
-      $ref: '#/definitions/publish'
+      $ref: '#/definitions/trnPublish'
   publishArray:
     name: publishArray
     description: "配列単位の記事情報"
@@ -1100,7 +1099,7 @@ parameters:
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/publish"
+        $ref: "#/definitions/trnPublish"
   trnBookArray:
     name: trnBookArray
     description: "配列単位の本情報"
@@ -1305,13 +1304,13 @@ responses:
   publish:
     description: "successful operation"
     schema:
-      $ref: "#/definitions/publish"
+      $ref: "#/definitions/trnPublish"
   publishArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/publish"
+        $ref: "#/definitions/trnPublish"
   trnBookArray:
     description: "successful operation"
     schema:
@@ -1481,7 +1480,7 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-  publish:
+  trnPublish:
     type: "object"
     properties:
       uuid:
