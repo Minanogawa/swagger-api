@@ -910,7 +910,7 @@ paths:
           $ref: '#/responses/trnPublishArray'
         400:
           description: "Invalid status value"
-  /trnPublishText/{uuid}:
+  /trnPublish/{uuid}/text:
     get:
       tags:
       - "adTop"
