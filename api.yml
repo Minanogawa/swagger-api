@@ -121,7 +121,7 @@ paths:
       operationId: "readLatest"
       responses:
         200:
-           $ref: '#/responses/publishArray'
+           $ref: '#/responses/trnPublishArray'
         400:
           description: "Invalid status value"
 
@@ -170,7 +170,7 @@ paths:
       operationId: "readPublishLatest"
       responses:
         200:
-          $ref: '#/responses/publishArray'
+          $ref: '#/responses/trnPublishArray'
         400:
           description: "Invalid status value"
 
@@ -870,7 +870,7 @@ paths:
       operationId: "readTrnPublish"
       responses:
         200:
-          $ref: '#/responses/publishArray'
+          $ref: '#/responses/trnPublishArray'
         400:
           description: "Invalid status value"
     post:
@@ -879,7 +879,7 @@ paths:
       summary: "TRN_PUBLISHに新規データを登録する"
       operationId: "createTrnPublish"
       parameters:
-        - $ref: '#/parameters/publishArray'
+        - $ref: '#/parameters/trnPublishArray'
       responses:
         200:
           description: "successful operation"
@@ -891,10 +891,23 @@ paths:
       summary: "TRN_PUBLISH情報の更新を行う"
       operationId: "updateTrnPublish"
       parameters:
-        - $ref: '#/parameters/publishArray'
+        - $ref: '#/parameters/trnPublishArray'
       responses:
         200:
           description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnPublish/{uuid}:
+    get:
+      tags:
+      - "adTop"
+      summary: "UUIDで指定したTRN_PUBLISH"
+      operationId: "readTrnPublishFindByUuid"
+      parameters:
+        - $ref: '#/parameters/uuid'
+      responses:
+        200:
+          $ref: '#/responses/trnPublishArray'
         400:
           description: "Invalid status value"
 
@@ -1091,15 +1104,6 @@ parameters:
     in: body
     schema:
       $ref: '#/definitions/trnPublish'
-  publishArray:
-    name: publishArray
-    description: "配列単位の記事情報"
-    required: true
-    in: body
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnPublish"
   trnBookArray:
     name: trnBookArray
     description: "配列単位の本情報"
@@ -1208,6 +1212,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnPersonTalk"
+  trnPublishArray:
+    name: trnPublishArray
+    description: "配列単位の記事情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnPublish"
   trnSpot:
     name: trnSpot
     description: "観光場所情報"
@@ -1305,12 +1318,6 @@ responses:
     description: "successful operation"
     schema:
       $ref: "#/definitions/trnPublish"
-  publishArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnPublish"
   trnBookArray:
     description: "successful operation"
     schema:
@@ -1383,6 +1390,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnPersonTalk"
+  trnPublishArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnPublish"
   trnSpotArray:
     description: "successful operation"
     schema:
