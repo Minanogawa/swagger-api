@@ -910,6 +910,19 @@ paths:
           $ref: '#/responses/trnPublishArray'
         400:
           description: "Invalid status value"
+  /trnPublishText/{uuid}:
+    get:
+      tags:
+      - "adTop"
+      summary: "UUIDで指定したTRN_PUBLISHのTextフィールドを取得する"
+      operationId: "readTrnPublishTextFindByUuid"
+      parameters:
+        - $ref: '#/parameters/uuid'
+      responses:
+        200:
+          $ref: '#/responses/trnPublishArray'
+        400:
+          description: "Invalid status value"
 
 
   /trnSpot:
