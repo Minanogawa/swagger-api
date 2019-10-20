@@ -2126,6 +2126,8 @@ definitions:
       category:
         type: "string"
         description: "伝達する情報の種別"
+        enum:
+        - "Daily Life"
       icon:
         type: "string"
         description: "伝達記事情報のアイコン"
