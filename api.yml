@@ -1506,51 +1506,6 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-  trnPublish:
-    type: "object"
-    properties:
-      uuid:
-        type: "string"
-        description: "PublishのUUID"
-      title:
-        type: "string"
-        description: "伝達する情報のタイトル"
-      category:
-        type: "string"
-        description: "伝達する情報の種別"
-      icon:
-        type: "string"
-        description: "伝達記事情報のアイコン"
-      summary_in_header:
-        type: "string"
-        description: "伝達記事情報の要約"
-      text:
-        type: "string"
-        description: "伝達する情報の中身"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      isLatestToward:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      latest_flg:
-        type: "integer"
-        format: "int32"
-      last_flg:
-        type: "integer"
-        format: "int32"
-      release_flg:
-        type: "integer"
-        format: "int32"
-      delete_flg:
-        type: "integer"
-        format: "int32"
   sessionStorage:
     type: "object"
     properties:
@@ -1698,7 +1653,6 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-            
             
   trnEvent:
     type: "object"
@@ -1984,7 +1938,6 @@ definitions:
         type: "integer"
         format: "int32"
         
-
   trnMovieUrl:
     type: "object"
     properties:
@@ -2018,8 +1971,6 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-
-
 
   trnPerson:
     type: "object"
@@ -2093,7 +2044,6 @@ definitions:
         type: "integer"
         format: "int32"
         
-
   trnPersonProduct:
     type: "object"
     properties:
@@ -2160,6 +2110,52 @@ definitions:
       modDate:
         type: "string"
         format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
+  trnPublish:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "PublishのUUID"
+      title:
+        type: "string"
+        description: "伝達する情報のタイトル"
+      category:
+        type: "string"
+        description: "伝達する情報の種別"
+      icon:
+        type: "string"
+        description: "伝達記事情報のアイコン"
+      summary_in_header:
+        type: "string"
+        description: "伝達記事情報の要約"
+      text:
+        type: "string"
+        description: "伝達する情報の中身"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      isLatestToward:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      latest_flg:
+        type: "integer"
+        format: "int32"
+      last_flg:
+        type: "integer"
+        format: "int32"
+      release_flg:
+        type: "integer"
+        format: "int32"
       delete_flg:
         type: "integer"
         format: "int32"
