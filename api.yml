@@ -22,6 +22,8 @@ tags:
     description: "Administration Eventページにおけるデータ通信定義"
   - name: "adMaster"
     description: "Administration Masterページにおけるデータ通信定義"
+  - name: "adMath"
+    description: "Administration Mathページにおけるデータ通信定義"
   - name: "adMovie"
     description: "Administration Movieページにおけるデータ通信定義"
   - name: "adPerson"
@@ -523,6 +525,43 @@ paths:
         400:
           description: "Invalid status value"
           
+          
+  /trnMath:
+    get:
+      tags:
+      - "adMath"
+      summary: "TRN_MATHからデータを全件取得する"
+      operationId: "readTrnMath"
+      responses:
+        200:
+          $ref: '#/responses/trnMathArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMath"
+      summary: "TRN_MATHに新規データを登録する"
+      operationId: "createTrnMath"
+      parameters:
+        - $ref: '#/parameters/trnMathArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE情報の更新を行う"
+      operationId: "updateTrnMath"
+      parameters:
+        - $ref: '#/parameters/trnMathArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+          
   /trnMovie:
     get:
       tags:
@@ -924,7 +963,6 @@ paths:
         400:
           description: "Invalid status value"
 
-
   /trnSpot:
     get:
       tags:
@@ -1162,6 +1200,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnEventResearch"
+  trnMathArray:
+    name: trnMathArray
+    description: "配列単位の映画情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMath"
   trnMovieArray:
     name: trnMovieArray
     description: "配列単位の映画情報"
@@ -1361,6 +1408,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnEventResearch"
+  trnMathArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMath"
   trnMovieArray:
     description: "successful operation"
     schema:
@@ -1793,6 +1846,44 @@ definitions:
       deleteFlg:
         type: "integer"
         format: "int32"
+        
+        
+  trnMath:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MATHのUUID"
+      field_en:
+        type: "string"
+        description: "分野、英語名称"
+        enum:
+        - "Amusement"
+      field_ja:
+        type: "string"
+        description: "分野、日本語名称"
+        enum:
+        - "Amusement"
+      memo:
+        type: "string"
+        description: "メモ項目"
+      category:
+        type: "string"
+        description: "映画の種別"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+        
+        
         
   trnMovie:
     type: "object"
