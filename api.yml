@@ -551,11 +551,81 @@ paths:
           description: "Invalid input"
     put:
       tags:
-      - "adMovie"
-      summary: "TRN_MOVIE情報の更新を行う"
+      - "adMath"
+      summary: "TRN_MATH情報の更新を行う"
       operationId: "updateTrnMath"
       parameters:
         - $ref: '#/parameters/trnMathArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnMathProb:
+    get:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_PROBからデータを全件取得する"
+      operationId: "readTrnMathProb"
+      responses:
+        200:
+          $ref: '#/responses/trnMathProbArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_PROBに新規データを登録する"
+      operationId: "createTrnMathProb"
+      parameters:
+        - $ref: '#/parameters/trnMathProbArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_PROB情報の更新を行う"
+      operationId: "updateTrnMathProb"
+      parameters:
+        - $ref: '#/parameters/trnMathProbArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnMathStat:
+    get:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_STATからデータを全件取得する"
+      operationId: "readTrnMathStat"
+      responses:
+        200:
+          $ref: '#/responses/trnMathStatArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_STATに新規データを登録する"
+      operationId: "createTrnMathStat"
+      parameters:
+        - $ref: '#/parameters/trnMathStatArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_STAT情報の更新を行う"
+      operationId: "updateTrnMathStat"
+      parameters:
+        - $ref: '#/parameters/trnMathStatArray'
       responses:
         200:
           description: "successful operation"
@@ -1877,7 +1947,6 @@ definitions:
         type: "integer"
         format: "int32"
         
-        
   trnMath:
     type: "object"
     properties:
@@ -1912,7 +1981,6 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-
   trnMathProb:
     type: "object"
     properties:
@@ -1946,7 +2014,6 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-
   trnMathStat:
     type: "object"
     properties:
@@ -1986,8 +2053,6 @@ definitions:
         format: "int32"
 
 
-        
-        
   trnMovie:
     type: "object"
     properties:
