@@ -1202,13 +1202,31 @@ parameters:
         $ref: "#/definitions/trnEventResearch"
   trnMathArray:
     name: trnMathArray
-    description: "配列単位の映画情報"
+    description: "配列単位の数学情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
         $ref: "#/definitions/trnMath"
+  trnMathProbArray:
+    name: trnMathProbArray
+    description: "配列単位の数学問題情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMathProb"
+  trnMathStatArray:
+    name: trnMathStatArray
+    description: "配列単位の数学統計情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMathStat"
   trnMovieArray:
     name: trnMovieArray
     description: "配列単位の映画情報"
@@ -1414,6 +1432,18 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMath"
+  trnMathProbArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMathProb"
+  trnMathStatArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMathStat"
   trnMovieArray:
     description: "successful operation"
     schema:
@@ -1854,12 +1884,12 @@ definitions:
       uuid:
         type: "string"
         description: "TRN_MATHのUUID"
-      field_en:
+      fieldEn:
         type: "string"
         description: "分野、英語名称"
         enum:
         - "Amusement"
-      field_ja:
+      fieldJa:
         type: "string"
         description: "分野、日本語名称"
         enum:
@@ -1882,7 +1912,80 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-        
+
+  trnMathProb:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MATH_PROBのUUID"
+      uuidMath:
+        type: "string"
+        description: "TRN_MATHのUUID"
+      mediaType:
+        type: "string"
+        description: "問題の参照媒体"
+        enum:
+        - "Web"
+        - "PDF"
+      remarks:
+        type: "string"
+        description: "備考"
+      ref:
+        type: "string"
+        description: "問題の参照先"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
+  trnMathStat:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MATH_STATのUUID"
+      uuidMath:
+        type: "string"
+        description: "TRN_MATHのUUID"
+      stat_name:
+        type: "string"
+        description: "統計名称"
+      desing_for:
+        type: "string"
+        description: "その統計手法が得意とする表現"
+        enum:
+        - "Amusement"
+      purpose:
+        type: "string"
+        description: "その統計を使う目的"
+        enum:
+        - "Amusement"
+      step:
+        type: "string"
+        description: "その統計の作成手順"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
+
         
         
   trnMovie:
