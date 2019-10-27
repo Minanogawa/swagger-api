@@ -2026,7 +2026,7 @@ definitions:
       stat_name:
         type: "string"
         description: "統計名称"
-      desing_for:
+      design_for:
         type: "string"
         description: "その統計手法が得意とする表現"
         enum:
