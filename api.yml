@@ -2052,7 +2052,6 @@ definitions:
         type: "integer"
         format: "int32"
 
-
   trnMovie:
     type: "object"
     properties:
