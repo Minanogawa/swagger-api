@@ -2572,6 +2572,72 @@ definitions:
         type: "integer"
         format: "int32"
         
+  trnStory:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_STORYのUUID"
+      storyName:
+        type: "string"
+        description: "ストーリーの名称"
+      spotWard:
+        type: "string"
+        description: "観光目的を持つ場所の所在地区"
+        enum:
+        - "Bunkyo"
+        - "Chiyoda"
+        - "Chuo"
+        - "Minato"
+        - "Nakano"
+        - "Shibuya"
+        - "Shinjuku"
+        - "Toshima"
+      spotCategory:
+        type: "string"
+        description: "観光目的を持つ場所の種別"
+        enum:
+        - "Amusement"
+        - "Coffee Shop"
+        - "Food"
+        - "Organization"
+        - "Publisher"
+        - "Retail"
+        - "Spot"
+        - "Twitter"
+      spotPictureUrl:
+        type: "string"
+        description: "観光目的を持つ場所の写真情報"
+      spotDescription:
+        type: "string"
+        description: "観光目的を持つ場所の概要情報"
+      spotPdf:
+        type: "string"
+        description: "観光目的を持つ場所のPDFのパス"
+      spotLatitude:
+        type: "string"
+        description: "観光目的を持つ場所の経度"
+      spotLongitude:
+        type: "string"
+        description: "観光目的を持つ場所の緯度"
+      zoom:
+        type: "number"
+        description: "Google Mapのzoom度"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+        
+        
+        
   timeline:
     type: "object"
     properties:
