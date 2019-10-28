@@ -632,6 +632,43 @@ paths:
         400:
           description: "Invalid status value"
           
+  /trnMathUsage:
+    get:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_USAGEからデータを全件取得する"
+      operationId: "readTrnMathUsage"
+      responses:
+        200:
+          $ref: '#/responses/trnMathUsageArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_USAGEに新規データを登録する"
+      operationId: "createTrnMathUsage"
+      parameters:
+        - $ref: '#/parameters/trnMathUsageArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_USAGE情報の更新を行う"
+      operationId: "updateTrnMathUsage"
+      parameters:
+        - $ref: '#/parameters/trnMathUsageArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+
+          
   /trnMovie:
     get:
       tags:
@@ -970,7 +1007,6 @@ paths:
         400:
           description: "Invalid status value"
 
-
   /trnPublish:
     get:
       tags:
@@ -1297,6 +1333,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnMathStat"
+  trnMathUsageArray:
+    name: trnMathUsageArray
+    description: "配列単位の数学使用情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMathUsage"
   trnMovieArray:
     name: trnMovieArray
     description: "配列単位の映画情報"
@@ -1514,6 +1559,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMathStat"
+  trnMathUsageArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMathUsage"
   trnMovieArray:
     description: "successful operation"
     schema:
@@ -2023,10 +2074,10 @@ definitions:
       uuidMath:
         type: "string"
         description: "TRN_MATHのUUID"
-      stat_name:
+      statName:
         type: "string"
         description: "統計名称"
-      design_for:
+      designFor:
         type: "string"
         description: "その統計手法が得意とする表現"
         enum:
@@ -2039,6 +2090,36 @@ definitions:
       step:
         type: "string"
         description: "その統計の作成手順"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+  trnMathUsage:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MATH_STATのUUID"
+      uuidMath:
+        type: "string"
+        description: "TRN_MATHのUUID"
+      title:
+        type: "string"
+        description: "数学使用方法の名前付け"
+      buttonName:
+        type: "string"
+        description: "確認ボタン名"
+      step:
+        type: "string"
+        description: "その数学分野の使用手順"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
