@@ -1957,12 +1957,12 @@ definitions:
         type: "string"
         description: "分野、英語名称"
         enum:
-        - "Amusement"
+        - "Trigonometric Function"
       fieldJa:
         type: "string"
         description: "分野、日本語名称"
         enum:
-        - "Amusement"
+        - "三角関数"
       memo:
         type: "string"
         description: "メモ項目"
@@ -2581,48 +2581,14 @@ definitions:
       storyName:
         type: "string"
         description: "ストーリーの名称"
-      spotWard:
+      storyFrom:
         type: "string"
-        description: "観光目的を持つ場所の所在地区"
+        description: "ストーリー発信媒体"
         enum:
-        - "Bunkyo"
-        - "Chiyoda"
-        - "Chuo"
-        - "Minato"
-        - "Nakano"
-        - "Shibuya"
-        - "Shinjuku"
-        - "Toshima"
-      spotCategory:
+        - "Movie"
+      summary:
         type: "string"
-        description: "観光目的を持つ場所の種別"
-        enum:
-        - "Amusement"
-        - "Coffee Shop"
-        - "Food"
-        - "Organization"
-        - "Publisher"
-        - "Retail"
-        - "Spot"
-        - "Twitter"
-      spotPictureUrl:
-        type: "string"
-        description: "観光目的を持つ場所の写真情報"
-      spotDescription:
-        type: "string"
-        description: "観光目的を持つ場所の概要情報"
-      spotPdf:
-        type: "string"
-        description: "観光目的を持つ場所のPDFのパス"
-      spotLatitude:
-        type: "string"
-        description: "観光目的を持つ場所の経度"
-      spotLongitude:
-        type: "string"
-        description: "観光目的を持つ場所の緯度"
-      zoom:
-        type: "number"
-        description: "Google Mapのzoom度"
+        description: "ストーリーの要約"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
@@ -2635,7 +2601,6 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-        
         
         
   timeline:
