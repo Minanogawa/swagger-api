@@ -2685,6 +2685,72 @@ definitions:
         type: "integer"
         format: "int32"
         
+  trnStoryChar:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_STORY_CHARのUUID"
+      uuidStory:
+        type: "string"
+        description: "TRN_STORYのUUID"
+      name:
+        type: "string"
+        description: "キャラクターの名称"
+      age:
+        type: "string"
+        description: "キャラクターの年齢"
+        enum:
+        - "Movie"
+      personality:
+        type: "string"
+        description: "キャラクターの性格"
+      summary:
+        type: "string"
+        description: "ストーリーの要約"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
+  trnStoryPlot:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_STORY_CHARのUUID"
+      uuidStory:
+        type: "string"
+        description: "TRN_STORYのUUID"
+      chapter:
+        type: "integer"
+        description: "Plotの章番号"
+      chapterTitle:
+        type: "string"
+        description: "章のタイトル"
+      chapterSummary:
+        type: "string"
+        description: "章の概要"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
         
   timeline:
     type: "object"
