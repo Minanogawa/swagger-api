@@ -1288,7 +1288,7 @@ paths:
   /trnStoryPlot:
     get:
       tags:
-      - "adSpot"
+      - "adStory"
       summary: "TRN_STORY_PLOTから全件のデータを取得する"
       operationId: "readTrnStoryPlot"
       responses:
@@ -1298,7 +1298,7 @@ paths:
           description: "Invalid status value"
     post:
       tags:
-      - "adSpot"
+      - "adStory"
       summary: "TRN_STORY_PLOT情報のデータを新規追加"
       operationId: "createTrnStoryPlot"
       parameters:
@@ -1310,7 +1310,7 @@ paths:
           description: "Invalid input"
     put:
       tags:
-      - "adSpot"
+      - "adStory"
       summary: "TRN_STORY_PLOT情報の更新を行う"
       operationId: "updateTrnStoryPlot"
       parameters:
