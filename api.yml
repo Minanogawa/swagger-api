@@ -1118,7 +1118,6 @@ paths:
           $ref: '#/responses/trnSpotArray'
         400:
           description: "Invalid status value"
-
   /trnSpotResearch:
     get:
       tags:
@@ -1167,7 +1166,6 @@ paths:
           $ref: '#/responses/trnSpotResearchArray'
         400:
           description: "Invalid status value"
-
   /trnSpotPr:
     get:
       tags:
@@ -1217,7 +1215,111 @@ paths:
         400:
           description: "Invalid status value"
 
-
+  /trnStory:
+    get:
+      tags:
+      - "adStory"
+      summary: "TRN_STORYからデータを全件取得する"
+      operationId: "readTrnStory"
+      responses:
+        200:
+          $ref: '#/responses/trnStoryArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adStory"
+      summary: "TRN_STORYに新規データを登録する"
+      operationId: "createTrnStory"
+      parameters:
+        - $ref: '#/parameters/trnStoryArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adStory"
+      summary: "TRN_STORY情報の更新を行う"
+      operationId: "updateTrnStory"
+      parameters:
+        - $ref: '#/parameters/trnStoryArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnStoryChar:
+    get:
+      tags:
+      - "adStory"
+      summary: "TRN_STORY_CHARから全件のデータを取得する"
+      operationId: "readTrnStoryChar"
+      responses:
+        200:
+          $ref: '#/responses/trnStoryCharArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adStory"
+      summary: "TRN_STORY_CHAR情報のデータを新規追加"
+      operationId: "createTrnStoryChar"
+      parameters:
+        - $ref: '#/parameters/trnStoryCharArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adStory"
+      summary: "TRN_STORY_CHAR情報の更新を行う"
+      operationId: "updateTrnStoryChar"
+      parameters:
+        - $ref: '#/parameters/trnStoryCharArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnStoryPlot:
+    get:
+      tags:
+      - "adSpot"
+      summary: "TRN_STORY_PLOTから全件のデータを取得する"
+      operationId: "readTrnStoryPlot"
+      responses:
+        200:
+          $ref: '#/responses/trnStoryPlotArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adSpot"
+      summary: "TRN_STORY_PLOT情報のデータを新規追加"
+      operationId: "createTrnStoryPlot"
+      parameters:
+        - $ref: '#/parameters/trnStoryPlotArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adSpot"
+      summary: "TRN_STORY_PLOT情報の更新を行う"
+      operationId: "updateTrnStoryPlot"
+      parameters:
+        - $ref: '#/parameters/trnStoryPlotArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
 
 parameters:
   bearerAuth:
@@ -1450,6 +1552,33 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnSpotResearch"
+  trnStoryArray:
+    name: trnStoryArray
+    description: "配列単位の物語情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnStory"
+  trnStoryCharArray:
+    name: trnStoryCharArray
+    description: "配列単位の物語キャラクター情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnStoryChar"
+  trnStoryPlotArray:
+    name: trnStoryPlotArray
+    description: "配列単位の物語章情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnStoryPlot"
   timeLine:
     name: timeLine
     description: "Userテーブルに格納されているtimelineのJsonの型"
@@ -1633,6 +1762,24 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnSpotResearch"
+  trnStoryArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnStory"
+  trnStoryCharArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnStoryChar"
+  trnStoryPlotArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnStoryPlot"
 
 definitions:
   categoryMenu:
