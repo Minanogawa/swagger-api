@@ -2441,6 +2441,11 @@ definitions:
       roll:
         type: "string"
         description: "‰f‰æ“à”z–ð–ðŠ„"
+        enum:
+        - "Director"
+        - "Main Actor"
+        - "Main Actress"
+        - "Music"
       age:
         type: "integer"
         description: "‰f‰æ“à”z–ð”N—î"
