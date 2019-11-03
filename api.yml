@@ -2297,14 +2297,16 @@ definitions:
         type: "string"
         description: "映画の種別"
         enum:
-        - "Amusement"
+        - "Comedy"
         - "Coffee Shop"
         - "Food"
         - "Organization"
         - "Publisher"
         - "Retail"
         - "Spot"
-        - "Twitter"
+      url:
+        type: "string"
+        description: "映画のサイトURL"
       year:
         type: "string"
         description: "映画の上映年"
@@ -2320,9 +2322,6 @@ definitions:
       pinyinName:
         type: "string"
         description: "中国語でのピンイン"
-      officialUrl:
-        type: "string"
-        description: "映画の公式サイト"
       twitter:
         type: "string"
         description: "映画の公式twitter"
