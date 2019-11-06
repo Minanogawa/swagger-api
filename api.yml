@@ -2368,7 +2368,10 @@ definitions:
         - "Main Actor"
         - "Main Actress"
         - "Music"
-      name:
+      performer:
+        type: "string"
+        description: "‰‰Ò–¼"
+      rollName:
         type: "string"
         description: "‰f‰æ“à”z–ğ–¼Ì"
       age:
