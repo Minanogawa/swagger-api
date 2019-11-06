@@ -2313,6 +2313,12 @@ definitions:
       releaseDate:
         type: "string"
         description: "‰f‰æ‚Ìã‰f“ú"
+      ruuningTime:
+        type: "string"
+        description: "‰f‰æ‚Ìã‰fŠÔ"
+      country:
+        type: "string"
+        description: "‰f‰æ‚Ìã‰f‘"
       bookUrl:
         type: "string"
         description: "‰f‰æ‚ÌŒ´ì‹r–{URL"
@@ -2325,9 +2331,6 @@ definitions:
       twitter:
         type: "string"
         description: "‰f‰æ‚ÌŒö®twitter"
-      summaryExcel:
-        type: "string"
-        description: "‰f‰æ‚ğ—v–ñ‚µ‚½Excel‚ÌURL"
       summaryPdf:
         type: "string"
         description: "‰f‰æ‚ğ—v–ñ‚µ‚½PDF‚ÌURL"
@@ -2356,9 +2359,6 @@ definitions:
       uuidPerson:
         type: "string"
         description: "TRN_PERSON‚ÌUUID"
-      name:
-        type: "string"
-        description: "‰f‰æ“à”z–ğ–¼Ì"
       roll:
         type: "string"
         description: "‰f‰æ“à”z–ğ–ğŠ„"
@@ -2368,9 +2368,18 @@ definitions:
         - "Main Actor"
         - "Main Actress"
         - "Music"
+      name:
+        type: "string"
+        description: "‰f‰æ“à”z–ğ–¼Ì"
       age:
         type: "integer"
         description: "‰f‰æ“à”z–ğ”N—î"
+      sex:
+        type: "string"
+        description: "«•Ê(enum TRN_PERSON)"
+      job:
+        type: "string"
+        description: "E‹Æ(enum TRN_PERSON)"
       personality:
         type: "string"
         description: "‰f‰æ“à”z–ğ«Ši"
