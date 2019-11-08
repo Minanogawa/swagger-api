@@ -2290,6 +2290,9 @@ definitions:
       uuid:
         type: "string"
         description: "TRN_MOVIEのUUID"
+      image:
+        type: "string"
+        description: "映画のイメージキャプチャー"
       title:
         type: "string"
         description: "映画のタイトル"
