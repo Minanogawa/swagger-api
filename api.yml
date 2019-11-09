@@ -817,6 +817,55 @@ paths:
           $ref: '#/responses/trnMovieArray'
         400:
           description: "Invalid status value"
+  /trnMovieScene:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_SCENEからデータを全件取得する"
+      operationId: "readTrnMovieScene"
+      responses:
+        200:
+          $ref: '#/responses/trnMovieSceneArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_SCENEに新規データを登録する"
+      operationId: "createTrnMovieScene"
+      parameters:
+        - $ref: '#/parameters/trnMovieSceneArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_SCENE情報の更新を行う"
+      operationId: "updateTrnMovieScene"
+      parameters:
+        - $ref: '#/parameters/trnMovieSceneArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnMovieScene/{uuidMovie}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "UUID MOVIEでTRN_MOVIE_SCENEの検索を行う"
+      operationId: "readTrnMovieSceneFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/uuidMovie'
+      responses:
+        200:
+          $ref: '#/responses/trnMovieSceneArray'
+        400:
+          description: "Invalid status value"
+          
   /trnMovieSite:
     get:
       tags:
@@ -1475,6 +1524,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieRating"
+  trnMovieSceneArray:
+    name: trnMovieSceneArray
+    description: "配列単位の映画シーン情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovieScene"
   trnMovieSiteArray:
     name: trnMovieSiteArray
     description: "配列単位の映画サイト情報"
@@ -1716,6 +1774,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieRating"
+  trnMovieSceneArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovieScene"
   trnMovieSiteArray:
     description: "successful operation"
     schema:
@@ -2426,6 +2490,43 @@ definitions:
       siteUrl:
         type: "string"
         description: "評価サイトのURL"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
+  trnMovieScene:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MOVIE_SCENEのUUID"
+      uuidMovie:
+        type: "string"
+        description: "TRN_MOVIEのUUID"
+      title:
+        type: "string"
+        description: "映画シーンの表題"
+      summary:
+        type: "string"
+        description: "映画シーンの要約"
+      start:
+        type: "string"
+        description: "映画シーンの開始"
+      end:
+        type: "string"
+        description: "映画シーンの終了"
+      url:
+        type: "string"
+        description: "映画シーンのURL"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
