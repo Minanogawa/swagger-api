@@ -670,7 +670,6 @@ paths:
         400:
           description: "Invalid status value"
 
-          
   /trnMovie:
     get:
       tags:
@@ -769,6 +768,55 @@ paths:
         400:
           description: "Invalid status value"
           
+  /trnMoviePlot:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_PLOTからデータを全件取得する"
+      operationId: "readTrnMoviePlot"
+      responses:
+        200:
+          $ref: '#/responses/trnMoviePlotArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_PLOTに新規データを登録する"
+      operationId: "createTrnMoviePlot"
+      parameters:
+        - $ref: '#/parameters/trnMoviePlotArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_PLOT情報の更新を行う"
+      operationId: "updateTrnMoviePlot"
+      parameters:
+        - $ref: '#/parameters/trnMoviePlotArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnMoviePlot/{uuidMovie}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "UUID MOVIEでTRN_MOVIE_PLOTの検索を行う"
+      operationId: "readTrnMoviePlotFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/uuidMovie'
+      responses:
+        200:
+          $ref: '#/responses/trnMoviePlotArray'
+        400:
+          description: "Invalid status value"
+          
   /trnMovieRating:
     get:
       tags:
@@ -817,6 +865,7 @@ paths:
           $ref: '#/responses/trnMovieArray'
         400:
           description: "Invalid status value"
+          
   /trnMovieScene:
     get:
       tags:
@@ -865,7 +914,6 @@ paths:
           $ref: '#/responses/trnMovieSceneArray'
         400:
           description: "Invalid status value"
-          
   /trnMovieSite:
     get:
       tags:
@@ -1515,6 +1563,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieCast"
+  trnMoviePlotArray:
+    name: trnMoviePlotArray
+    description: "配列単位の映画章情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMoviePlot"
   trnMovieRatingArray:
     name: trnMovieRatingArray
     description: "配列単位の映画評価情報"
@@ -1768,6 +1825,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieCast"
+  trnMoviePlotArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMoviePlot"
   trnMovieRatingArray:
     description: "successful operation"
     schema:
@@ -2456,6 +2519,49 @@ definitions:
       nationality:
         type: "string"
         description: "映画内配役国籍"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
+  trnMoviePlot:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MOVIE_PLOTのUUID"
+      uuidMovie:
+        type: "string"
+        description: "TRN_MOVIEのUUID"
+      chapter:
+        type: "number"
+        description: "章番号"
+      title:
+        type: "string"
+        description: "章タイトル"
+      summary:
+        type: "string"
+        description: "章要約"
+      startDate:
+        type: "string"
+        format: date
+      startDatetime:
+        type: "string"
+        format: date-time
+      endDate:
+        type: "string"
+        format: date
+      endDatetime:
+        type: "string"
+        format: date-time
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
