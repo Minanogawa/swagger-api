@@ -2009,7 +2009,18 @@ definitions:
         properties:
           degitalArt:
             type: "number"
-            
+      movie:
+        type: array
+        items:
+          type: object            
+          properties:
+            image:
+              type: "string"
+              description: "TRN_MOVIE‚Ìimageî•ñ"
+            title:
+              type: "string"
+              description: "TRN_MOVIE‚Ìƒ^ƒCƒgƒ‹î•ñ"
+
   trnBook:
     type: "object"
     properties:
