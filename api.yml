@@ -2014,6 +2014,9 @@ definitions:
         items:
           type: object            
           properties:
+            uuid:
+              type: "string"
+              description: "TRN_MOVIE‚Ìuuidî•ñ"
             image:
               type: "string"
               description: "TRN_MOVIE‚Ìimageî•ñ"
