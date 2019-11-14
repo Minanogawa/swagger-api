@@ -2503,6 +2503,12 @@ definitions:
       uuidPerson:
         type: "string"
         description: "TRN_PERSON‚ÌUUID"
+      image:
+        type: "string"
+        description: "‰‰Ò‚Ì‰æ‘œURL"
+      performer:
+        type: "string"
+        description: "‰‰Ò–¼"
       roll:
         type: "string"
         description: "‰f‰æ“à”z–ğ–ğŠ„"
@@ -2512,9 +2518,6 @@ definitions:
         - "Main Actor"
         - "Main Actress"
         - "Music"
-      performer:
-        type: "string"
-        description: "‰‰Ò–¼"
       rollName:
         type: "string"
         description: "‰f‰æ“à”z–ğ–¼Ì"
