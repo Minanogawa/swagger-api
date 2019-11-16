@@ -1759,6 +1759,14 @@ responses:
     description: "successful operation"
     schema:
       $ref: "#/definitions/trnPublish"
+  
+  nosAccMovie:
+    description: "successful operation"
+    schema:
+      type: "object"
+      items:
+        $ref: "#/definitions/nosAccMovie"
+        
   trnBookArray:
     description: "successful operation"
     schema:
@@ -1976,6 +1984,38 @@ definitions:
       remarks:
         type: "string"
         description: "備考"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+  nosAccMovie:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MOVIEを特定する為ののuuid情報"
+      timeline:
+        type: array
+        items:
+          type: object            
+          properties:
+            id:
+              type: "string"
+              description: "VIS timeline用のID"
+            content:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+            value:
+              type: "string"
+              description: "VIS timeline用の表示順番用値"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
