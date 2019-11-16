@@ -1760,12 +1760,12 @@ responses:
     schema:
       $ref: "#/definitions/trnPublish"
   
-  nosAccMovie:
+  nosMovie:
     description: "successful operation"
     schema:
-      type: "object"
+      type: "array"
       items:
-        $ref: "#/definitions/nosAccMovie"
+        $ref: "#/definitions/nosMovie"
         
   trnBookArray:
     description: "successful operation"
@@ -1996,8 +1996,9 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-  nosAccMovie:
+  nosMovie:
     type: "object"
+    description: "TRN_MOVIE系テーブルの集約データ格納オブジェクト"
     properties:
       uuid:
         type: "string"
@@ -2546,6 +2547,9 @@ definitions:
       image:
         type: "string"
         description: "演者の画像URL"
+      priority:
+        type: "string"
+        description: "演者の優先順位"
       performer:
         type: "string"
         description: "演者名"
