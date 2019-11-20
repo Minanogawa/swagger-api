@@ -1845,6 +1845,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMovie"
+  trnMovieAccumulateArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovieAccumulate"
   trnMovieCastArray:
     description: "successful operation"
     schema:
@@ -1857,6 +1863,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMoviePlot"
+  trnMoviePhraseArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMoviePhrase"
   trnMovieRatingArray:
     description: "successful operation"
     schema:
@@ -2667,6 +2679,37 @@ definitions:
       endDatetime:
         type: "string"
         format: date-time
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
+  trnMoviePhrase:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MOVIE_PHRASEのUUID"
+      uuidMovie:
+        type: "string"
+        description: "TRN_MOVIEのUUID"
+      sceneType:
+        type: "number"
+        description: "映画シーンのタイプ"
+      phrase:
+        type: "string"
+        description: "映画シーンのフレーズ"
+      startTime:
+        type: "string"
+        description: "フレーズ開始時間"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
