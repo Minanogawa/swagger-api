@@ -869,7 +869,6 @@ paths:
         400:
           description: "Invalid status value"
 
-
   /trnMoviePhrase:
     get:
       tags:
@@ -909,7 +908,7 @@ paths:
     get:
       tags:
       - "adMovie"
-      summary: "UUID MOVIE‚ÅTRN_MOVIE_PLOT‚ÌŒŸõ‚ğs‚¤"
+      summary: "UUID MOVIE‚ÅTRN_MOVIE_PHRASE‚ÌŒŸõ‚ğs‚¤"
       operationId: "readTrnMoviePhraseFindByUuidMovie"
       parameters:
         - $ref: '#/parameters/uuidMovie'
