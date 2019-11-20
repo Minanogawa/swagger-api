@@ -2550,6 +2550,32 @@ definitions:
         type: "integer"
         format: "int32"
         
+  trnMovieAccumulate:
+    type: "object"
+    properties:
+      uuidMovie:
+        type: "string"
+        description: "TRN_MOVIEのUUID"
+      timelineIs:
+        type: "string"
+        description: "集約データである「timeline」の説明"
+      timeline_change_date:
+        type: "string"
+        format: date-time
+        description: "timelineの日付が変更された日付を登録"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
   trnMovieCast:
     type: "object"
     properties:
@@ -2700,15 +2726,24 @@ definitions:
       title:
         type: "string"
         description: "映画シーンの表題"
+      participant:
+        type: "string"
+        description: "映画シーンの参加者"
       summary:
         type: "string"
         description: "映画シーンの要約"
-      start:
+      startDate:
         type: "string"
-        description: "映画シーンの開始"
-      end:
+        format: date
+      startDatetime:
         type: "string"
-        description: "映画シーンの終了"
+        format: date-time
+      endDate:
+        type: "string"
+        format: date
+      endDatetime:
+        type: "string"
+        format: date-time
       url:
         type: "string"
         description: "映画シーンのURL"
