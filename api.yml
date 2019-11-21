@@ -736,41 +736,6 @@ paths:
           $ref: '#/responses/trnMovieArray'
         400:
           description: "Invalid status value"
-  /trnMovieAccumulate:
-    get:
-      tags:
-      - "adMovie"
-      summary: "TRN_MOVIE_ACCUMULATEからデータを全件取得する"
-      operationId: "readTrnMovieAccumulate"
-      responses:
-        200:
-          $ref: '#/responses/trnMovieAccumulateArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adMovie"
-      summary: "TRN_MOVIE_ACCUMULATEに新規データを登録する"
-      operationId: "createTrnMovieAccumulate"
-      parameters:
-        - $ref: '#/parameters/trnMovieAccumulateArray'
-      responses:
-        200:
-          description: "successful operation"
-        405:
-          description: "Invalid input"
-    put:
-      tags:
-      - "adMovie"
-      summary: "TRN_MOVIE_ACCUMULATE情報の更新を行う"
-      operationId: "updateTrnMovieAccumulate"
-      parameters:
-        - $ref: '#/parameters/trnMovieAccumulateArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
   /trnMovieCast:
     get:
       tags:
@@ -1655,15 +1620,6 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnMovie"
-  trnMovieAccumulateArray:
-    name: trnMovieAccumulateArray
-    description: "配列単位の映画集約情報"
-    required: true
-    in: body
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnMovieAccumulate"
   trnMovieCastArray:
     name: trnMovieCastArray
     description: "配列単位の映画配役情報"
@@ -1946,12 +1902,6 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMovie"
-  trnMovieAccumulateArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnMovieAccumulate"
   trnMovieCastArray:
     description: "successful operation"
     schema:
@@ -2663,32 +2613,6 @@ definitions:
         type: "integer"
         format: "int32"
         
-  trnMovieAccumulate:
-    type: "object"
-    properties:
-      uuidMovie:
-        type: "string"
-        description: "TRN_MOVIEのUUID"
-      timelineIs:
-        type: "string"
-        description: "集約データである「timeline」の説明"
-      timeline_change_date:
-        type: "string"
-        format: date-time
-        description: "timelineの日付が変更された日付を登録"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      delete_flg:
-        type: "integer"
-        format: "int32"
-
   trnMovieCast:
     type: "object"
     properties:
