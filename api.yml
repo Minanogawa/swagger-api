@@ -20,8 +20,8 @@ tags:
     description: "Administration Chartページにおけるデータ通信定義"
   - name: "adEvent"
     description: "Administration Eventページにおけるデータ通信定義"
-  - name: "adGather"
-    description: "Administration Masterページにおけるデータ通信定義"
+  - name: "adNos"
+    description: "Administration Nos(no sql)ページにおけるデータ通信定義"
   - name: "adMaster(adGatherに移行 + 削除予定)"
     description: "Administration Masterページにおけるデータ通信定義"
   - name: "adMath"
@@ -180,7 +180,7 @@ paths:
         400:
           description: "Invalid status value"
 
-  /global/accMovie/timeline:
+  /global/trnMovie/nosMovie:
     get:
       tags: 
       - "global"
