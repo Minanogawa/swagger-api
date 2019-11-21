@@ -178,7 +178,7 @@ paths:
         400:
           description: "Invalid status value"
 
-  /global/accServer/nosMovie/accumulate/{uuidMovie}:
+  /global/nosMovie/accumulate/{uuidMovie}:
     get:
       tags: 
       - "global"
