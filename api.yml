@@ -20,12 +20,12 @@ tags:
     description: "Administration Chartページにおけるデータ通信定義"
   - name: "adEvent"
     description: "Administration Eventページにおけるデータ通信定義"
-  - name: "adNosql"
-    description: "Administration Nosql(no sql)ページにおけるデータ通信定義"
   - name: "adMath"
     description: "Administration Mathページにおけるデータ通信定義"
   - name: "adMovie"
     description: "Administration Movieページにおけるデータ通信定義"
+  - name: "adNosql"
+    description: "Administration Nosql(no sql)ページにおけるデータ通信定義"
   - name: "adPerson"
     description: "Administration Personページにおけるデータ通信定義"
   - name: "adSpot"
@@ -178,11 +178,11 @@ paths:
         400:
           description: "Invalid status value"
 
-  /global/trnMovie/nosMovie:
+  /global/accServer/nosMovie/accumulate:
     get:
       tags: 
       - "global"
-      summary: "TRN_MOVIEのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する"
+      summary: "TRN_MOVIEのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
       operationId: "getMovieTimeline"
       parameters:
         - $ref: '#/parameters/bearerAuth'
@@ -259,58 +259,6 @@ paths:
       responses:
         200:
           description: "成功時レスポンス"
-        400:
-          description: "Invalid status value"
-
-  /mstClientJson:
-    get:
-      tags:
-      - "adMaster"
-      summary: "MST_CONFIG_JSONテーブルからデータを全件取得する"
-      operationId: "readMstConfigJson"
-      responses:
-        200:
-          $ref: '#/responses/mstConfigJsonArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adMaster"
-      summary: "MST_CONFIG_JSONテーブルに新規データを登録する"
-      operationId: "createMstConfigJson"
-      parameters:
-        - $ref: '#/parameters/mstConfigJsonForPostPut'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-    put:
-      tags:
-      - "adMaster"
-      summary: "MST_CONFIG_JSONテーブルの更新を行う"
-      operationId: "updateMstConfigJson"
-      parameters:
-        - $ref: '#/parameters/mstConfigJsonForPostPut'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-  /mstClientJson/{configName}:
-    get:
-      tags:
-      - "adEvent"
-      - "adSpot"
-      - "cpEvent"
-      - "cpSpot"
-      summary: "MST_CONFIG_JSONからconfig_name(PK)を指定してデータを取得する"
-      operationId: "readMstConfigJsonByConfigName"
-      parameters:
-        - $ref: '#/parameters/mstConfigJsonForGetByConfigName'
-      responses:
-        200:
-          $ref: '#/responses/mstConfigJson'
         400:
           description: "Invalid status value"
 
@@ -1506,21 +1454,6 @@ parameters:
     required: true
     in: path
     type: "string"
-  mstConfigJsonForGetByConfigName:
-    name: configName
-    description: "MST_CONFIG_JSONをconfig_nameで検索条件をかける際に使用する"
-    required: true
-    in: path
-    type: "string"
-  mstConfigJsonForPostPut:
-    name: mstConfigJsonForPostPut
-    description: "MST_CONFIG_JSONの新規登録・更新する際のパラメータ情報"
-    required: true
-    in: body
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/mstClientJson"
   publish:
     name: publish
     description: "記事情報"
@@ -1818,16 +1751,6 @@ responses:
     description: "chart出力対象のJsonデータ"
     schema:
       type: "string"
-  mstConfigJson:
-    description: "successful operation"
-    schema:
-      $ref: "#/definitions/mstClientJson"
-  mstConfigJsonArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/mstClientJson"
   publish:
     description: "successful operation"
     schema:
@@ -2034,38 +1957,6 @@ definitions:
       chart_value:
         type: "string"
         description: "チャート出力用データ"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      delete_flg:
-        type: "integer"
-        format: "int32"
-  mstClientJson:
-    type: "object"
-    properties:
-      json_name:
-        type: "string"
-        description: "コンフィグ設定名"
-        enum:
-        - "Event Tree"
-        - "Spot Tree"
-        - "Food"
-        - "Organization"
-        - "Publisher"
-        - "Retail"
-        - "Twitter"
-      json:
-        type: "string"
-        description: "設定値"
-      remarks:
-        type: "string"
-        description: "備考"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
       addDate:
         type: "string"
         format: "yyyyMMdd"
