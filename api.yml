@@ -1770,9 +1770,7 @@ responses:
   nosMovieTimeline:
     description: "successful operation"
     schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/nosMovieTimeline"
+      $ref: "#/definitions/nosMovieTimeline"
         
   trnBookArray:
     description: "successful operation"
