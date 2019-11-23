@@ -629,7 +629,7 @@ paths:
         - $ref: '#/parameters/uuidMovie'
       responses:
         200:
-          $ref: '#/responses/nosMovieGroup'
+          $ref: '#/responses/nosMovieTimeline'
         400:
           description: "Invalid status value"
     post:
@@ -644,7 +644,6 @@ paths:
            description: "successful operation(Data was created)"
         400:
           description: "Invalid status value"
-
 
   /trnMovie:
     get:
@@ -1768,12 +1767,12 @@ responses:
     schema:
       $ref: "#/definitions/trnPublish"
   
-  nosMovieGroup:
+  nosMovieTimeline:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/nosMovieGroup"
+        $ref: "#/definitions/nosMovieTimeline"
         
   trnBookArray:
     description: "successful operation"
@@ -1978,14 +1977,41 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-  nosMovieGroup:
+        
+  nosMovieTimeline:
     type: "object"
     description: "TRN_MOVIE系テーブルの集約データ格納オブジェクト、TRN_MOVIEの「Get OverView」行を押下した際、Redisからデータを取得する"
     properties:
       uuid:
         type: "string"
         description: "TRN_MOVIE_CASTからデータを取得する為のuuid情報"
-      children:
+      title:
+        type: "string"
+        description: "セットしている情報は「uuid」と一緒だが、サーバーで検索用のフィールドとして使用している"
+      events:
+        type: array
+        items:
+          type: object            
+          properties:
+            id:
+              type: "string"
+              description: "VIS timeline用のID"
+            start:
+              type: "string"
+              description: "VIS timeline用の表示順番用値"
+            end:
+              type: "string"
+              description: "VIS timeline用の表示順番用値"
+            group:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+            content:
+              type: "string"
+              description: "VIS timeline用の表示順番用値"
+            className:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+      groups:
         type: array
         items:
           type: object            
