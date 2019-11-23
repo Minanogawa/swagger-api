@@ -632,6 +632,18 @@ paths:
         400:
           description: "Invalid status value"
 
+  /nosMovieGroup:
+    get:
+      tags:
+      - "adMovie"
+      summary: "NOS_MOVIE_GROUPからデータを全件取得する"
+      operationId: "readNosMovieGroup"
+      responses:
+        200:
+          $ref: '#/responses/nosMovieGroup'
+        400:
+          description: "Invalid status value"
+
   /trnMovie:
     get:
       tags:
@@ -1754,12 +1766,12 @@ responses:
     schema:
       $ref: "#/definitions/trnPublish"
   
-  nosMovie:
+  nosMovieGroup:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/nosMovie"
+        $ref: "#/definitions/nosMovieGroup"
         
   trnBookArray:
     description: "successful operation"
@@ -1964,14 +1976,14 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-  nosMovie:
+  nosMovieGroup:
     type: "object"
-    description: "TRN_MOVIE系テーブルの集約データ格納オブジェクト"
+    description: "TRN_MOVIE系テーブルの集約データ格納オブジェクト、TRN_MOVIEの「Get OverView」行を押下した際、Redisからデータを取得する"
     properties:
       uuid:
         type: "string"
-        description: "TRN_MOVIEを特定する為ののuuid情報"
-      timeline:
+        description: "TRN_MOVIE_CASTからデータを取得する為のuuid情報"
+      children:
         type: array
         items:
           type: object            
@@ -1982,21 +1994,15 @@ definitions:
             content:
               type: "string"
               description: "VIS timeline用の表示用ラベル"
-            value:
+            className:
               type: "string"
+              description: "VIS timeline用の表示用ラベル"
+            value:
+              type: "number"
               description: "VIS timeline用の表示順番用値"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      delete_flg:
-        type: "integer"
-        format: "int32"
   sessionStorage:
     type: "object"
     properties:
