@@ -178,12 +178,12 @@ paths:
         400:
           description: "Invalid status value"
 
-  /global/nosMovie/accumulate/{uuidMovie}:
-    get:
+  /nosMovieGroup/{uuidMovie}:
+    post:
       tags: 
       - "global"
       summary: "TRN_MOVIEのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
-      operationId: "createNosMovieAccumulate"
+      operationId: "createNosMovieGroup"
       parameters:
         - $ref: '#/parameters/uuidMovie'
       responses:
