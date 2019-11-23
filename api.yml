@@ -178,19 +178,6 @@ paths:
         400:
           description: "Invalid status value"
 
-  /nosMovieGroup/{uuidMovie}:
-    post:
-      tags: 
-      - "global"
-      summary: "TRN_MOVIEのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
-      operationId: "createNosMovieGroup"
-      parameters:
-        - $ref: '#/parameters/uuidMovie'
-      responses:
-        201:
-           description: "successful operation(Data was created)"
-        400:
-          description: "Invalid status value"
           
   /global/user:
     get:
@@ -632,17 +619,32 @@ paths:
         400:
           description: "Invalid status value"
 
-  /nosMovieGroup:
+  /nosMovieTimeline/{uuidMovie}:
     get:
       tags:
       - "adMovie"
-      summary: "NOS_MOVIE_GROUPからデータを全件取得する"
-      operationId: "readNosMovieGroup"
+      summary: "TRN_MOVIEの「UUID」を使用して、NOS_MOVIE_TIMELINEから該当するデータを取得する"
+      operationId: "readNosMovieTimeline"
+      parameters:
+        - $ref: '#/parameters/uuidMovie'
       responses:
         200:
           $ref: '#/responses/nosMovieGroup'
         400:
           description: "Invalid status value"
+    post:
+      tags: 
+      - "global"
+      summary: "TRN_MOVIEのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
+      operationId: "createNosMovieTimeline"
+      parameters:
+        - $ref: '#/parameters/uuidMovie'
+      responses:
+        201:
+           description: "successful operation(Data was created)"
+        400:
+          description: "Invalid status value"
+
 
   /trnMovie:
     get:
