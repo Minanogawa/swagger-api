@@ -2671,8 +2671,11 @@ definitions:
         type: "string"
         description: "TRN_MOVIEのUUID"
       sceneType:
-        type: "number"
+        type: "string"
         description: "映画シーンのタイプ"
+      unknown:
+        type: "string"
+        description: "聞き取れないもしくは理解できない言葉"
       phrase:
         type: "string"
         description: "映画シーンのフレーズ"
