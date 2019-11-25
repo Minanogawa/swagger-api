@@ -728,14 +728,28 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnMovieCast/{uuid}:
+          
+  /trnMovieCast/uuid/{param}:
     get:
       tags:
       - "adMovie"
-      summary: "UUIDÇ≈éwíËÇµÇΩTRN_MOVIE_CAST"
+      summary: "TRN_MOVIE_CASTÇÃUUIDÇà¯êîÇ…TRN_MOVIE_CASTÇÃåüçıÇçsÇ§"
       operationId: "readTrnMovieCastFindByUuid"
       parameters:
-        - $ref: '#/parameters/uuid'
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/trnMovieCast'
+        400:
+          description: "Invalid status value"
+  /trnMovieCast/uuidMovie/{param}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIEÇÃUUIDÇà¯êîÇ…TRN_MOVIE_CASTÇÃåüçıÇçsÇ§"
+      operationId: "readTrnMovieCastFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/param'
       responses:
         200:
           $ref: '#/responses/trnMovieCastArray'
@@ -1845,37 +1859,53 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMathUsage"
+        
   trnMovieArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
         $ref: "#/definitions/trnMovie"
+  trnMovieCast:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/trnMovieCast"
   trnMovieCastArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieCast"
+  trnMoviePlot:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/trnMoviePlot"
   trnMoviePlotArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
         $ref: "#/definitions/trnMoviePlot"
+  trnMoviePhrase:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/trnMoviePhrase"
   trnMoviePhraseArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
         $ref: "#/definitions/trnMoviePhrase"
+  trnMovieRating:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/trnMovieRating"
   trnMovieRatingArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieRating"
-        
   trnMovieScene:
     description: "successful operation"
     schema:
@@ -1892,6 +1922,7 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieSite"
+        
   trnPersonArray:
     description: "successful operation"
     schema:
