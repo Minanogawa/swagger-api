@@ -924,7 +924,6 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-          
   /trnMovieScene/uuid/{param}:
     get:
       tags:
@@ -942,7 +941,7 @@ paths:
     get:
       tags:
       - "adMovie"
-      summary: "UUID MOVIE‚ÅTRN_MOVIE_SCENE‚ÌŒŸõ‚ğs‚¤"
+      summary: "TRN_MOVIE‚ÌUUID‚ğˆø”‚ÉTRN_MOVIE_SCENE‚ÌŒŸõ‚ğs‚¤"
       operationId: "readTrnMovieSceneFindByUuidMovie"
       parameters:
         - $ref: '#/parameters/param'
