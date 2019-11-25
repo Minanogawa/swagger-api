@@ -728,7 +728,6 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-          
   /trnMovieCast/uuid/{param}:
     get:
       tags:
@@ -791,20 +790,33 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnMoviePlot/{uuidMovie}:
+  /trnMoviePlot/uuid/{param}:
     get:
       tags:
       - "adMovie"
-      summary: "UUID MOVIEでTRN_MOVIE_PLOTの検索を行う"
+      summary: "TRN_MOVIE_PLOTのUUIDを引数にTRN_MOVIE_PLOTの検索を行う"
+      operationId: "readTrnMoviePlotFindByUuid"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/trnMoviePlot'
+        400:
+          description: "Invalid status value"
+  /trnMoviePlot/uuidMovie/{param}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIEのUUIDを引数にTRN_MOVIE_PLOTの検索を行う"
       operationId: "readTrnMoviePlotFindByUuidMovie"
       parameters:
-        - $ref: '#/parameters/uuidMovie'
+        - $ref: '#/parameters/param'
       responses:
         200:
           $ref: '#/responses/trnMoviePlotArray'
         400:
           description: "Invalid status value"
-
+          
   /trnMoviePhrase:
     get:
       tags:
@@ -840,17 +852,30 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnMoviePhrase/{uuidMovie}:
+  /trnMoviePhrase/uuid/{param}:
     get:
       tags:
       - "adMovie"
-      summary: "UUID MOVIEでTRN_MOVIE_PHRASEの検索を行う"
-      operationId: "readTrnMoviePhraseFindByUuidMovie"
+      summary: "TRN_MOVIE_PHRASEのUUIDを引数にTRN_MOVIE_PHRASEの検索を行う"
+      operationId: "readTrnMoviePhraseFindByUuid"
       parameters:
-        - $ref: '#/parameters/uuidMovie'
+        - $ref: '#/parameters/param'
       responses:
         200:
-          $ref: '#/responses/trnMoviePlotArray'
+          $ref: '#/responses/trnMoviePhrase'
+        400:
+          description: "Invalid status value"
+  /trnMoviePhrase/uuidMovie/{param}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIEのUUIDを引数にTRN_MOVIE_PHRASEの検索を行う"
+      operationId: "readTrnMoviePhraseFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/trnMoviePhraseArray'
         400:
           description: "Invalid status value"
           
@@ -889,17 +914,31 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnMovieRating/{uuidMovie}:
+          
+  /trnMovieRating/uuid/{param}:
     get:
       tags:
       - "adMovie"
-      summary: "UUID MOVIEでTRN_MOVIE_RATINGの検索を行う"
-      operationId: "readTrnMovieRatingFindByUuidMovie"
+      summary: "TRN_MOVIE_RATINGのUUIDを引数にTRN_MOVIE_RATINGの検索を行う"
+      operationId: "readTrnMovieRatingFindByUuid"
       parameters:
-        - $ref: '#/parameters/uuidMovie'
+        - $ref: '#/parameters/param'
       responses:
         200:
-          $ref: '#/responses/trnMovieArray'
+          $ref: '#/responses/trnMovieRating'
+        400:
+          description: "Invalid status value"
+  /trnMovieRating/uuidMovie/{param}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIEのUUIDを引数にTRN_MOVIE_RATINGの検索を行う"
+      operationId: "readTrnMovieRatingFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/trnMovieRatingArray'
         400:
           description: "Invalid status value"
           
