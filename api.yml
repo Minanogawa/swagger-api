@@ -1371,24 +1371,24 @@ paths:
         400:
           description: "Invalid status value"
 
-  /trnStory:
+  /trnWordgraph:
     get:
       tags:
       - "adWordgraph"
-      summary: "TRN_STORYからデータを全件取得する"
-      operationId: "readTrnStory"
+      summary: "TRN_WORDGRAPHからデータを全件取得する"
+      operationId: "readTrnWordgraph"
       responses:
         200:
-          $ref: '#/responses/trnStoryArray'
+          $ref: '#/responses/trnWordgraphArray'
         400:
           description: "Invalid status value"
     post:
       tags:
       - "adWordgraph"
-      summary: "TRN_STORYに新規データを登録する"
-      operationId: "createTrnStory"
+      summary: "TRN_WORDGRAPHに新規データを登録する"
+      operationId: "createTrnWordgraph"
       parameters:
-        - $ref: '#/parameters/trnStoryArray'
+        - $ref: '#/parameters/trnWordgraphArray'
       responses:
         200:
           description: "successful operation"
@@ -1397,33 +1397,33 @@ paths:
     put:
       tags:
       - "adWordgraph"
-      summary: "TRN_STORY情報の更新を行う"
-      operationId: "updateTrnStory"
+      summary: "TRN_WORDGRAPH情報の更新を行う"
+      operationId: "updateTrnWordgraph"
       parameters:
-        - $ref: '#/parameters/trnStoryArray'
+        - $ref: '#/parameters/trnWordgraphArray'
       responses:
         200:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnStoryChar:
+  /trnWordgraphLabel:
     get:
       tags:
       - "adWordgraph"
-      summary: "TRN_STORY_CHARから全件のデータを取得する"
-      operationId: "readTrnStoryChar"
+      summary: "TRN_WORDGRAPH_LABELから全件のデータを取得する"
+      operationId: "readTrnWordgraphLabel"
       responses:
         200:
-          $ref: '#/responses/trnStoryCharArray'
+          $ref: '#/responses/trnWordgraphLabelArray'
         400:
           description: "Invalid status value"
     post:
       tags:
       - "adWordgraph"
-      summary: "TRN_STORY_CHAR情報のデータを新規追加"
-      operationId: "createTrnStoryChar"
+      summary: "TRN_WORDGRAPH_LABEL情報のデータを新規追加"
+      operationId: "createTrnWordgraphLabel"
       parameters:
-        - $ref: '#/parameters/trnStoryCharArray'
+        - $ref: '#/parameters/trnWordgraphLabelArray'
       responses:
         200:
           description: "successful operation"
@@ -1432,33 +1432,59 @@ paths:
     put:
       tags:
       - "adWordgraph"
-      summary: "TRN_STORY_CHAR情報の更新を行う"
-      operationId: "updateTrnStoryChar"
+      summary: "TRN_WORDGRAPH_LABEL情報の更新を行う"
+      operationId: "updateTrnWordgraphLabel"
       parameters:
-        - $ref: '#/parameters/trnStoryCharArray'
+        - $ref: '#/parameters/trnWordgraphLabelArray'
       responses:
         200:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnStoryPlot:
+  /trnWordgraphLabel/uuid/{param}:
     get:
       tags:
       - "adWordgraph"
-      summary: "TRN_STORY_PLOTから全件のデータを取得する"
-      operationId: "readTrnStoryPlot"
+      summary: "TRN_WORDGRAPH_LABELのUUIDを引数にTRN_WORDGRAPH_LABELの検索を行う"
+      operationId: "readTrnWordgraphLabelFindByUuid"
+      parameters:
+        - $ref: '#/parameters/param'
       responses:
         200:
-          $ref: '#/responses/trnStoryPlotArray'
+          $ref: '#/responses/trnWordgraphLabel'
+        400:
+          description: "Invalid status value"
+  /trnWordgraphLabel/uuidMovie/{param}:
+    get:
+      tags:
+      - "adWordgraph"
+      summary: "TRN_WORDGRAPHのUUIDを引数にTRN_WORDGRAPH_LABELの検索を行う"
+      operationId: "readTrnWordgraphLabelFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/trnWordgraphLabelArray'
+        400:
+          description: "Invalid status value"
+  /trnWordgraphNodes:
+    get:
+      tags:
+      - "adWordgraph"
+      summary: "TRN_WORDGRAPH_NODESから全件のデータを取得する"
+      operationId: "readTrnWordgraphNodes"
+      responses:
+        200:
+          $ref: '#/responses/trnWordgraphNodesArray'
         400:
           description: "Invalid status value"
     post:
       tags:
       - "adWordgraph"
-      summary: "TRN_STORY_PLOT情報のデータを新規追加"
-      operationId: "createTrnStoryPlot"
+      summary: "TRN_WORDGRAPH_NODES情報のデータを新規追加"
+      operationId: "createTrnWordgraphNodes"
       parameters:
-        - $ref: '#/parameters/trnStoryPlotArray'
+        - $ref: '#/parameters/trnWordgraphNodesArray'
       responses:
         200:
           description: "successful operation"
@@ -1467,13 +1493,101 @@ paths:
     put:
       tags:
       - "adWordgraph"
-      summary: "TRN_STORY_PLOT情報の更新を行う"
-      operationId: "updateTrnStoryPlot"
+      summary: "TRN_WORDGRAPH_NODES情報の更新を行う"
+      operationId: "updateTrnWordgraphNodes"
       parameters:
-        - $ref: '#/parameters/trnStoryPlotArray'
+        - $ref: '#/parameters/trnWordgraphNodesArray'
       responses:
         200:
           description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnWordgraphNodes/uuid/{param}:
+    get:
+      tags:
+      - "adWordgraph"
+      summary: "TRN_WORDGRAPH_NODESのUUIDを引数にTRN_WORDGRAPH_NODESの検索を行う"
+      operationId: "readTrnWordgraphNodesFindByUuid"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/trnWordgraphNodes'
+        400:
+          description: "Invalid status value"
+  /trnWordgraphNodes/uuidMovie/{param}:
+    get:
+      tags:
+      - "adWordgraph"
+      summary: "TRN_WORDGRAPHのUUIDを引数にTRN_WORDGRAPH_NODESの検索を行う"
+      operationId: "readTrnWordgraphNodesFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/trnWordgraphNodesArray'
+        400:
+          description: "Invalid status value"
+          
+  /trnWordgraphEdges:
+    get:
+      tags:
+      - "adWordgraph"
+      summary: "TRN_WORDGRAPH_EDGESから全件のデータを取得する"
+      operationId: "readTrnWordgraphEdges"
+      responses:
+        200:
+          $ref: '#/responses/trnWordgraphEdgesArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adWordgraph"
+      summary: "TRN_WORDGRAPH_EDGES情報のデータを新規追加"
+      operationId: "createTrnWordgraphEdges"
+      parameters:
+        - $ref: '#/parameters/trnWordgraphEdgesArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adWordgraph"
+      summary: "TRN_WORDGRAPH_EDGES情報の更新を行う"
+      operationId: "updateTrnWordgraphEdges"
+      parameters:
+        - $ref: '#/parameters/trnWordgraphEdgesArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnWordgraphEdges/uuid/{param}:
+    get:
+      tags:
+      - "adWordgraph"
+      summary: "TRN_WORDGRAPH_EDGESのUUIDを引数にTRN_WORDGRAPH_EDGESの検索を行う"
+      operationId: "readTrnWordgraphEdgesFindByUuid"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/trnWordgraphEdges'
+        400:
+          description: "Invalid status value"
+  /trnWordgraphEdges/uuidMovie/{param}:
+    get:
+      tags:
+      - "adWordgraph"
+      summary: "TRN_WORDGRAPHのUUIDを引数にTRN_WORDGRAPH_EDGESの検索を行う"
+      operationId: "readTrnWordgraphEdgesFindByUuidMovie"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/trnWordgraphEdgesArray'
         400:
           description: "Invalid status value"
 
@@ -1720,33 +1834,43 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnSpotResearch"
-  trnStoryArray:
-    name: trnStoryArray
-    description: "配列単位の物語情報"
+  trnWordgraphArray:
+    name: trnWordgraphArray
+    description: "配列単位のグラフ図情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnStory"
-  trnStoryCharArray:
-    name: trnStoryCharArray
-    description: "配列単位の物語キャラクター情報"
+        $ref: "#/definitions/trnWordgraph"
+  trnWordgraphLabelArray:
+    name: trnWordgraphLabelArray
+    description: "配列単位のグラフ図のラベル情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnStoryChar"
-  trnStoryPlotArray:
-    name: trnStoryPlotArray
-    description: "配列単位の物語章情報"
+        $ref: "#/definitions/trnWordgraphLabel"
+  trnWordgraphNodesArray:
+    name: trnWordgraphNodesArray
+    description: "配列単位のグラフ図のノード情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnStoryPlot"
+        $ref: "#/definitions/trnWordgraphNodes"
+  trnWordgraphEdgesArray:
+    name: trnWordgraphEdgesArray
+    description: "配列単位のグラフ図のエッジ情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnWordgraphEdges"
+        
   param:
     name: param
     description: "単一パラメータ用項目、UUID検索用パラメーター"
@@ -1965,24 +2089,47 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnSpotResearch"
-  trnStoryArray:
+        
+  trnWordgraph:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/trnWordgraph"
+  trnWordgraphArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnStory"
-  trnStoryCharArray:
+        $ref: "#/definitions/trnWordgraph"
+  trnWordgraphLabel:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/trnWordgraphLabel"
+  trnWordgraphLabelArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnStoryChar"
-  trnStoryPlotArray:
+        $ref: "#/definitions/trnWordgraphLabel"
+  trnWordgraphNodes:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/trnWordgraphNodes"
+  trnWordgraphNodesArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnStoryPlot"
+        $ref: "#/definitions/trnWordgraphNodes"
+  trnWordgraphEdges:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/trnWordgraphEdges"
+  trnWordgraphEdgesArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnWordgraphEdges"
 
 definitions:
   categoryMenu:
@@ -3181,20 +3328,18 @@ definitions:
         type: "integer"
         format: "int32"
         
-  trnStory:
+  trnWordgraph:
     type: "object"
     properties:
       uuid:
         type: "string"
-        description: "TRN_STORYのUUID"
-      storyName:
+        description: "TRN_WORDGRAPHのUUID"
+      title:
         type: "string"
-        description: "ストーリーの名称"
-      storyFrom:
+        description: "Word Graphのタイトル"
+      config:
         type: "string"
-        description: "ストーリー発信媒体"
-        enum:
-        - "Movie"
+        description: "Word Graphの設定確認用フィールド"
       summary:
         type: "string"
         description: "ストーリーの要約"
@@ -3210,27 +3355,39 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-        
-  trnStoryChar:
+  trnWordgraphLabel:
     type: "object"
     properties:
       uuid:
         type: "string"
-        description: "TRN_STORY_CHARのUUID"
-      uuidStory:
+        description: "TRN_WORDGRAPH_LABELのUUID"
+      uuidWordgraph:
         type: "string"
-        description: "TRN_STORYのUUID"
-      name:
+        description: "TRN_WORDGRAPHのUUID"
+      id:
         type: "string"
-        description: "キャラクターの名称"
-      age:
+        description: "vis network用のID"
+      x:
+        type: "number"
+        description: "vis network用のx座標"
+      y:
+        type: "number"
+        description: "vis network用のy座標"
+      label:
         type: "string"
-        description: "キャラクターの年齢"
-        enum:
-        - "Movie"
-      personality:
+        description: "vis network用のラベル"
+      group:
         type: "string"
-        description: "キャラクターの性格"
+        description: "vis network用のグループ"
+      value:
+        type: "string"
+        description: "vis network用の値"
+      fixed:
+        type: "string"
+        description: "vis network用の位置固定フラグ"
+      physics:
+        type: "string"
+        description: "vis network用の不明??フラグ"
       summary:
         type: "string"
         description: "ストーリーの要約"
@@ -3246,25 +3403,60 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-
-  trnStoryPlot:
+  trnWordgraphNodes:
     type: "object"
     properties:
       uuid:
         type: "string"
-        description: "TRN_STORY_CHARのUUID"
-      uuidStory:
+        description: "TRN_WORDGRAPH_NODESのUUID"
+      uuidWordgraph:
         type: "string"
-        description: "TRN_STORYのUUID"
-      chapter:
+        description: "TRN_WORDGRAPHのUUID"
+      id:
+        type: "string"
+        description: "vis network用のID"
+      label:
+        type: "string"
+        description: "vis network用のラベル"
+      group:
+        type: "string"
+        description: "vis network用のグループ"
+      value:
+        type: "string"
+        description: "vis network用の値"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
         type: "integer"
-        description: "Plotの章番号"
-      chapterTitle:
+        format: "int32"
+  trnWordgraphEdges:
+    type: "object"
+    properties:
+      uuid:
         type: "string"
-        description: "章のタイトル"
-      chapterSummary:
+        description: "TRN_WORDGRAPH_EDGEのUUID"
+      uuidWordgraph:
         type: "string"
-        description: "章の概要"
+        description: "TRN_WORDGRAPHのUUID"
+      id:
+        type: "string"
+        description: "vis network用のID"
+      label:
+        type: "string"
+        description: "vis network用のラベル"
+      group:
+        type: "string"
+        description: "vis network用のグループ"
+      value:
+        type: "string"
+        description: "vis network用の値"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
