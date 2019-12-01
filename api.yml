@@ -1459,7 +1459,7 @@ paths:
       tags:
       - "adWordgraph"
       summary: "TRN_WORDGRAPH‚ÌUUID‚ğˆø”‚ÉTRN_WORDGRAPH_LABEL‚ÌŒŸõ‚ğs‚¤"
-      operationId: "readTrnWordgraphLabelFindByUuidMovie"
+      operationId: "readTrnWordgraphLabelFindByUuidWordgraph"
       parameters:
         - $ref: '#/parameters/param'
       responses:
@@ -1520,7 +1520,7 @@ paths:
       tags:
       - "adWordgraph"
       summary: "TRN_WORDGRAPH‚ÌUUID‚ğˆø”‚ÉTRN_WORDGRAPH_NODES‚ÌŒŸõ‚ğs‚¤"
-      operationId: "readTrnWordgraphNodesFindByUuidMovie"
+      operationId: "readTrnWordgraphNodesFindByUuidWordgraph"
       parameters:
         - $ref: '#/parameters/param'
       responses:
@@ -1582,7 +1582,7 @@ paths:
       tags:
       - "adWordgraph"
       summary: "TRN_WORDGRAPH‚ÌUUID‚ğˆø”‚ÉTRN_WORDGRAPH_EDGES‚ÌŒŸõ‚ğs‚¤"
-      operationId: "readTrnWordgraphEdgesFindByUuidMovie"
+      operationId: "readTrnWordgraphEdgesFindByUuidWordgraph"
       parameters:
         - $ref: '#/parameters/param'
       responses:
