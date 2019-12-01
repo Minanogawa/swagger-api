@@ -613,6 +613,32 @@ paths:
         400:
           description: "Invalid status value"
 
+  /nosWordgraph/uuidWordgraph/{param}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_WORDGRAPHの「UUID」を使用して、NOS_WORDGRAPHから該当するデータを取得する"
+      operationId: "readNosWordgraphFindByuuidWordgraph"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/nosMovieTimeline'
+        400:
+          description: "Invalid status value"
+    post:
+      tags: 
+      - "global"
+      summary: "TRN_MOVIEのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
+      operationId: "createNosWordgraph"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        201:
+           description: "successful operation(Data was created)"
+        400:
+          description: "Invalid status value"
+
   /trnMovie:
     get:
       tags:
