@@ -629,7 +629,7 @@ paths:
     post:
       tags: 
       - "global"
-      summary: "TRN_MOVIEのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
+      summary: "TRN_WORDGRAPHのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
       operationId: "createNosWordgraph"
       parameters:
         - $ref: '#/parameters/param'
