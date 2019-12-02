@@ -60,7 +60,7 @@ paths:
         - $ref: '#/parameters/param'
       responses:
         200:
-          $ref: '#/responses/nosMovieTimeline'
+          $ref: '#/responses/nosWordgraph'
         400:
           description: "Invalid status value"
     post:
