@@ -104,7 +104,6 @@ paths:
         400:
           description: "Invalid input"
 
-
   /adTop/treeMenu:
     get:
       tags:
@@ -116,7 +115,6 @@ paths:
            description: "successful operation return json menu data"
         400:
           description: "Invalid status value"
-          
   /adTop/latestMenu:
     get:
       tags:
@@ -196,7 +194,6 @@ paths:
             description: "ファイルパス"
         400:
           description: "Invalid status value"
-          
   /global/storage:
     post:
       tags: 
@@ -550,7 +547,6 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-          
   /trnMathUsage:
     get:
       tags:
@@ -612,7 +608,6 @@ paths:
            description: "successful operation(Data was created)"
         400:
           description: "Invalid status value"
-
   /nosWordgraph/uuidWordgraph/{param}:
     get:
       tags:
@@ -748,7 +743,6 @@ paths:
           $ref: '#/responses/trnMovieCastArray'
         400:
           description: "Invalid status value"
-          
   /trnMoviePlot:
     get:
       tags:
@@ -810,7 +804,6 @@ paths:
           $ref: '#/responses/trnMoviePlotArray'
         400:
           description: "Invalid status value"
-          
   /trnMoviePhrase:
     get:
       tags:
@@ -872,7 +865,6 @@ paths:
           $ref: '#/responses/trnMoviePhraseArray'
         400:
           description: "Invalid status value"
-          
   /trnMovieRating:
     get:
       tags:
@@ -908,7 +900,6 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-          
   /trnMovieRating/uuid/{param}:
     get:
       tags:
@@ -935,7 +926,6 @@ paths:
           $ref: '#/responses/trnMovieRatingArray'
         400:
           description: "Invalid status value"
-          
   /trnMovieScene:
     get:
       tags:
@@ -1554,7 +1544,6 @@ paths:
           $ref: '#/responses/trnWordgraphNodesArray'
         400:
           description: "Invalid status value"
-          
   /trnWordgraphEdges:
     get:
       tags:
