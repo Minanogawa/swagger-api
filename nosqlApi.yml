@@ -158,6 +158,26 @@ definitions:
       title:
         type: "string"
         description: "セットしている情報は「uuid」と一緒だが、サーバーで検索用のフィールドとして使用している"
+      edges:
+        type: array
+        items:
+          type: object            
+          properties:
+            from:
+              type: "string"
+              description: "VIS network用のID"
+            to:
+              type: "string"
+              description: "VIS network用の表示用ラベル"
+            length:
+              type: "string"
+              description: "VIS network用の表示用ラベル"
+            width:
+              type: "string"
+              description: "VIS network用の表示順番用値"
+            value:
+              type: "string"
+              description: "VIS network用の表示順番用値"
       label:
         type: array
         items:
@@ -197,34 +217,16 @@ definitions:
           properties:
             id:
               type: "string"
-              description: "VIS timeline用のID"
-            content:
+              description: "VIS network用のID"
+            label:
               type: "string"
-              description: "VIS timeline用の表示用ラベル"
-            className:
+              description: "VIS network用の表示用ラベル"
+            group:
               type: "string"
-              description: "VIS timeline用の表示用ラベル"
+              description: "VIS network用の表示用グループ"
             value:
               type: "number"
-              description: "VIS timeline用の表示順番用値"
-      edges:
-        type: array
-        items:
-          type: object            
-          properties:
-            id:
-              type: "string"
-              description: "VIS timeline用のID"
-            content:
-              type: "string"
-              description: "VIS timeline用の表示用ラベル"
-            className:
-              type: "string"
-              description: "VIS timeline用の表示用ラベル"
-            value:
-              type: "number"
-              description: "VIS timeline用の表示順番用値"
-              
+              description: "VIS network用の表示順番用値"
 
 externalDocs:
   description: "Find out more about Swagger"
