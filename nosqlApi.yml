@@ -1,0 +1,172 @@
+swagger: "2.0"
+info:
+  description: "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters."
+  version: "1.0.0"
+  title: "Swagger TokyoTravel"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:4200"
+basePath: "/"
+tags:
+  - name: "global"
+    description: "Webサイトの特定のページに該当しない処理連携"
+  
+schemes:
+  - "https"
+  - "http"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+paths:
+
+  /nosMovieTimeline/{uuidMovie}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIEの「UUID」を使用して、NOS_MOVIE_TIMELINEから該当するデータを取得する"
+      operationId: "readNosMovieTimeline"
+      parameters:
+        - $ref: '#/parameters/uuidMovie'
+      responses:
+        200:
+          $ref: '#/responses/nosMovieTimeline'
+        400:
+          description: "Invalid status value"
+    post:
+      tags: 
+      - "global"
+      summary: "TRN_MOVIEのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
+      operationId: "createNosMovieTimeline"
+      parameters:
+        - $ref: '#/parameters/uuidMovie'
+      responses:
+        201:
+           description: "successful operation(Data was created)"
+        400:
+          description: "Invalid status value"
+  /nosWordgraph/uuidWordgraph/{param}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_WORDGRAPHの「UUID」を使用して、NOS_WORDGRAPHから該当するデータを取得する"
+      operationId: "readNosWordgraphFindByuuidWordgraph"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/nosMovieTimeline'
+        400:
+          description: "Invalid status value"
+    post:
+      tags: 
+      - "global"
+      summary: "TRN_WORDGRAPHのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
+      operationId: "createNosWordgraph"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        201:
+           description: "successful operation(Data was created)"
+        400:
+          description: "Invalid status value"
+
+parameters:
+
+  trnBookArray:
+    name: trnBookArray
+    description: "配列単位の本情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnBook"
+  param:
+    name: param
+    description: "単一パラメータ用項目、UUID検索用パラメーター"
+    required: true
+    in: path
+    type: "string"
+
+responses:
+  nosMovieTimeline:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/nosMovieTimeline"
+        
+  trnMovieCast:
+    description: "successful operation"
+    schema:
+      $ref: "#/definitions/trnMovieCast"
+  trnMovieCastArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnMovieCast"
+
+definitions:
+
+  nosMovieTimeline:
+    type: "object"
+    description: "TRN_MOVIE系テーブルの集約データ格納オブジェクト、TRN_MOVIEの「Get OverView」行を押下した際、Redisからデータを取得する"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MOVIE_CASTからデータを取得する為のuuid情報"
+      title:
+        type: "string"
+        description: "セットしている情報は「uuid」と一緒だが、サーバーで検索用のフィールドとして使用している"
+      events:
+        type: array
+        items:
+          type: object            
+          properties:
+            id:
+              type: "string"
+              description: "VIS timeline用のID"
+            start:
+              type: "string"
+              description: "VIS timeline用の表示順番用値"
+            end:
+              type: "string"
+              description: "VIS timeline用の表示順番用値"
+            group:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+            content:
+              type: "string"
+              description: "VIS timeline用の表示順番用値"
+            className:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+      groups:
+        type: array
+        items:
+          type: object            
+          properties:
+            id:
+              type: "string"
+              description: "VIS timeline用のID"
+            content:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+            className:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+            value:
+              type: "number"
+              description: "VIS timeline用の表示順番用値"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+        
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
