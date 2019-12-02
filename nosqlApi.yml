@@ -77,16 +77,6 @@ paths:
           description: "Invalid status value"
 
 parameters:
-
-  trnBookArray:
-    name: trnBookArray
-    description: "配列単位の本情報"
-    required: true
-    in: body
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnBook"
   param:
     name: param
     description: "単一パラメータ用項目、UUID検索用パラメーター"
@@ -175,19 +165,28 @@ definitions:
           properties:
             id:
               type: "string"
-              description: "VIS timeline用のID"
-            start:
+              description: "VIS network用のID"
+            x:
               type: "string"
-              description: "VIS timeline用の表示順番用値"
-            end:
+              description: "VIS network用のX座標"
+            y:
               type: "string"
-              description: "VIS timeline用の表示順番用値"
+              description: "VIS network用のY座標"
+            label:
+              type: "string"
+              description: "VIS network用のラベル"
             group:
               type: "string"
-              description: "VIS timeline用の表示用ラベル"
-            content:
+              description: "VIS network用のグループ"
+            value:
               type: "string"
-              description: "VIS timeline用の表示順番用値"
+              description: "VIS network用の値"
+            fixed:
+              type: "string"
+              description: "VIS network用のプロパティー、「false」を設定"
+            physics:
+              type: "string"
+              description: "VIS network用のプロパティー、「false」を設定"
             className:
               type: "string"
               description: "VIS timeline用の表示用ラベル"
