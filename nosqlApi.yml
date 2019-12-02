@@ -28,7 +28,7 @@ paths:
   /nosMovieTimeline/uuidMovie/{param}:
     get:
       tags:
-      - "adMovie"
+      - "global"
       summary: "TRN_MOVIEの「UUID」を使用して、NOS_MOVIE_TIMELINEから該当するデータを取得する"
       operationId: "readNosMovieTimeline"
       parameters:
@@ -53,7 +53,7 @@ paths:
   /nosWordgraph/uuidWordgraph/{param}:
     get:
       tags:
-      - "adMovie"
+      - "global"
       summary: "TRN_WORDGRAPHの「UUID」を使用して、NOS_WORDGRAPHから該当するデータを取得する"
       operationId: "readNosWordgraphFindByuuidWordgraph"
       parameters:
