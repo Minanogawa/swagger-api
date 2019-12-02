@@ -25,14 +25,14 @@ produces:
 
 paths:
 
-  /nosMovieTimeline/{uuidMovie}:
+  /nosMovieTimeline/uuidMovie/{param}:
     get:
       tags:
       - "adMovie"
       summary: "TRN_MOVIEの「UUID」を使用して、NOS_MOVIE_TIMELINEから該当するデータを取得する"
       operationId: "readNosMovieTimeline"
       parameters:
-        - $ref: '#/parameters/uuidMovie'
+        - $ref: '#/parameters/param'
       responses:
         200:
           $ref: '#/responses/nosMovieTimeline'
@@ -44,7 +44,7 @@ paths:
       summary: "TRN_MOVIEのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
       operationId: "createNosMovieTimeline"
       parameters:
-        - $ref: '#/parameters/uuidMovie'
+        - $ref: '#/parameters/param'
       responses:
         201:
            description: "successful operation(Data was created)"
@@ -100,16 +100,10 @@ responses:
     schema:
       $ref: "#/definitions/nosMovieTimeline"
         
-  trnMovieCast:
+  nosWordgraph:
     description: "successful operation"
     schema:
-      $ref: "#/definitions/trnMovieCast"
-  trnMovieCastArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnMovieCast"
+      $ref: "#/definitions/nosWordgraph"
 
 definitions:
 
@@ -163,10 +157,76 @@ definitions:
             value:
               type: "number"
               description: "VIS timeline用の表示順番用値"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-        
+              
+  nosWordgraph:
+    type: "object"
+    description: "TRN_MOVIE系テーブルの集約データ格納オブジェクト、TRN_MOVIEの「Get OverView」行を押下した際、Redisからデータを取得する"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MOVIE_CASTからデータを取得する為のuuid情報"
+      title:
+        type: "string"
+        description: "セットしている情報は「uuid」と一緒だが、サーバーで検索用のフィールドとして使用している"
+      label:
+        type: array
+        items:
+          type: object            
+          properties:
+            id:
+              type: "string"
+              description: "VIS timeline用のID"
+            start:
+              type: "string"
+              description: "VIS timeline用の表示順番用値"
+            end:
+              type: "string"
+              description: "VIS timeline用の表示順番用値"
+            group:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+            content:
+              type: "string"
+              description: "VIS timeline用の表示順番用値"
+            className:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+      nodes:
+        type: array
+        items:
+          type: object            
+          properties:
+            id:
+              type: "string"
+              description: "VIS timeline用のID"
+            content:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+            className:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+            value:
+              type: "number"
+              description: "VIS timeline用の表示順番用値"
+      edges:
+        type: array
+        items:
+          type: object            
+          properties:
+            id:
+              type: "string"
+              description: "VIS timeline用のID"
+            content:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+            className:
+              type: "string"
+              description: "VIS timeline用の表示用ラベル"
+            value:
+              type: "number"
+              description: "VIS timeline用の表示順番用値"
+              
+
 externalDocs:
   description: "Find out more about Swagger"
   url: "http://swagger.io"
