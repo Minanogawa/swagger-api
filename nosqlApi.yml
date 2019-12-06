@@ -198,9 +198,6 @@ definitions:
             group:
               type: "string"
               description: "VIS network用のグループ"
-            value:
-              type: "string"
-              description: "VIS network用の値"
             fixed:
               type: "string"
               description: "VIS network用のプロパティー、「false」を設定"
