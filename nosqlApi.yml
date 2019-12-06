@@ -204,6 +204,9 @@ definitions:
             physics:
               type: "string"
               description: "VIS network用のプロパティー、「false」を設定"
+            uuid:
+              type: "string"
+              description: "TRN_WORDGRAPH_LABLEのUUID"
       nodes:
         type: array
         items:
@@ -221,6 +224,9 @@ definitions:
             value:
               type: "number"
               description: "VIS network用の表示順番用値"
+            uuid:
+              type: "string"
+              description: "TRN_WORDGRAPH_NODESのUUID"
 
 externalDocs:
   description: "Find out more about Swagger"
