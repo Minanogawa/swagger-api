@@ -204,9 +204,6 @@ definitions:
             physics:
               type: "string"
               description: "VIS network用のプロパティー、「false」を設定"
-            className:
-              type: "string"
-              description: "VIS timeline用の表示用ラベル"
       nodes:
         type: array
         items:
