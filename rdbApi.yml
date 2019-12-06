@@ -3394,9 +3394,6 @@ definitions:
       group:
         type: "string"
         description: "vis network用のグループ"
-      value:
-        type: "string"
-        description: "vis network用の値"
       fixed:
         type: "string"
         description: "vis network用の位置固定フラグ"
@@ -3405,7 +3402,7 @@ definitions:
         description: "vis network用の不明??フラグ"
       summary:
         type: "string"
-        description: "ストーリーの要約"
+        description: "ラベルの要約"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
@@ -3439,6 +3436,9 @@ definitions:
       value:
         type: "string"
         description: "vis network用の値"
+      summary:
+        type: "string"
+        description: "nodeの要約"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
