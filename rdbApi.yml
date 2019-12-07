@@ -2281,6 +2281,20 @@ definitions:
             title:
               type: "string"
               description: "TRN_MOVIEのタイトル情報"
+      wg:
+        type: array
+        items:
+          type: object            
+          properties:
+            uuid:
+              type: "string"
+              description: "TRN_WORDGRAPHのuuid情報"
+            searchWord:
+              type: "string"
+              description: "TRN_WORDGRAPHのsearchWord情報"
+            title:
+              type: "string"
+              description: "TRN_MOVIEのタイトル情報"
 
   trnBook:
     type: "object"
