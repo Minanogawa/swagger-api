@@ -3355,6 +3355,9 @@ definitions:
       config:
         type: "string"
         description: "Word Graphの設定確認用フィールド"
+      searchWord:
+        type: "string"
+        description: "Word GraphをEditorから検索する際のキーワード"
       summary:
         type: "string"
         description: "ストーリーの要約"
