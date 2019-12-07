@@ -75,6 +75,19 @@ paths:
            description: "successful operation(Data was created)"
         400:
           description: "Invalid status value"
+  /nosWordgraph/searchWord/{param}:
+    get:
+      tags:
+      - "global"
+      summary: "EditorConst内で保持している「searchWord」を使用して、NOS_WORDGRAPHから該当するデータを取得する、searchWordは(TRN_WORDGRAPHと値が同期する事が前提)"
+      operationId: "readNosWordgraphFindBySearchWord"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/nosWordgraph'
+        400:
+          description: "Invalid status value"
 
 parameters:
   param:
