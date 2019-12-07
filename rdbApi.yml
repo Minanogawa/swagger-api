@@ -24,8 +24,6 @@ tags:
     description: "Administration Mathページにおけるデータ通信定義"
   - name: "adMovie"
     description: "Administration Movieページにおけるデータ通信定義"
-  - name: "adNosql"
-    description: "Administration Nosql(no sql)ページにおけるデータ通信定義"
   - name: "adPerson"
     description: "Administration Personページにおけるデータ通信定義"
   - name: "adSpot"
@@ -741,67 +739,6 @@ paths:
       responses:
         200:
           $ref: '#/responses/trnMovieCastArray'
-        400:
-          description: "Invalid status value"
-  /trnMoviePlot:
-    get:
-      tags:
-      - "adMovie"
-      summary: "TRN_MOVIE_PLOTからデータを全件取得する"
-      operationId: "readTrnMoviePlot"
-      responses:
-        200:
-          $ref: '#/responses/trnMoviePlotArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adMovie"
-      summary: "TRN_MOVIE_PLOTに新規データを登録する"
-      operationId: "createTrnMoviePlot"
-      parameters:
-        - $ref: '#/parameters/trnMoviePlotArray'
-      responses:
-        200:
-          description: "successful operation"
-        405:
-          description: "Invalid input"
-    put:
-      tags:
-      - "adMovie"
-      summary: "TRN_MOVIE_PLOT情報の更新を行う"
-      operationId: "updateTrnMoviePlot"
-      parameters:
-        - $ref: '#/parameters/trnMoviePlotArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-  /trnMoviePlot/uuid/{param}:
-    get:
-      tags:
-      - "adMovie"
-      summary: "TRN_MOVIE_PLOTのUUIDを引数にTRN_MOVIE_PLOTの検索を行う"
-      operationId: "readTrnMoviePlotFindByUuid"
-      parameters:
-        - $ref: '#/parameters/param'
-      responses:
-        200:
-          $ref: '#/responses/trnMoviePlot'
-        400:
-          description: "Invalid status value"
-  /trnMoviePlot/uuidMovie/{param}:
-    get:
-      tags:
-      - "adMovie"
-      summary: "TRN_MOVIEのUUIDを引数にTRN_MOVIE_PLOTの検索を行う"
-      operationId: "readTrnMoviePlotFindByUuidMovie"
-      parameters:
-        - $ref: '#/parameters/param'
-      responses:
-        200:
-          $ref: '#/responses/trnMoviePlotArray'
         400:
           description: "Invalid status value"
   /trnMoviePhrase:
@@ -1734,15 +1671,6 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieCast"
-  trnMoviePlotArray:
-    name: trnMoviePlotArray
-    description: "配列単位の映画章情報"
-    required: true
-    in: body
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnMoviePlot"
   trnMoviePhraseArray:
     name: trnMoviePhraseArray
     description: "配列単位の映画フレーズ情報"
@@ -2015,16 +1943,6 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnMovieCast"
-  trnMoviePlot:
-    description: "successful operation"
-    schema:
-      $ref: "#/definitions/trnMoviePlot"
-  trnMoviePlotArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnMoviePlot"
   trnMoviePhrase:
     description: "successful operation"
     schema:
@@ -2811,49 +2729,6 @@ definitions:
       nationality:
         type: "string"
         description: "映画内配役国籍"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      delete_flg:
-        type: "integer"
-        format: "int32"
-
-  trnMoviePlot:
-    type: "object"
-    properties:
-      uuid:
-        type: "string"
-        description: "TRN_MOVIE_PLOTのUUID"
-      uuidMovie:
-        type: "string"
-        description: "TRN_MOVIEのUUID"
-      chapter:
-        type: "number"
-        description: "章番号"
-      title:
-        type: "string"
-        description: "章タイトル"
-      summary:
-        type: "string"
-        description: "章要約"
-      startDate:
-        type: "string"
-        format: date
-      startDatetime:
-        type: "string"
-        format: date-time
-      endDate:
-        type: "string"
-        format: date
-      endDatetime:
-        type: "string"
-        format: date-time
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
