@@ -155,6 +155,9 @@ definitions:
       uuid:
         type: "string"
         description: "TRN_MOVIE_CASTからデータを取得する為のuuid情報"
+      searchWord:
+        type: "string"
+        description: "Editorからボタン経由でネットワークグラフを表示する際に使用するフィールド"
       title:
         type: "string"
         description: "セットしている情報は「uuid」と一緒だが、サーバーで検索用のフィールドとして使用している"
