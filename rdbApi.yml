@@ -3322,6 +3322,9 @@ definitions:
       label:
         type: "string"
         description: "vis network用のラベル"
+      hasChild:
+        type: "string"
+        description: "vis network用の親判定フラグ"
       group:
         type: "string"
         description: "vis network用のグループ"
