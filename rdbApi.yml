@@ -2102,9 +2102,9 @@ definitions:
             networkCallName:
               type: "string"
               description: "TRN_WORDGRAPHの処理呼出し用キーワード"
-            title:
+            networkConfig:
               type: "string"
-              description: "TRN_MOVIEのタイトル情報"
+              description: "TRN_WORDGRAPHのコンフィグ情報"
 
   trnBook:
     type: "object"
