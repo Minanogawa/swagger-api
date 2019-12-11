@@ -3133,12 +3133,15 @@ definitions:
       title:
         type: "string"
         description: "Word Graphのタイトル"
-      config:
+      networkButtonName:
         type: "string"
-        description: "Word Graphの設定確認用フィールド"
-      searchWord:
+        description: "Editor画面における、Vis Network(Word Graph)の呼出し用ボタン名称"
+      networkCallName:
         type: "string"
-        description: "Word GraphをEditorから検索する際のキーワード"
+        description: "Editor画面における、Vis Network(Word Graph)の呼出し用、メソッド名称"
+      networkConfig:
+        type: "string"
+        description: "Vis Network(Word Graph)のプロパティー"
       summary:
         type: "string"
         description: "ストーリーの要約"
