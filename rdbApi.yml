@@ -2099,9 +2099,9 @@ definitions:
             uuid:
               type: "string"
               description: "TRN_WORDGRAPHのuuid情報"
-            searchWord:
+            networkCallName:
               type: "string"
-              description: "TRN_WORDGRAPHのsearchWord情報"
+              description: "TRN_WORDGRAPHの処理呼出し用キーワード"
             title:
               type: "string"
               description: "TRN_MOVIEのタイトル情報"
