@@ -2530,9 +2530,6 @@ definitions:
         - "Publisher"
         - "Retail"
         - "Spot"
-      url:
-        type: "string"
-        description: "映画のサイトURL"
       year:
         type: "string"
         description: "映画の上映年"
@@ -2548,18 +2545,15 @@ definitions:
       bookUrl:
         type: "string"
         description: "映画の原作脚本URL"
-      chinaName:
-        type: "string"
-        description: "中国語での映画名"
-      pinyinName:
-        type: "string"
-        description: "中国語でのピンイン"
       twitter:
         type: "string"
         description: "映画の公式twitter"
-      summaryPdf:
+      summary:
         type: "string"
         description: "映画を要約したPDFのURL"
+      url:
+        type: "string"
+        description: "映画のサイトURL"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
