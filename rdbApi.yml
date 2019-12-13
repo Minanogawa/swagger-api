@@ -3256,18 +3256,21 @@ definitions:
       uuidWordgraph:
         type: "string"
         description: "TRN_WORDGRAPHのUUID"
-      id:
+      from:
         type: "string"
-        description: "vis network用のID"
+        description: "vis network Edgeの起点"
+      to:
+        type: "string"
+        description: "vis network Edgeの終点"
+      length:
+        type: "string"
+        description: "vis network Edgeの長さ"
+      width:
+        type: "string"
+        description: "vis network Edgeの幅"
       label:
         type: "string"
-        description: "vis network用のラベル"
-      group:
-        type: "string"
-        description: "vis network用のグループ"
-      value:
-        type: "string"
-        description: "vis network用の値"
+        description: "vis network ラベル"
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
