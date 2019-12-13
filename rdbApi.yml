@@ -1404,6 +1404,18 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
+  /trnWordgraphNodesOrderByIdAsc:
+    get:
+      tags:
+      - "adWordgraph"
+      summary: "TRN_WORDGRAPH_NODES‚ÌID‚ğ¸‡‚Åæ“¾‚·‚é"
+      operationId: "readTrnWordgraphNodesOrderByIdAsc"
+      responses:
+        200:
+          $ref: '#/responses/trnWordgraphNodesArray'
+        400:
+          description: "Invalid status value"
+          
   /trnWordgraphNodes/uuid/{param}:
     get:
       tags:
