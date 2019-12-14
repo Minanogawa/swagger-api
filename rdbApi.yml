@@ -3229,9 +3229,6 @@ definitions:
       group:
         type: "string"
         description: "vis network用のグループ"
-      value:
-        type: "number"
-        description: "vis network用の値"
       summary:
         type: "string"
         description: "nodeの要約"
