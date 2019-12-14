@@ -3230,7 +3230,7 @@ definitions:
         type: "string"
         description: "vis network用のグループ"
       value:
-        type: "string"
+        type: "number"
         description: "vis network用の値"
       summary:
         type: "string"
