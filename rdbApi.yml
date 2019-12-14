@@ -3173,7 +3173,7 @@ definitions:
         type: "string"
         description: "TRN_WORDGRAPH‚ÌUUID"
       id:
-        type: "string"
+        type: "number"
         description: "vis network—p‚ÌID"
       x:
         type: "number"
@@ -3218,7 +3218,7 @@ definitions:
         type: "string"
         description: "TRN_WORDGRAPH‚ÌUUID"
       id:
-        type: "string"
+        type: "number"
         description: "vis network—p‚ÌID"
       label:
         type: "string"
