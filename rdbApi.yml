@@ -786,6 +786,19 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
+  /trnMovieScene/cGetSummry/uuid/{param}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_SCENEのUUIDを引数にGetSummryのカスタムクエリを実行する"
+      operationId: "readTrnMovieSceneFindByUuidWithGetSummry"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/summry'
+        400:
+          description: "Invalid status value"
   /trnMovieScene/uuid/{param}:
     get:
       tags:
@@ -1737,6 +1750,10 @@ parameters:
     type: "string"
       
 responses:
+  summry:
+    description: "記事や要約情報の返却"
+    schema:
+      type: string
   categoryMenuArray:
     description: "successful operation"
     schema:
@@ -1987,7 +2004,6 @@ definitions:
         type: "integer"
         format: "int32"
         
-
   sessionStorage:
     type: "object"
     properties:
