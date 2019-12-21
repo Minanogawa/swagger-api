@@ -792,6 +792,8 @@ paths:
       - "adMovie"
       summary: "TRN_MOVIE_SCENEのUUIDを引数にGetSummaryのカスタムクエリを実行する"
       operationId: "readTrnMovieSceneFindByUuidWithGetSummary"
+      produces:
+        - text/plain; charset=utf-8
       parameters:
         - $ref: '#/parameters/param'
       responses:
