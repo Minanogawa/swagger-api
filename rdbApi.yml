@@ -786,14 +786,12 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnMovieScene/cGetSummary/uuid/{param}:
+  /trnMovieScene/objSummary/uuid/{param}:
     get:
       tags:
       - "adMovie"
       summary: "TRN_MOVIE_SCENEのUUIDを引数にGetSummaryのカスタムクエリを実行する"
-      operationId: "readTrnMovieSceneFindByUuidWithGetSummary"
-      produces:
-        - text/plain; charset=utf-8
+      operationId: "readTrnMovieSceneFindByUuidToObjSummary"
       parameters:
         - $ref: '#/parameters/param'
       responses:
@@ -1369,7 +1367,19 @@ paths:
           $ref: '#/responses/trnWordgraphNodesArray'
         400:
           description: "Invalid status value"
-          
+  /trnWordgraphNodes/objSummary/uuid/{param}:
+    get:
+      tags:
+      - "adMovie"
+      summary: "TRN_MOVIE_SCENEのUUIDを引数にGetSummaryのカスタムクエリを実行する"
+      operationId: "readTrnWordgraphNodesFindByUuidToObjSummary"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/summary'
+        400:
+          description: "Invalid status value"
   /trnWordgraphNodes/uuid/{param}:
     get:
       tags:
@@ -1755,7 +1765,7 @@ responses:
   summary:
     description: "記事や要約情報の返却"
     schema:
-      type: string
+      type: object
   categoryMenuArray:
     description: "successful operation"
     schema:
