@@ -20,8 +20,8 @@ tags:
     description: "Administration Chartページにおけるデータ通信定義"
   - name: "adEvent"
     description: "Administration Eventページにおけるデータ通信定義"
-  - name: "adMath"
-    description: "Administration Mathページにおけるデータ通信定義"
+  - name: "adTrnQuizwg"
+    description: "Administration Quizwgページにおけるデータ通信定義"
   - name: "adMovie"
     description: "Administration Movieページにおけるデータ通信定義"
   - name: "adPerson"
@@ -440,24 +440,24 @@ paths:
           description: "Invalid status value"
           
           
-  /trnMath:
+  /trnQuizwg:
     get:
       tags:
-      - "adMath"
-      summary: "TRN_MATHからデータを全件取得する"
-      operationId: "readTrnMath"
+      - "adTrnQuizwg"
+      summary: "TRN_QUIZからデータを全件取得する"
+      operationId: "readTrnQuizwg"
       responses:
         200:
-          $ref: '#/responses/trnMathArray'
+          $ref: '#/responses/trnQuizwgArray'
         400:
           description: "Invalid status value"
     post:
       tags:
-      - "adMath"
-      summary: "TRN_MATHに新規データを登録する"
-      operationId: "createTrnMath"
+      - "adTrnQuizwg"
+      summary: "TRN_QUIZに新規データを登録する"
+      operationId: "createTrnQuizwg"
       parameters:
-        - $ref: '#/parameters/trnMathArray'
+        - $ref: '#/parameters/trnQuizwgArray'
       responses:
         200:
           description: "successful operation"
@@ -465,34 +465,34 @@ paths:
           description: "Invalid input"
     put:
       tags:
-      - "adMath"
-      summary: "TRN_MATH情報の更新を行う"
-      operationId: "updateTrnMath"
+      - "adTrnQuizwg"
+      summary: "TRN_QUIZ情報の更新を行う"
+      operationId: "updateTrnQuizwg"
       parameters:
-        - $ref: '#/parameters/trnMathArray'
+        - $ref: '#/parameters/trnQuizwgArray'
       responses:
         200:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnMathProb:
+  /trnQuizwgSetting:
     get:
       tags:
-      - "adMath"
-      summary: "TRN_MATH_PROBからデータを全件取得する"
-      operationId: "readTrnMathProb"
+      - "adTrnQuizwg"
+      summary: "TRN_QUIZ_SETTINGからデータを全件取得する"
+      operationId: "readTrnQuizwgSetting"
       responses:
         200:
-          $ref: '#/responses/trnMathProbArray'
+          $ref: '#/responses/trnQuizwgSettingArray'
         400:
           description: "Invalid status value"
     post:
       tags:
-      - "adMath"
-      summary: "TRN_MATH_PROBに新規データを登録する"
-      operationId: "createTrnMathProb"
+      - "adTrnQuizwg"
+      summary: "TRN_QUIZ_SETTINGに新規データを登録する"
+      operationId: "createTrnQuizwgSetting"
       parameters:
-        - $ref: '#/parameters/trnMathProbArray'
+        - $ref: '#/parameters/trnQuizwgSettingArray'
       responses:
         200:
           description: "successful operation"
@@ -500,11 +500,11 @@ paths:
           description: "Invalid input"
     put:
       tags:
-      - "adMath"
-      summary: "TRN_MATH_PROB情報の更新を行う"
-      operationId: "updateTrnMathProb"
+      - "adTrnQuizwg"
+      summary: "TRN_QUIZ_SETTING情報の更新を行う"
+      operationId: "updateTrnQuizwgSetting"
       parameters:
-        - $ref: '#/parameters/trnMathProbArray'
+        - $ref: '#/parameters/trnQuizwgSettingArray'
       responses:
         200:
           description: "successful operation"
@@ -1542,7 +1542,7 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnEventResearch"
-  trnMathArray:
+  trnQuizwgArray:
     name: trnMathArray
     description: "配列単位の数学情報"
     required: true
@@ -1550,8 +1550,8 @@ parameters:
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnMath"
-  trnMathProbArray:
+        $ref: "#/definitions/trnQuizwg"
+  trnQuizwgSettingArray:
     name: trnMathProbArray
     description: "配列単位の数学問題情報"
     required: true
@@ -1559,7 +1559,7 @@ parameters:
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnMathProb"
+        $ref: "#/definitions/trnQuizwgSetting"
   trnMathStatArray:
     name: trnMathStatArray
     description: "配列単位の数学統計情報"
@@ -1817,18 +1817,18 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnEventResearch"
-  trnMathArray:
+  trnQuizwgArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnMath"
-  trnMathProbArray:
+        $ref: "#/definitions/trnQuizwg"
+  trnQuizwgSettingArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnMathProb"
+        $ref: "#/definitions/trnQuizwgSetting"
   trnMathStatArray:
     description: "successful operation"
     schema:
@@ -2332,141 +2332,6 @@ definitions:
         type: "integer"
         format: "int32"
         
-  trnMath:
-    type: "object"
-    properties:
-      uuid:
-        type: "string"
-        description: "TRN_MATHのUUID"
-      fieldEn:
-        type: "string"
-        description: "分野、英語名称"
-        enum:
-        - "Trigonometric Function"
-      fieldJa:
-        type: "string"
-        description: "分野、日本語名称"
-        enum:
-        - "三角関数"
-      memo:
-        type: "string"
-        description: "メモ項目"
-      category:
-        type: "string"
-        description: "映画の種別"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      delete_flg:
-        type: "integer"
-        format: "int32"
-  trnMathProb:
-    type: "object"
-    properties:
-      uuid:
-        type: "string"
-        description: "TRN_MATH_PROBのUUID"
-      uuidMath:
-        type: "string"
-        description: "TRN_MATHのUUID"
-      mediaType:
-        type: "string"
-        description: "問題の参照媒体"
-        enum:
-        - "Web"
-        - "PDF"
-      remarks:
-        type: "string"
-        description: "備考"
-      ref:
-        type: "string"
-        description: "問題の参照先"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      delete_flg:
-        type: "integer"
-        format: "int32"
-  trnMathStat:
-    type: "object"
-    properties:
-      uuid:
-        type: "string"
-        description: "TRN_MATH_STATのUUID"
-      uuidMath:
-        type: "string"
-        description: "TRN_MATHのUUID"
-      statName:
-        type: "string"
-        description: "統計名称"
-      designFor:
-        type: "string"
-        description: "その統計手法が得意とする表現"
-        enum:
-        - "Amusement"
-      purpose:
-        type: "string"
-        description: "その統計を使う目的"
-        enum:
-        - "Amusement"
-      step:
-        type: "string"
-        description: "その統計の作成手順"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      delete_flg:
-        type: "integer"
-        format: "int32"
-  trnMathUsage:
-    type: "object"
-    properties:
-      uuid:
-        type: "string"
-        description: "TRN_MATH_STATのUUID"
-      uuidMath:
-        type: "string"
-        description: "TRN_MATHのUUID"
-      title:
-        type: "string"
-        description: "数学使用方法の名前付け"
-      buttonName:
-        type: "string"
-        description: "確認ボタン名"
-      step:
-        type: "string"
-        description: "その数学分野の使用手順"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      delete_flg:
-        type: "integer"
-        format: "int32"
-
   trnMovie:
     type: "object"
     properties:
@@ -2892,6 +2757,153 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
+
+  trnQuizwg:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_QUIZWGのUUID"
+      uuid_wg:
+        type: "string"
+        description: "TRN_WORDGRAPHのUUID"
+      title:
+        type: "string"
+        description: "クイズのカテゴリータイトル"
+      wgTitle:
+        type: "string"
+        description: "Word Graphのタイトル"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+  trnQuizwgSetting:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MATH_PROBのUUID"
+      uuidQuizwg:
+        type: "string"
+        description: "TRN_MATHのUUID"
+      uuidWg:
+        type: "string"
+        description: "TRN_MATHのUUID"
+      fromId:
+        type: "string"
+        description: "検索条件・開始ID"
+      toId:
+        type: "string"
+        description: "検索条件・終了ID"
+      hasChild:
+        type: "string"
+        description: "検索条件・子要素が存在するか判定するフラグ"
+      group:
+        type: "string"
+        description: "検索条件・グループ"
+      count:
+        type: "string"
+        description: "検索条件から取得したレコードの数"
+      score:
+        type: "string"
+        description: "出来具合"
+      last_date:
+        type: "string"
+        description: "最後に参照した日にち"
+      last_datetime:
+        type: "string"
+        description: "最後に参照した時刻"
+      memo:
+        type: "string"
+        description: "備考"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+  trnMathStat:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MATH_STATのUUID"
+      uuidMath:
+        type: "string"
+        description: "TRN_MATHのUUID"
+      statName:
+        type: "string"
+        description: "統計名称"
+      designFor:
+        type: "string"
+        description: "その統計手法が得意とする表現"
+        enum:
+        - "Amusement"
+      purpose:
+        type: "string"
+        description: "その統計を使う目的"
+        enum:
+        - "Amusement"
+      step:
+        type: "string"
+        description: "その統計の作成手順"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+  trnMathUsage:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_MATH_STATのUUID"
+      uuidMath:
+        type: "string"
+        description: "TRN_MATHのUUID"
+      title:
+        type: "string"
+        description: "数学使用方法の名前付け"
+      buttonName:
+        type: "string"
+        description: "確認ボタン名"
+      step:
+        type: "string"
+        description: "その数学分野の使用手順"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+
 
   trnSpot:
     type: "object"
