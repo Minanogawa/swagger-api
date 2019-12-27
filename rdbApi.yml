@@ -20,12 +20,12 @@ tags:
     description: "Administration Chartページにおけるデータ通信定義"
   - name: "adEvent"
     description: "Administration Eventページにおけるデータ通信定義"
-  - name: "adTrnQuizwg"
-    description: "Administration Quizwgページにおけるデータ通信定義"
   - name: "adMovie"
     description: "Administration Movieページにおけるデータ通信定義"
   - name: "adPerson"
     description: "Administration Personページにおけるデータ通信定義"
+  - name: "adQuizwg"
+    description: "Administration Quizwgページにおけるデータ通信定義"
   - name: "adSpot"
     description: "Administration Spotページにおけるデータ通信定義"
   - name: "adWordgraph"
@@ -440,147 +440,6 @@ paths:
           description: "Invalid status value"
           
           
-  /trnQuizwg:
-    get:
-      tags:
-      - "adTrnQuizwg"
-      summary: "TRN_QUIZからデータを全件取得する"
-      operationId: "readTrnQuizwg"
-      responses:
-        200:
-          $ref: '#/responses/trnQuizwgArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adTrnQuizwg"
-      summary: "TRN_QUIZに新規データを登録する"
-      operationId: "createTrnQuizwg"
-      parameters:
-        - $ref: '#/parameters/trnQuizwgArray'
-      responses:
-        200:
-          description: "successful operation"
-        405:
-          description: "Invalid input"
-    put:
-      tags:
-      - "adTrnQuizwg"
-      summary: "TRN_QUIZ情報の更新を行う"
-      operationId: "updateTrnQuizwg"
-      parameters:
-        - $ref: '#/parameters/trnQuizwgArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-  /trnQuizwgSetting:
-    get:
-      tags:
-      - "adTrnQuizwg"
-      summary: "TRN_QUIZ_SETTINGからデータを全件取得する"
-      operationId: "readTrnQuizwgSetting"
-      responses:
-        200:
-          $ref: '#/responses/trnQuizwgSettingArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adTrnQuizwg"
-      summary: "TRN_QUIZ_SETTINGに新規データを登録する"
-      operationId: "createTrnQuizwgSetting"
-      parameters:
-        - $ref: '#/parameters/trnQuizwgSettingArray'
-      responses:
-        200:
-          description: "successful operation"
-        405:
-          description: "Invalid input"
-    put:
-      tags:
-      - "adTrnQuizwg"
-      summary: "TRN_QUIZ_SETTING情報の更新を行う"
-      operationId: "updateTrnQuizwgSetting"
-      parameters:
-        - $ref: '#/parameters/trnQuizwgSettingArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-  /trnMathStat:
-    get:
-      tags:
-      - "adMath"
-      summary: "TRN_MATH_STATからデータを全件取得する"
-      operationId: "readTrnMathStat"
-      responses:
-        200:
-          $ref: '#/responses/trnMathStatArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adMath"
-      summary: "TRN_MATH_STATに新規データを登録する"
-      operationId: "createTrnMathStat"
-      parameters:
-        - $ref: '#/parameters/trnMathStatArray'
-      responses:
-        200:
-          description: "successful operation"
-        405:
-          description: "Invalid input"
-    put:
-      tags:
-      - "adMath"
-      summary: "TRN_MATH_STAT情報の更新を行う"
-      operationId: "updateTrnMathStat"
-      parameters:
-        - $ref: '#/parameters/trnMathStatArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-  /trnMathUsage:
-    get:
-      tags:
-      - "adMath"
-      summary: "TRN_MATH_USAGEからデータを全件取得する"
-      operationId: "readTrnMathUsage"
-      responses:
-        200:
-          $ref: '#/responses/trnMathUsageArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adMath"
-      summary: "TRN_MATH_USAGEに新規データを登録する"
-      operationId: "createTrnMathUsage"
-      parameters:
-        - $ref: '#/parameters/trnMathUsageArray'
-      responses:
-        200:
-          description: "successful operation"
-        405:
-          description: "Invalid input"
-    put:
-      tags:
-      - "adMath"
-      summary: "TRN_MATH_USAGE情報の更新を行う"
-      operationId: "updateTrnMathUsage"
-      parameters:
-        - $ref: '#/parameters/trnMathUsageArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-
   /trnMovie:
     get:
       tags:
@@ -1080,6 +939,152 @@ paths:
           $ref: '#/responses/trnPublishArray'
         400:
           description: "Invalid status value"
+          
+          
+  /trnQuizwg:
+    get:
+      tags:
+      - "adQuizwg"
+      summary: "TRN_QUIZからデータを全件取得する"
+      operationId: "readTrnQuizwg"
+      responses:
+        200:
+          $ref: '#/responses/trnQuizwgArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adQuizwg"
+      summary: "TRN_QUIZに新規データを登録する"
+      operationId: "createTrnQuizwg"
+      parameters:
+        - $ref: '#/parameters/trnQuizwgArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adQuizwg"
+      summary: "TRN_QUIZ情報の更新を行う"
+      operationId: "updateTrnQuizwg"
+      parameters:
+        - $ref: '#/parameters/trnQuizwgArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnQuizwgSetting:
+    get:
+      tags:
+      - "adQuizwg"
+      summary: "TRN_QUIZ_SETTINGからデータを全件取得する"
+      operationId: "readTrnQuizwgSetting"
+      responses:
+        200:
+          $ref: '#/responses/trnQuizwgSettingArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adQuizwg"
+      summary: "TRN_QUIZ_SETTINGに新規データを登録する"
+      operationId: "createTrnQuizwgSetting"
+      parameters:
+        - $ref: '#/parameters/trnQuizwgSettingArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adQuizwg"
+      summary: "TRN_QUIZ_SETTING情報の更新を行う"
+      operationId: "updateTrnQuizwgSetting"
+      parameters:
+        - $ref: '#/parameters/trnQuizwgSettingArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+          
+          
+  /trnMathStat:
+    get:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_STATからデータを全件取得する"
+      operationId: "readTrnMathStat"
+      responses:
+        200:
+          $ref: '#/responses/trnMathStatArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_STATに新規データを登録する"
+      operationId: "createTrnMathStat"
+      parameters:
+        - $ref: '#/parameters/trnMathStatArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_STAT情報の更新を行う"
+      operationId: "updateTrnMathStat"
+      parameters:
+        - $ref: '#/parameters/trnMathStatArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnMathUsage:
+    get:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_USAGEからデータを全件取得する"
+      operationId: "readTrnMathUsage"
+      responses:
+        200:
+          $ref: '#/responses/trnMathUsageArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_USAGEに新規データを登録する"
+      operationId: "createTrnMathUsage"
+      parameters:
+        - $ref: '#/parameters/trnMathUsageArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "adMath"
+      summary: "TRN_MATH_USAGE情報の更新を行う"
+      operationId: "updateTrnMathUsage"
+      parameters:
+        - $ref: '#/parameters/trnMathUsageArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+          
+          
 
   /trnSpot:
     get:
@@ -1373,6 +1378,19 @@ paths:
       - "adWordgraph"
       summary: "TRN_MOVIE_SCENEのUUIDを引数にGetSummaryのカスタムクエリを実行する"
       operationId: "readTrnWordgraphNodesFindByUuidToObjSummary"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/summary'
+        400:
+          description: "Invalid status value"
+  /trnWordgraphNodes/objTrnQuizwgSetting/{param}:
+    get:
+      tags:
+      - "adWordgraph"
+      summary: "TRN_QUIZWG_SETTING(検索条件オブジェクト)を引数にカスタムクエリを実行する"
+      operationId: "readTrnWordgraphNodesFindByTrnQuizwgSetting"
       parameters:
         - $ref: '#/parameters/param'
       responses:
