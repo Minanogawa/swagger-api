@@ -1011,6 +1011,19 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
+  /trnQuizwgSetting/uuidQuizwg/{param}:
+    get:
+      tags:
+      - "adQuizwg"
+      summary: "TRN_QUIZWG‚ÌUUID‚ğˆø”‚ÉTRN_QUIZWG_SETTING‚ÌŒŸõ‚ğs‚¤"
+      operationId: "readTrnQuizwgSettingFindByUuidQuizwg"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/trnQuizwgSettingArray'
+        400:
+          description: "Invalid status value"
           
           
   /trnMathStat:
