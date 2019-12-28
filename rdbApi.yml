@@ -719,14 +719,14 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnMovieSite/{uuidMovie}:
+  /trnMovieSite/uuidMovie/{param}:
     get:
       tags:
       - "adMovie"
       summary: "UUID MOVIEでTRN_MOVIE_RESEARCHの検索を行う"
       operationId: "readTrnMovieSiteFindByUuidMovie"
       parameters:
-        - $ref: '#/parameters/uuidMovie'
+        - $ref: '#/parameters/param'
       responses:
         200:
           $ref: '#/responses/trnMovieArray'
@@ -1398,17 +1398,17 @@ paths:
           $ref: '#/responses/summary'
         400:
           description: "Invalid status value"
-  /trnWordgraphNodes/objTrnQuizwgSetting/{param}:
+  /trnWordgraphNodes/objTrnQuizwgSetting:
     get:
       tags:
       - "adWordgraph"
       summary: "TRN_QUIZWG_SETTING(検索条件オブジェクト)を引数にカスタムクエリを実行する"
       operationId: "readTrnWordgraphNodesFindByTrnQuizwgSetting"
       parameters:
-        - $ref: '#/parameters/param'
+        - $ref: '#/parameters/trnQuizwgSetting'
       responses:
         200:
-          $ref: '#/responses/summary'
+          $ref: '#/responses/trnWordgraphNodesArray'
         400:
           description: "Invalid status value"
   /trnWordgraphNodes/uuid/{param}:
@@ -1574,17 +1574,24 @@ parameters:
       items:
         $ref: "#/definitions/trnEventResearch"
   trnQuizwgArray:
-    name: trnMathArray
-    description: "配列単位の数学情報"
+    name: trnQuizwgArray
+    description: "配列単位のワードグラフ用クイズ情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
         $ref: "#/definitions/trnQuizwg"
+  trnQuizwgSetting:
+    name: trnQuizwgSettingArray
+    description: "配列単位のワードグラフ用クイズ検索情報"
+    required: true
+    in: body
+    schema:
+      $ref: "#/definitions/trnQuizwgSetting"
   trnQuizwgSettingArray:
-    name: trnMathProbArray
-    description: "配列単位の数学問題情報"
+    name: trnQuizwgSettingArray
+    description: "配列単位のワードグラフ用クイズ検索情報"
     required: true
     in: body
     schema:
@@ -1779,18 +1786,7 @@ parameters:
     required: true
     in: path
     type: "string"
-  uuidMovie:
-    name: uuidMovie
-    description: "TRN_MOVIEのUUID検索用パラメーター"
-    required: true
-    in: path
-    type: "string"
-  uuidPerson:
-    name: uuidPerson
-    description: "TRN_PERSONのUUID検索用パラメーター"
-    required: true
-    in: path
-    type: "string"
+
       
 responses:
   summary:
