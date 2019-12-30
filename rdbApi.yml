@@ -785,20 +785,20 @@ paths:
     get:
       tags:
       - "adPerson"
-      summary: "TRN_PERSON_PRODUCTからデータを全件取得する"
-      operationId: "readTrnPersonProduct"
+      summary: "TRN_PERSON_ACTIVITYからデータを全件取得する"
+      operationId: "readTrnPersonActivity"
       responses:
         200:
-          $ref: '#/responses/trnPersonProductArray'
+          $ref: '#/responses/trnPersonActivityArray'
         400:
           description: "Invalid status value"
     post:
       tags:
       - "adPerson"
-      summary: "TRN_PERSON_PRODUCTに新規データを登録する"
-      operationId: "createTrnPersonProduct"
+      summary: "TRN_PERSON_ACTIVITYに新規データを登録する"
+      operationId: "createTrnPersonActivity"
       parameters:
-        - $ref: '#/parameters/trnPersonProductArray'
+        - $ref: '#/parameters/trnPersonActivityArray'
       responses:
         200:
           description: "successful operation"
@@ -807,10 +807,10 @@ paths:
     put:
       tags:
       - "adPerson"
-      summary: "TRN_PERSON_PRODUCT情報の更新を行う"
-      operationId: "updateTrnPersonProduct"
+      summary: "TRN_PERSON_ACTIVITY情報の更新を行う"
+      operationId: "updateTrnPersonActivity"
       parameters:
-        - $ref: '#/parameters/trnPersonProductArray'
+        - $ref: '#/parameters/trnPersonActivityArray'
       responses:
         200:
           description: "successful operation"
@@ -820,13 +820,13 @@ paths:
     get:
       tags:
       - "adPerson"
-      summary: "UUID BOOKでTRN_PERSON_PRODUCTの検索を行う"
-      operationId: "readTrnPersonProductFindByUuidMovie"
+      summary: "UUID BOOKでTRN_PERSON_ACTIVITYの検索を行う"
+      operationId: "readTrnPersonActivityFindByUuidMovie"
       parameters:
         - $ref: '#/parameters/uuidBook'
       responses:
         200:
-          $ref: '#/responses/trnPersonProductArray'
+          $ref: '#/responses/trnPersonActivityArray'
         400:
           description: "Invalid status value"
   /trnPersonTalk:
@@ -1554,15 +1554,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnPerson"
-  trnPersonProductArray:
-    name: trnMovieRatingArray
+  trnPersonActivityArray:
+    name: ttrnPersonActivityArray
     description: "配列単位の人の作品情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnPersonProduct"
+        $ref: "#/definitions/trnPersonActivity"
   trnPersonTalkArray:
     name: trnMovieResearchArray
     description: "配列単位の会話情報"
@@ -1816,12 +1816,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnPerson"
-  trnPersonProductArray:
+  trnPersonActivityArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnPersonProduct"
+        $ref: "#/definitions/trnPersonActivity"
   trnPersonTalkArray:
     description: "successful operation"
     schema:
@@ -2501,8 +2501,16 @@ definitions:
       name:
         type: "string"
         description: "名前"
-      age:
+      alive:
+        type: "integer"
+        format: "int32"
+        description: "生存状況"
+      birthDay:
         type: "string"
+        format: "yyyyMMdd"
+        description: "誕生日"
+      age:
+        type: "number"
         description: "年齢"
       sex:
         type: "string"
@@ -2513,15 +2521,9 @@ definitions:
       job:
         type: "string"
         description: "職業"
-        enum:
-        - "novelist"
-        - "part time worker"
       nationality:
         type: "string"
         description: "国籍"
-      birthDay:
-        type: "string"
-        description: "誕生日"
       birthPlace:
         type: "string"
         description: "出生場所"
@@ -2564,8 +2566,7 @@ definitions:
       delete_flg:
         type: "integer"
         format: "int32"
-        
-  trnPersonProduct:
+  trnPersonActivity:
     type: "object"
     properties:
       uuid:
