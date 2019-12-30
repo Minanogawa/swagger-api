@@ -781,7 +781,7 @@ paths:
           $ref: '#/responses/trnPersonArray'
         400:
           description: "Invalid status value"
-  /trnPersonProduct:
+  /trnPersonActivity:
     get:
       tags:
       - "adPerson"
@@ -816,7 +816,7 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnPersonProduct/{uuidBook}:
+  /trnPersonActivity/{uuidBook}:
     get:
       tags:
       - "adPerson"
@@ -829,24 +829,24 @@ paths:
           $ref: '#/responses/trnPersonActivityArray'
         400:
           description: "Invalid status value"
-  /trnPersonTalk:
+  /trnPersonRelation:
     get:
       tags:
       - "adPerson"
-      summary: "TRN_PERSON_TALKからデータを全件取得する"
-      operationId: "readTrnPersonTalk"
+      summary: "TRN_PERSON_RELATIONからデータを全件取得する"
+      operationId: "readTrnPersonRelation"
       responses:
         200:
-          $ref: '#/responses/trnPersonTalkArray'
+          $ref: '#/responses/trnPersonRelationArray'
         400:
           description: "Invalid status value"
     post:
       tags:
       - "adPerson"
-      summary: "TRN_PERSON_TALKに新規データを登録する"
-      operationId: "createTrnPersonTalk"
+      summary: "TRN_PERSON_RELATIONに新規データを登録する"
+      operationId: "createTrnPersonRelation"
       parameters:
-        - $ref: '#/parameters/trnPersonTalkArray'
+        - $ref: '#/parameters/trnPersonRelationArray'
       responses:
         200:
           description: "successful operation"
@@ -855,26 +855,26 @@ paths:
     put:
       tags:
       - "adPerson"
-      summary: "TRN_PERSON_TALK情報の更新を行う"
-      operationId: "updateTrnPersonTalk"
+      summary: "TRN_PERSON_RELATION情報の更新を行う"
+      operationId: "updateTrnPersonRelation"
       parameters:
-        - $ref: '#/parameters/trnPersonTalkArray'
+        - $ref: '#/parameters/trnPersonRelationArray'
       responses:
         200:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnPersonTalk/{uuidBook}:
+  /trnPersonRelation/{uuidBook}:
     get:
       tags:
       - "adPerson"
-      summary: "UUID BOOKでTRN_PERSON_TALKの検索を行う"
-      operationId: "readTrnPersonTalkFindByUuidMovie"
+      summary: "UUID BOOKでTRN_PERSON_RELATIONの検索を行う"
+      operationId: "readTrnPersonRelationFindByUuidMovie"
       parameters:
         - $ref: '#/parameters/uuidBook'
       responses:
         200:
-          $ref: '#/responses/trnPersonTalkArray'
+          $ref: '#/responses/trnPersonRelationArray'
         400:
           description: "Invalid status value"
 
@@ -1563,15 +1563,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnPersonActivity"
-  trnPersonTalkArray:
-    name: trnMovieResearchArray
-    description: "配列単位の会話情報"
+  trnPersonRelationArray:
+    name: trnPersonRelationArray
+    description: "配列単位の人物関連情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnPersonTalk"
+        $ref: "#/definitions/trnPersonRelation"
   trnPublishArray:
     name: trnPublishArray
     description: "配列単位の記事情報"
@@ -1822,12 +1822,12 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnPersonActivity"
-  trnPersonTalkArray:
+  trnPersonRelationArray:
     description: "successful operation"
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnPersonTalk"
+        $ref: "#/definitions/trnPersonRelation"
   trnPublishArray:
     description: "successful operation"
     schema:
@@ -2571,24 +2571,36 @@ definitions:
     properties:
       uuid:
         type: "string"
-        description: "TRN_PERSON_PRODUCTのUUID"
+        description: "TRN_PERSON_ACTIVITYのUUID"
       uuidPerson:
         type: "string"
         description: "TRN_PERSONのUUID"
-      product_title:
+      uuidRelation:
         type: "string"
-        description: "製品名称"
-      product_type:
+        description: "TRN_PERSON_RELATIONのUUID"
+      title:
         type: "string"
-        description: "製品種別"
+        description: "活動名称"
+      type:
+        type: "string"
+        description: "活動種別"
         enum:
         - "Novel"
-      releaseDate:
+      summary:
         type: "string"
-        description: "日付"
-      productSummary:
+        description: "活動概要"
+      startDate:
         type: "string"
-        description: "製品概要"
+        format: date
+      startDatetime:
+        type: "string"
+        format: date-time
+      endDate:
+        type: "string"
+        format: date
+      endDatetime:
+        type: "string"
+        format: date-time
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
@@ -2602,7 +2614,7 @@ definitions:
         type: "integer"
         format: "int32"
 
-  trnPersonTalk:
+  trnPersonRelation:
     type: "object"
     properties:
       uuid:
