@@ -14,6 +14,8 @@ basePath: "/"
 tags:
   - name: "auth"
     description: "Oauth2により認証を行う"
+  - name: "adArticle"
+    description: "Administration Topページにおけるデータ通信定義"
   - name: "adBook"
     description: "Administration Bookページにおけるデータ通信定義"
   - name: "adChart"
@@ -30,8 +32,6 @@ tags:
     description: "Administration Spotページにおけるデータ通信定義"
   - name: "adWordgraph"
     description: "Administration Wordgraphページにおけるデータ通信定義"
-  - name: "adTop"
-    description: "Administration Topページにおけるデータ通信定義"
   - name: "cpEvent"
     description: "Content Eventページにおけるデータ通信定義"
   - name: "cpSpot"
@@ -105,7 +105,7 @@ paths:
   /adTop/treeMenu:
     get:
       tags:
-      - "adTop"
+      - "adArticle"
       summary: "Administration Topページ、もしくはTopページにおいてTreeMenuを取得する"
       operationId: "readTreeMenu"
       responses:
@@ -116,12 +116,12 @@ paths:
   /adTop/latestMenu:
     get:
       tags:
-      - "adTop"
+      - "adArticle"
       summary: "Administration Topページ、もしくはTopページにおいて最新記事情報を取得する"
       operationId: "readLatest"
       responses:
         200:
-           $ref: '#/responses/trnPublishArray'
+           $ref: '#/responses/trnArticleArray'
         400:
           description: "Invalid status value"
 
@@ -136,19 +136,6 @@ paths:
       responses:
         200:
           description: "Chartデータ用のJSON文字列を返却"
-        400:
-          description: "Invalid status value"
-  /cpTop/publish:
-    get:
-      tags:
-      - "cpTop"
-      summary: "Topページに出力する記事情報を画面のパラメーターから取得する"
-      operationId: "readPublish"
-      parameters:
-        - $ref: '#/parameters/publish'
-      responses:
-        200:
-          $ref: "#/responses/publish"
         400:
           description: "Invalid status value"
   /cpTop/publish/categoryMenu:
@@ -170,28 +157,11 @@ paths:
       operationId: "readPublishLatest"
       responses:
         200:
-          $ref: '#/responses/trnPublishArray'
+          $ref: '#/responses/trnArticleArray'
         400:
           description: "Invalid status value"
 
           
-  /global/user/timeline:
-    put:
-      tags:
-      - "global"
-      summary: "ダイアログで出力されたイベント情報のStarがON/OFFになった際に、その状態を保存する"
-      operationId: "putTimeline"
-      parameters:
-        - $ref: '#/parameters/bearerAuth'
-        - $ref: '#/parameters/publish'
-      responses:
-        200:
-          description: "正常応答"
-          schema:
-            type: "string"
-            description: "ファイルパス"
-        400:
-          description: "Invalid status value"
   /global/storage:
     post:
       tags: 
@@ -209,6 +179,69 @@ paths:
           description: "成功時レスポンス"
         400:
           description: "Invalid status value"
+
+  /trnArticle:
+    get:
+      tags:
+      - "adArticle"
+      summary: "TRN_PUBLISHからデータを全件取得する"
+      operationId: "readTrnArticle"
+      responses:
+        200:
+          $ref: '#/responses/trnArticleArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adArticle"
+      summary: "TRN_PUBLISHに新規データを登録する"
+      operationId: "createTrnArticle"
+      parameters:
+        - $ref: '#/parameters/trnArticleArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+    put:
+      tags:
+      - "adArticle"
+      summary: "TRN_PUBLISH情報の更新を行う"
+      operationId: "updateTrnArticle"
+      parameters:
+        - $ref: '#/parameters/trnArticleArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+  /trnArticle/{uuid}:
+    get:
+      tags:
+      - "adArticle"
+      summary: "UUIDで指定したTRN_PUBLISH"
+      operationId: "readTrnArticleFindByUuid"
+      parameters:
+        - $ref: '#/parameters/uuid'
+      responses:
+        200:
+          $ref: '#/responses/trnArticleArray'
+        400:
+          description: "Invalid status value"
+  /trnArticle/{uuid}/text:
+    get:
+      tags:
+      - "adArticle"
+      summary: "UUIDで指定したTRN_PUBLISHのTextフィールドを取得する"
+      operationId: "readTrnArticleTextFindByUuid"
+      parameters:
+        - $ref: '#/parameters/uuid'
+      responses:
+        200:
+          $ref: '#/responses/trnArticleArray'
+        400:
+          description: "Invalid status value"
+
 
   /trnBook:
     get:
@@ -878,69 +911,7 @@ paths:
         400:
           description: "Invalid status value"
 
-  /trnPublish:
-    get:
-      tags:
-      - "adTop"
-      summary: "TRN_PUBLISHからデータを全件取得する"
-      operationId: "readTrnPublish"
-      responses:
-        200:
-          $ref: '#/responses/trnPublishArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "adTop"
-      summary: "TRN_PUBLISHに新規データを登録する"
-      operationId: "createTrnPublish"
-      parameters:
-        - $ref: '#/parameters/trnPublishArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-    put:
-      tags:
-      - "adTop"
-      summary: "TRN_PUBLISH情報の更新を行う"
-      operationId: "updateTrnPublish"
-      parameters:
-        - $ref: '#/parameters/trnPublishArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
-  /trnPublish/{uuid}:
-    get:
-      tags:
-      - "adTop"
-      summary: "UUIDで指定したTRN_PUBLISH"
-      operationId: "readTrnPublishFindByUuid"
-      parameters:
-        - $ref: '#/parameters/uuid'
-      responses:
-        200:
-          $ref: '#/responses/trnPublishArray'
-        400:
-          description: "Invalid status value"
-  /trnPublish/{uuid}/text:
-    get:
-      tags:
-      - "adTop"
-      summary: "UUIDで指定したTRN_PUBLISHのTextフィールドを取得する"
-      operationId: "readTrnPublishTextFindByUuid"
-      parameters:
-        - $ref: '#/parameters/uuid'
-      responses:
-        200:
-          $ref: '#/responses/trnPublishArray'
-        400:
-          description: "Invalid status value"
-          
-          
+
   /trnQuizwg:
     get:
       tags:
@@ -1448,13 +1419,13 @@ parameters:
     required: true
     in: path
     type: "string"
-  publish:
-    name: publish
+  trnArticle:
+    name: trnArticle
     description: "記事情報"
     required: true
     in: body
     schema:
-      $ref: '#/definitions/trnPublish'
+      $ref: '#/definitions/trnArticle'
   trnBookArray:
     name: trnBookArray
     description: "配列単位の本情報"
@@ -1572,15 +1543,15 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnPersonRelation"
-  trnPublishArray:
-    name: trnPublishArray
+  trnArticleArray:
+    name: trnArticleArray
     description: "配列単位の記事情報"
     required: true
     in: body
     schema:
       type: "array"
       items:
-        $ref: "#/definitions/trnPublish"
+        $ref: "#/definitions/trnArticle"
   trnQuizwgArray:
     name: trnQuizwgArray
     description: "配列単位のワードグラフ用クイズ情報"
@@ -1719,11 +1690,16 @@ responses:
     description: "chart出力対象のJsonデータ"
     schema:
       type: "string"
-  publish:
+  trnArticle:
     description: "successful operation"
     schema:
-      $ref: "#/definitions/trnPublish"
-  
+      $ref: "#/definitions/trnArticle"
+  trnArticleArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnArticle"
   trnBookArray:
     description: "successful operation"
     schema:
@@ -1828,12 +1804,6 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnPersonRelation"
-  trnPublishArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnPublish"
   trnSpotArray:
     description: "successful operation"
     schema:
@@ -1990,6 +1960,54 @@ definitions:
             networkConfig:
               type: "string"
               description: "TRN_WORDGRAPHのコンフィグ情報"
+
+  trnArticle:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "PublishのUUID"
+      title:
+        type: "string"
+        description: "伝達する情報のタイトル"
+      category:
+        type: "string"
+        description: "伝達する情報の種別"
+        enum:
+        - "Daily Life"
+      icon:
+        type: "string"
+        description: "伝達記事情報のアイコン"
+      summary_in_header:
+        type: "string"
+        description: "伝達記事情報の要約"
+      text:
+        type: "string"
+        description: "伝達する情報の中身"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      isLatestToward:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      latest_flg:
+        type: "integer"
+        format: "int32"
+      last_flg:
+        type: "integer"
+        format: "int32"
+      release_flg:
+        type: "integer"
+        format: "int32"
+      delete_flg:
+        type: "integer"
+        format: "int32"
 
   trnBook:
     type: "object"
@@ -2648,63 +2666,18 @@ definitions:
         type: "integer"
         format: "int32"
 
-  trnPublish:
-    type: "object"
-    properties:
-      uuid:
-        type: "string"
-        description: "PublishのUUID"
-      title:
-        type: "string"
-        description: "伝達する情報のタイトル"
-      category:
-        type: "string"
-        description: "伝達する情報の種別"
-        enum:
-        - "Daily Life"
-      icon:
-        type: "string"
-        description: "伝達記事情報のアイコン"
-      summary_in_header:
-        type: "string"
-        description: "伝達記事情報の要約"
-      text:
-        type: "string"
-        description: "伝達する情報の中身"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      isLatestToward:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      latest_flg:
-        type: "integer"
-        format: "int32"
-      last_flg:
-        type: "integer"
-        format: "int32"
-      release_flg:
-        type: "integer"
-        format: "int32"
-      delete_flg:
-        type: "integer"
-        format: "int32"
-
   trnQuizwg:
     type: "object"
     properties:
       uuid:
         type: "string"
         description: "TRN_QUIZWGのUUID"
-      uuid_wg:
+      uuidWg:
         type: "string"
         description: "TRN_WORDGRAPHのUUID"
+      wgNetworkConfig:
+        type: "string"
+        description: "TRN_WORDGRAPHのNETWORK_CONFIG"
       title:
         type: "string"
         description: "クイズのカテゴリータイトル"
