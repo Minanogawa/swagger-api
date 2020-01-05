@@ -12,7 +12,7 @@ info:
 host: "localhost:4200"
 basePath: "/"
 tags:
-  - name: "global"
+  - name: "globalNos"
     description: "Webサイトの特定のページに該当しない処理連携"
   
 schemes:
@@ -28,7 +28,7 @@ paths:
   /nosMovieTimeline/uuidMovie/{param}:
     get:
       tags:
-      - "global"
+      - "globalNos"
       summary: "TRN_MOVIEの「UUID」を使用して、NOS_MOVIE_TIMELINEから該当するデータを取得する"
       operationId: "readNosMovieTimeline"
       parameters:
@@ -40,7 +40,7 @@ paths:
           description: "Invalid status value"
     post:
       tags: 
-      - "global"
+      - "globalNos"
       summary: "TRN_MOVIEのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
       operationId: "createNosMovieTimeline"
       parameters:
@@ -53,7 +53,7 @@ paths:
   /nosWordgraph/uuidWordgraph/{param}:
     get:
       tags:
-      - "global"
+      - "globalNos"
       summary: "TRN_WORDGRAPHの「UUID」を使用して、NOS_WORDGRAPHから該当するデータを取得する"
       operationId: "readNosWordgraphFindByuuidWordgraph"
       parameters:
@@ -65,7 +65,7 @@ paths:
           description: "Invalid status value"
     post:
       tags: 
-      - "global"
+      - "globalNos"
       summary: "TRN_WORDGRAPHのUUIDを引数に渡し、その情報に紐づくOver View情報を生成する。リクエストはRest Serverが受取るが、実際の処理はAccumulate Serverが行う"
       operationId: "createNosWordgraph"
       parameters:
@@ -78,7 +78,7 @@ paths:
   /nosWordgraph/searchWord/{param}:
     get:
       tags:
-      - "global"
+      - "globalNos"
       summary: "EditorConst内で保持している「searchWord」を使用して、NOS_WORDGRAPHから該当するデータを取得する、searchWordは(TRN_WORDGRAPHと値が同期する事が前提)"
       operationId: "readNosWordgraphFindBySearchWord"
       parameters:
