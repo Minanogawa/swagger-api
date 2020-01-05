@@ -178,41 +178,6 @@ paths:
           description: "成功時レスポンス"
         400:
           description: "Invalid status value"
-  /global/trnReference:
-    get:
-      tags:
-      - "global"
-      summary: "TRN_REFERENCEからデータを全件取得する"
-      operationId: "readTrnReference"
-      responses:
-        200:
-          $ref: '#/responses/trnReferenceArray'
-        400:
-          description: "Invalid status value"
-    post:
-      tags:
-      - "global"
-      summary: "TRN_REFERENCEに新規データを登録する"
-      operationId: "createTrnReference"
-      parameters:
-        - $ref: '#/parameters/trnReferenceArray'
-      responses:
-        200:
-          description: "successful operation"
-        405:
-          description: "Invalid input"
-    put:
-      tags:
-      - "global"
-      summary: "TRN_REFERENCE情報の更新を行う"
-      operationId: "updateTrnReference"
-      parameters:
-        - $ref: '#/parameters/trnReferenceArray'
-      responses:
-        200:
-          description: "successful operation"
-        400:
-          description: "Invalid status value"
           
   /trnArticle:
     get:
@@ -1611,16 +1576,6 @@ parameters:
       items:
         $ref: "#/definitions/trnQuizwgSetting"
         
-  trnReferenceArray:
-    name: trnReferenceArray
-    description: "配列単位の参照情報"
-    required: true
-    in: body
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnReference"
-
   trnSpot:
     name: trnSpot
     description: "観光場所情報"
@@ -1848,13 +1803,6 @@ responses:
       items:
         $ref: "#/definitions/trnPersonRelation"
 
-  trnReferenceArray:
-    description: "successful operation"
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnReference"
-        
   trnSpotArray:
     description: "successful operation"
     schema:
@@ -2783,43 +2731,6 @@ definitions:
       last_datetime:
         type: "string"
         description: "最後に参照した時刻"
-      memo:
-        type: "string"
-        description: "備考"
-      target:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
-      addDate:
-        type: "string"
-        format: "yyyyMMdd"
-      modDate:
-        type: "string"
-        format: "yyyyMMdd"
-      delete_flg:
-        type: "integer"
-        format: "int32"
-
-  trnReference:
-    type: "object"
-    properties:
-      uuid:
-        type: "string"
-        description: "TRN_REFERENCEのUUID"
-      name:
-        type: "string"
-        description: "参照情報の名称"
-      content_type:
-        type: "string"
-        description: "参照情報の中身の種類"
-      platform_type:
-        type: "string"
-        description: "参照情報の発信媒体"
-      domain:
-        type: "string"
-        description: "参照情報のURL"
-      url:
-        type: "string"
-        description: ""
       memo:
         type: "string"
         description: "備考"

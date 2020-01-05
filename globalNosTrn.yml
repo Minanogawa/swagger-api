@@ -13,7 +13,9 @@ host: "localhost:4200"
 basePath: "/"
 tags:
   - name: "globalNos"
-    description: "Webサイトの特定のページに該当しない処理連携"
+    description: "Webサイトの特定のページに該当しない処理連携、Redisとの連携を行う"
+  - name: "globalTrn"
+    description: "Webサイトの特定のページに該当しない処理連携、MARIADBとの連携を行う"
   
 schemes:
   - "https"
@@ -89,6 +91,43 @@ paths:
         400:
           description: "Invalid status value"
 
+
+  /trnReference:
+    get:
+      tags:
+      - "globalTrn"
+      summary: "TRN_REFERENCEからデータを全件取得する"
+      operationId: "readTrnReference"
+      responses:
+        200:
+          $ref: '#/responses/trnReferenceArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "globalTrn"
+      summary: "TRN_REFERENCEに新規データを登録する"
+      operationId: "createTrnReference"
+      parameters:
+        - $ref: '#/parameters/trnReferenceArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "globalTrn"
+      summary: "TRN_REFERENCE情報の更新を行う"
+      operationId: "updateTrnReference"
+      parameters:
+        - $ref: '#/parameters/trnReferenceArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+
 parameters:
   param:
     name: param
@@ -96,6 +135,15 @@ parameters:
     required: true
     in: path
     type: "string"
+  trnReferenceArray:
+    name: trnReferenceArray
+    description: "配列単位の参照情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnReference"
 
 responses:
   nosMovieTimeline:
@@ -107,6 +155,13 @@ responses:
     description: "successful operation"
     schema:
       $ref: "#/definitions/nosWordgraph"
+
+  trnReferenceArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnReference"
 
 definitions:
 
@@ -243,6 +298,43 @@ definitions:
             uuid:
               type: "string"
               description: "TRN_WORDGRAPH_NODESのUUID"
+
+  trnReference:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_REFERENCEのUUID"
+      name:
+        type: "string"
+        description: "参照情報の名称"
+      content_type:
+        type: "string"
+        description: "参照情報の中身の種類"
+      platform_type:
+        type: "string"
+        description: "参照情報の発信媒体"
+      domain:
+        type: "string"
+        description: "参照情報のURL"
+      url:
+        type: "string"
+        description: ""
+      memo:
+        type: "string"
+        description: "備考"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
 
 externalDocs:
   description: "Find out more about Swagger"
