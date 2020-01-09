@@ -183,7 +183,7 @@ paths:
     get:
       tags:
       - "adArticle"
-      summary: "TRN_PUBLISHからデータを全件取得する"
+      summary: "TRN_ARTICLEからデータを全件取得する"
       operationId: "readTrnArticle"
       responses:
         200:
@@ -193,7 +193,7 @@ paths:
     post:
       tags:
       - "adArticle"
-      summary: "TRN_PUBLISHに新規データを登録する"
+      summary: "TRN_ARTICLEに新規データを登録する"
       operationId: "createTrnArticle"
       parameters:
         - $ref: '#/parameters/trnArticleArray'
@@ -205,7 +205,7 @@ paths:
     put:
       tags:
       - "adArticle"
-      summary: "TRN_PUBLISH情報の更新を行う"
+      summary: "TRN_ARTICLE情報の更新を行う"
       operationId: "updateTrnArticle"
       parameters:
         - $ref: '#/parameters/trnArticleArray'
@@ -240,7 +240,41 @@ paths:
           $ref: '#/responses/trnArticleArray'
         400:
           description: "Invalid status value"
-
+  /trnArticleResearch:
+    get:
+      tags:
+      - "adArticle"
+      summary: "TRN_ARTICLE_RESEARCHからデータを全件取得する"
+      operationId: "readTrnArticleResearch"
+      responses:
+        200:
+          $ref: '#/responses/trnArticleResearchArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "adArticle"
+      summary: "TRN_ARTICLE_RESEARCHに新規データを登録する"
+      operationId: "createTrnArticleResearch"
+      parameters:
+        - $ref: '#/parameters/trnArticleResearchArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+    put:
+      tags:
+      - "adArticle"
+      summary: "TRN_ARTICLE_RESEARCH情報の更新を行う"
+      operationId: "updateTrnArticleResearch"
+      parameters:
+        - $ref: '#/parameters/trnArticleResearchArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
 
   /trnBook:
     get:
@@ -1424,6 +1458,25 @@ parameters:
     in: body
     schema:
       $ref: '#/definitions/trnArticle'
+  trnArticleArray:
+    name: trnArticleArray
+    description: "配列単位の記事情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnArticle"
+  trnArticleResearchArray:
+    name: trnArticleArray
+    description: "配列単位の記事調査情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnArticleResearch"
+
   trnBookArray:
     name: trnBookArray
     description: "配列単位の本情報"
@@ -1541,15 +1594,6 @@ parameters:
       type: "array"
       items:
         $ref: "#/definitions/trnPersonRelation"
-  trnArticleArray:
-    name: trnArticleArray
-    description: "配列単位の記事情報"
-    required: true
-    in: body
-    schema:
-      type: "array"
-      items:
-        $ref: "#/definitions/trnArticle"
   trnQuizwgArray:
     name: trnQuizwgArray
     description: "配列単位のワードグラフ用クイズ情報"
@@ -1698,6 +1742,13 @@ responses:
       type: "array"
       items:
         $ref: "#/definitions/trnArticle"
+  trnArticleResearchArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/trnArticleResearch"
+
   trnBookArray:
     description: "successful operation"
     schema:
@@ -2008,6 +2059,54 @@ definitions:
         type: "integer"
         format: "int32"
 
+  trnArticleResearch:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "PublishのUUID"
+      articleUuid:
+        type: "string"
+        description: "TRN_ARTICLEのUUID"
+      referenceUuid:
+        type: "string"
+        description: "TRN_REFERENCEのUUID"
+      title:
+        type: "string"
+        description: "記事作成する際の調査情報タイトル"
+      resourceType:
+        type: "string"
+        description: "調査情報種別"
+        enum:
+        - "Web"
+      siteAdminType:
+        type: "string"
+        description: "調査情報を個人で作成しているか、組織で作成しているか"
+        enum:
+        - "personeel"
+        - "organization"
+      siteName:
+        type: "string"
+        description: "調査情報サイトの名称"
+      domain:
+        type: "string"
+        description: "調査情報サイトのドメイン"
+      url:
+        type: "string"
+        description: "調査情報サイトのURL"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
+        
   trnBook:
     type: "object"
     properties:
