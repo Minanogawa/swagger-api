@@ -308,12 +308,18 @@ definitions:
       name:
         type: "string"
         description: "参照情報の名称"
-      content_type:
+      contentType:
         type: "string"
         description: "参照情報の中身の種類"
-      platform_type:
+        enum:
+        - "cultural spots"
+        - "government"
+        - "news"
+      platformType:
         type: "string"
         description: "参照情報の発信媒体"
+        enum:
+        - "web"
       domain:
         type: "string"
         description: "参照情報のURL"
