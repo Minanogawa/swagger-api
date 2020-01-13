@@ -2019,12 +2019,16 @@ definitions:
         description: "PublishのUUID"
       title:
         type: "string"
-        description: "伝達する情報のタイトル"
+        description: "記事情報のタイトル"
+      image:
+        type: "string"
+        description: "記事情報のヘッダーイメージ"
       category:
         type: "string"
-        description: "伝達する情報の種別"
+        description: "記事情報の種別"
         enum:
         - "Daily Life"
+        - "Spot"
       icon:
         type: "string"
         description: "伝達記事情報のアイコン"
@@ -2042,10 +2046,10 @@ definitions:
         description: "クライアントのみで使用しサーバー側では使用しない"
       addDate:
         type: "string"
-        format: "yyyyMMdd"
+        format: date-time
       modDate:
         type: "string"
-        format: "yyyyMMdd"
+        format: date-time
       latest_flg:
         type: "integer"
         format: "int32"
