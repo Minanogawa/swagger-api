@@ -102,28 +102,6 @@ paths:
         400:
           description: "Invalid input"
 
-  /adTop/treeMenu:
-    get:
-      tags:
-      - "adArticle"
-      summary: "Administration Topページ、もしくはTopページにおいてTreeMenuを取得する"
-      operationId: "readTreeMenu"
-      responses:
-        200:
-           description: "successful operation return json menu data"
-        400:
-          description: "Invalid status value"
-  /adTop/latestMenu:
-    get:
-      tags:
-      - "adArticle"
-      summary: "Administration Topページ、もしくはTopページにおいて最新記事情報を取得する"
-      operationId: "readLatest"
-      responses:
-        200:
-           $ref: '#/responses/trnArticleArray'
-        400:
-          description: "Invalid status value"
 
   /cpTop/chart/{chartDate}:
     get:
@@ -214,14 +192,14 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnArticle/{uuid}:
+  /trnArticle/uuid/{param}:
     get:
       tags:
       - "adArticle"
       summary: "UUIDで指定したTRN_PUBLISH"
       operationId: "readTrnArticleFindByUuid"
       parameters:
-        - $ref: '#/parameters/uuid'
+        - $ref: '#/parameters/param'
       responses:
         200:
           $ref: '#/responses/trnArticleArray'
@@ -240,6 +218,30 @@ paths:
           $ref: '#/responses/trnArticleArray'
         400:
           description: "Invalid status value"
+          
+  /adTop/treeMenu:
+    get:
+      tags:
+      - "adArticle"
+      summary: "Administration Topページ、もしくはTopページにおいてTreeMenuを取得する"
+      operationId: "readTreeMenu"
+      responses:
+        200:
+           description: "successful operation return json menu data"
+        400:
+          description: "Invalid status value"
+  /adTop/latestMenu:
+    get:
+      tags:
+      - "adArticle"
+      summary: "Administration Topページ、もしくはTopページにおいて最新記事情報を取得する"
+      operationId: "readLatest"
+      responses:
+        200:
+           $ref: '#/responses/trnArticleArray'
+        400:
+          description: "Invalid status value"
+          
   /trnArticleResearch:
     get:
       tags:
