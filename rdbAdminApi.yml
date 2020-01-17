@@ -2030,6 +2030,7 @@ definitions:
         description: "‹L–î•ñ‚Ìí•Ê"
         enum:
         - "Daily Life"
+        - "Leisure"
         - "Spot"
       icon:
         type: "string"
