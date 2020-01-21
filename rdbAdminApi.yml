@@ -2022,9 +2022,6 @@ definitions:
       title:
         type: "string"
         description: "記事情報のタイトル"
-      image:
-        type: "string"
-        description: "記事情報のヘッダーイメージ"
       category:
         type: "string"
         description: "記事情報の種別"
@@ -2032,10 +2029,13 @@ definitions:
         - "Daily Life"
         - "Leisure"
         - "Spot"
+      image:
+        type: "string"
+        description: "記事情報のヘッダーイメージ"
       icon:
         type: "string"
         description: "伝達記事情報のアイコン"
-      summary_in_header:
+      headline:
         type: "string"
         description: "伝達記事情報の要約"
       text:
@@ -2044,25 +2044,16 @@ definitions:
       target:
         type: "boolean"
         description: "クライアントのみで使用しサーバー側では使用しない"
-      isLatestToward:
-        type: "boolean"
-        description: "クライアントのみで使用しサーバー側では使用しない"
       addDate:
         type: "string"
         format: date-time
       modDate:
         type: "string"
         format: date-time
-      latest_flg:
+      publishedFlg:
         type: "integer"
         format: "int32"
-      last_flg:
-        type: "integer"
-        format: "int32"
-      release_flg:
-        type: "integer"
-        format: "int32"
-      delete_flg:
+      deleteFlg:
         type: "integer"
         format: "int32"
 
