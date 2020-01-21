@@ -192,6 +192,18 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
+  /trnArticle/findTop5ByOrderByAddDateDesc:
+    get:
+      tags:
+      - "adArticle"
+      summary: "TRN_ARTICLEのカラム「ADD_DATE」を基に5レコード取得する"
+      operationId: "findTop5ByOrderByAddDateDesc"
+      responses:
+        200:
+          $ref: '#/responses/trnArticleArray'
+        400:
+          description: "Invalid status value"
+  findTop25ByArcust
   /trnArticle/uuid/{param}:
     get:
       tags:
@@ -200,19 +212,6 @@ paths:
       operationId: "readTrnArticleFindByUuid"
       parameters:
         - $ref: '#/parameters/param'
-      responses:
-        200:
-          $ref: '#/responses/trnArticleArray'
-        400:
-          description: "Invalid status value"
-  /trnArticle/{uuid}/text:
-    get:
-      tags:
-      - "adArticle"
-      summary: "UUIDで指定したTRN_PUBLISHのTextフィールドを取得する"
-      operationId: "readTrnArticleTextFindByUuid"
-      parameters:
-        - $ref: '#/parameters/uuid'
       responses:
         200:
           $ref: '#/responses/trnArticleArray'
