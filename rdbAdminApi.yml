@@ -192,24 +192,39 @@ paths:
           description: "successful operation"
         400:
           description: "Invalid status value"
-  /trnArticle/findTop5ByOrderByAddDateDesc:
+          
+  /trnArticle/findByUuid/uuid/{param}:
     get:
       tags:
       - "adArticle"
-      summary: "TRN_ARTICLEのカラム「ADD_DATE」を基に5レコード取得する"
-      operationId: "findTop5ByOrderByAddDateDesc"
+      summary: "UUIDで指定したTRN_ARTICLE"
+      operationId: "findByUuid"
+      parameters:
+        - $ref: '#/parameters/param'
       responses:
         200:
           $ref: '#/responses/trnArticleArray'
         400:
           description: "Invalid status value"
-  findTop25ByArcust
-  /trnArticle/uuid/{param}:
+  /trnArticle/findTop5ByPublishedFlgOrderByAddDateDesc/publishedFlg/{param}:
     get:
       tags:
       - "adArticle"
-      summary: "UUIDで指定したTRN_PUBLISH"
-      operationId: "readTrnArticleFindByUuid"
+      summary: "TRN_ARTICLEのPUBLISHED_FLGでデータを絞り、ADD_DATEを基に5レコード取得する"
+      operationId: "findTop5ByOrderByAddDateDesc"
+      parameters:
+        - $ref: '#/parameters/param'
+      responses:
+        200:
+          $ref: '#/responses/trnArticleArray'
+        400:
+          description: "Invalid status value"
+  /trnArticle/findTop5ByCategoryOrderByAddDateDesc/category/{param}:
+    get:
+      tags:
+      - "adArticle"
+      summary: "TRN_ARTICLEのCATEGORYでデータを絞り、ADD_DATEでソートした5レコード取得する"
+      operationId: "findTop5ByCategoryOrderByAddDateDesc"
       parameters:
         - $ref: '#/parameters/param'
       responses:
