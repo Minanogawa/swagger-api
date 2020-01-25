@@ -206,27 +206,27 @@ paths:
           $ref: '#/responses/trnArticleArray'
         400:
           description: "Invalid status value"
-  /trnArticle/findTop5ByPublishedFlgOrderByAddDateDesc/publishedFlg/{param}:
-    get:
+  /trnArticle/findTopLayout:
+    post:
       tags:
       - "adArticle"
-      summary: "TRN_ARTICLEのPUBLISHED_FLGでデータを絞り、ADD_DATEを基に5レコード取得する"
-      operationId: "findTop5ByOrderByAddDateDesc"
+      summary: "TRN_ARTICLEのPUBLISHED_FLGでデータを絞り、ADD_DATEを基に5レコード取得する。findTop5ByPublishedFlgOrderByAddDateDesc"
+      operationId: "findTopLayout"
       parameters:
-        - $ref: '#/parameters/param'
+        - $ref: '#/parameters/trnArticle'
       responses:
         200:
           $ref: '#/responses/trnArticleArray'
         400:
           description: "Invalid status value"
-  /trnArticle/findTop5ByCategoryOrderByAddDateDesc/category/{param}:
-    get:
+  /trnArticle/findSpotLayout:
+    post:
       tags:
       - "adArticle"
-      summary: "TRN_ARTICLEのCATEGORYでデータを絞り、ADD_DATEでソートした5レコード取得する"
-      operationId: "findTop5ByCategoryOrderByAddDateDesc"
+      summary: "TRN_ARTICLEのCATEGORYでデータを絞り、ADD_DATEでソートした5レコード取得する。findTop5ByCategoryOrderByAddDateDesc"
+      operationId: "findSpotLayout"
       parameters:
-        - $ref: '#/parameters/param'
+        - $ref: '#/parameters/trnArticle'
       responses:
         200:
           $ref: '#/responses/trnArticleArray'
