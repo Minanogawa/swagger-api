@@ -12,10 +12,12 @@ info:
 host: "localhost:4200"
 basePath: "/"
 tags:
+  - name: "globalMst"
+    description: "Webサイトの特定のページに該当しない処理連携、MARIADBとの連携を行う。主にマスター系のテーブル"
   - name: "globalNos"
     description: "Webサイトの特定のページに該当しない処理連携、Redisとの連携を行う"
   - name: "globalTrn"
-    description: "Webサイトの特定のページに該当しない処理連携、MARIADBとの連携を行う"
+    description: "Webサイトの特定のページに該当しない処理連携、MARIADBとの連携を行う。主にトランザクション系のテーブル"
   
 schemes:
   - "https"
@@ -26,6 +28,43 @@ produces:
   - "application/json"
 
 paths:
+
+  /mstClientJson:
+    get:
+      tags:
+      - "globalMst"
+      summary: "MST_CLIENT_JSONからデータを全件取得する"
+      operationId: "readMstClientJson"
+      responses:
+        200:
+          $ref: '#/responses/mstClientJsonArray'
+        400:
+          description: "Invalid status value"
+    post:
+      tags:
+      - "globalMst"
+      summary: "MST_CLIENT_JSONに新規データを登録する"
+      operationId: "createMstClientJson"
+      parameters:
+        - $ref: '#/parameters/mstClientJsonArray'
+      responses:
+        200:
+          description: "successful operation"
+        405:
+          description: "Invalid input"
+    put:
+      tags:
+      - "globalMst"
+      summary: "MST_CLIENT_JSON情報の更新を行う"
+      operationId: "updateMstClientJson"
+      parameters:
+        - $ref: '#/parameters/mstClientJsonArray'
+      responses:
+        200:
+          description: "successful operation"
+        400:
+          description: "Invalid status value"
+
 
   /nosMovieTimeline/uuidMovie/{param}:
     get:
@@ -135,6 +174,15 @@ parameters:
     required: true
     in: path
     type: "string"
+  mstClientJsonArray:
+    name: mstClientJsonArray
+    description: "配列単位の参照情報"
+    required: true
+    in: body
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/mstClientJson"
   trnReferenceArray:
     name: trnReferenceArray
     description: "配列単位の参照情報"
@@ -146,6 +194,13 @@ parameters:
         $ref: "#/definitions/trnReference"
 
 responses:
+  mstClientJsonArray:
+    description: "successful operation"
+    schema:
+      type: "array"
+      items:
+        $ref: "#/definitions/mstClientJson"
+
   nosMovieTimeline:
     description: "successful operation"
     schema:
@@ -164,6 +219,34 @@ responses:
         $ref: "#/definitions/trnReference"
 
 definitions:
+
+  mstClientJson:
+    type: "object"
+    properties:
+      uuid:
+        type: "string"
+        description: "TRN_REFERENCEのUUID"
+      jsonName:
+        type: "string"
+        description: "JSONの名称"
+      json:
+        type: "string"
+        description: "設定値"
+      remarks:
+        type: "string"
+        description: "備考"
+      target:
+        type: "boolean"
+        description: "クライアントのみで使用しサーバー側では使用しない"
+      addDate:
+        type: "string"
+        format: "yyyyMMdd"
+      modDate:
+        type: "string"
+        format: "yyyyMMdd"
+      delete_flg:
+        type: "integer"
+        format: "int32"
 
   nosMovieTimeline:
     type: "object"
