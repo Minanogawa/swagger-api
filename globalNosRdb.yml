@@ -229,6 +229,10 @@ definitions:
       jsonName:
         type: "string"
         description: "JSONÇÃñºèÃ"
+        enum:
+        - "Event Tree"
+        - "Spot Tree"
+        - "Latest Ranking"
       json:
         type: "string"
         description: "ê›íËíl"
